@@ -41,6 +41,14 @@
   *   *Chi tiết:* Trao đổi về tiến độ onboarding, nhận thức môi trường và định hướng.
   *   *Hạn chót:* Cuối tháng 6/2026.
 
+### 📅 Các ngày quan trọng (Important Dates)
+- **2026-06-22**: Họp catch-up với anh Chí Công (Country Head)
+- **2026-06-28**: Giám sát vận hành Cyber Cup cuối tuần
+- **2026-06-30**: Đặt lịch monthly catch-up với chị Vân Anh Lê (HRBP)
+- **2026-07-13**: T+25 (Báo cáo thử việc giữa kỳ)
+- **2026-08-03**: T+40 (Nộp slide báo cáo thử việc)
+- **2026-08-17**: T+50 (Trình bày báo cáo cuối kỳ)
+
 ---
 
 ## 🎮 Vận Hành Chiến Dịch & Sự Kiện FC Online (Campaigns & Ops)
