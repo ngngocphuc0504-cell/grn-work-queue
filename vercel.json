@@ -1,0 +1,13 @@
+{
+  "cleanUrls": true,
+  "rewrites": [
+    {
+      "source": "/",
+      "destination": "/work-queue-app/index.html"
+    },
+    {
+      "source": "/index.html",
+      "destination": "/work-queue-app/index.html"
+    }
+  ]
+}
