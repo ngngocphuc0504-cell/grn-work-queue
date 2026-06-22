@@ -1,0 +1,1255 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Career Twin — Work Queue Portal</title>
+  <!-- Google Fonts: Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <!-- Lucide Icons CDN -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <style>
+    :root {
+      --bg-gradient-start: #0B0F19;
+      --bg-gradient-end: #111827;
+      --card-bg: #1F2937;
+      --card-bg-hover: #374151;
+      --border-color: #374151;
+      --text-main: #F3F4F6;
+      --text-muted: #9CA3AF;
+      --accent-primary: #6366F1;
+      --accent-secondary: #A855F7;
+      
+      /* Priority Colors */
+      --color-p1: #EF4444; /* Critical */
+      --color-p2: #F59E0B; /* High */
+      --color-p3: #10B981; /* Medium */
+      --color-p4: #3B82F6; /* Low */
+      --color-done: #6B7280;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: linear-gradient(135deg, var(--bg-gradient-start) 0%, var(--bg-gradient-end) 100%);
+      color: var(--text-main);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      line-height: 1.5;
+      overflow-x: hidden;
+    }
+
+    /* Container */
+    .container {
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 2rem 1.5rem;
+      flex: 1;
+    }
+
+    /* Header Section */
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 2.5rem;
+      border-bottom: 1px solid var(--border-color);
+      padding-bottom: 1.5rem;
+      position: relative;
+    }
+
+    header::after {
+      content: '';
+      position: absolute;
+      bottom: -1px;
+      left: 0;
+      width: 150px;
+      height: 2px;
+      background: linear-gradient(90deg, var(--accent-primary), var(--accent-secondary));
+    }
+
+    .header-logo {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .logo-glow {
+      width: 2.5rem;
+      height: 2.5rem;
+      border-radius: 0.75rem;
+      background: linear-gradient(135deg, var(--accent-primary) 0%, var(--accent-secondary) 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 0 15px rgba(99, 102, 241, 0.4);
+    }
+
+    .header-title h1 {
+      font-size: 1.5rem;
+      font-weight: 800;
+      background: linear-gradient(90deg, #FFFFFF 0%, #D1D5DB 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .header-title p {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+    }
+
+    .sync-status {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.75rem;
+      background-color: rgba(31, 41, 55, 0.6);
+      padding: 0.5rem 0.875rem;
+      border-radius: 9999px;
+      border: 1px solid var(--border-color);
+    }
+
+    .status-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background-color: #EF4444; /* Red default (unauthorized fallback) */
+      box-shadow: 0 0 8px #EF4444;
+    }
+
+    .status-dot.connected {
+      background-color: #10B981;
+      box-shadow: 0 0 8px #10B981;
+    }
+
+    /* Main Grid layout */
+    .dashboard-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+    }
+
+    @media (min-width: 768px) {
+      .dashboard-grid {
+        grid-template-columns: 3fr 1fr;
+      }
+    }
+
+    /* Filters / Search Bar */
+    .controls-panel {
+      background-color: var(--card-bg);
+      border: 1px solid var(--border-color);
+      border-radius: 1rem;
+      padding: 1.25rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 1.5rem;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    }
+
+    .search-box {
+      position: relative;
+      flex: 1;
+      min-width: 250px;
+    }
+
+    .search-box i {
+      position: absolute;
+      left: 1rem;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--text-muted);
+    }
+
+    .search-box input {
+      width: 100%;
+      background-color: rgba(17, 24, 39, 0.8);
+      border: 1px solid var(--border-color);
+      border-radius: 0.75rem;
+      padding: 0.75rem 1rem 0.75rem 2.75rem;
+      color: var(--text-main);
+      font-size: 0.875rem;
+      transition: all 0.2s ease;
+    }
+
+    .search-box input:focus {
+      outline: none;
+      border-color: var(--accent-primary);
+      box-shadow: 0 0 0 2px rgba(99, 102, 241, 0.2);
+    }
+
+    .filters-group {
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+    }
+
+    .filter-btn {
+      background-color: rgba(17, 24, 39, 0.5);
+      border: 1px solid var(--border-color);
+      color: var(--text-muted);
+      padding: 0.5rem 1rem;
+      border-radius: 0.5rem;
+      font-size: 0.875rem;
+      cursor: pointer;
+      font-weight: 500;
+      transition: all 0.2s ease;
+    }
+
+    .filter-btn:hover {
+      background-color: rgba(17, 24, 39, 0.8);
+      color: var(--text-main);
+    }
+
+    .filter-btn.active {
+      background-color: var(--accent-primary);
+      border-color: var(--accent-primary);
+      color: #FFFFFF;
+    }
+
+    .add-task-btn {
+      background: linear-gradient(135deg, var(--accent-primary) 0%, var(--accent-secondary) 100%);
+      color: #FFFFFF;
+      border: none;
+      padding: 0.75rem 1.25rem;
+      border-radius: 0.75rem;
+      font-size: 0.875rem;
+      font-weight: 600;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .add-task-btn:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 4px 15px rgba(168, 85, 247, 0.3);
+    }
+
+    /* Task List container */
+    .task-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+
+    /* Task Item Card */
+    .task-card {
+      background-color: var(--card-bg);
+      border: 1px solid var(--border-color);
+      border-radius: 1rem;
+      padding: 1.25rem;
+      display: flex;
+      gap: 1rem;
+      align-items: flex-start;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      position: relative;
+    }
+
+    .task-card:hover {
+      transform: translateX(4px);
+      background-color: var(--card-bg-hover);
+      border-color: #4B5563;
+    }
+
+    .task-card.done-state {
+      opacity: 0.6;
+    }
+
+    .task-card.done-state .task-title {
+      text-decoration: line-through;
+      color: var(--text-muted);
+    }
+
+    /* Border priority strip */
+    .priority-strip {
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 4px;
+      border-top-left-radius: 1rem;
+      border-bottom-left-radius: 1rem;
+    }
+
+    .priority-strip.p1 { background-color: var(--color-p1); }
+    .priority-strip.p2 { background-color: var(--color-p2); }
+    .priority-strip.p3 { background-color: var(--color-p3); }
+    .priority-strip.p4 { background-color: var(--color-p4); }
+    .priority-strip.done { background-color: var(--color-done); }
+
+    /* Checkbox styling */
+    .checkbox-container {
+      display: flex;
+      align-items: center;
+      margin-top: 0.25rem;
+    }
+
+    .task-checkbox {
+      width: 1.25rem;
+      height: 1.25rem;
+      border-radius: 0.375rem;
+      border: 2px solid var(--text-muted);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      background-color: transparent;
+    }
+
+    .task-card.done-state .task-checkbox {
+      background-color: var(--accent-primary);
+      border-color: var(--accent-primary);
+    }
+
+    .task-checkbox i {
+      color: #FFFFFF;
+      font-size: 0.75rem;
+      display: none;
+    }
+
+    .task-card.done-state .task-checkbox i {
+      display: block;
+    }
+
+    /* Content block */
+    .task-content {
+      flex: 1;
+    }
+
+    .task-header-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 1rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .task-title {
+      font-size: 1rem;
+      font-weight: 600;
+      color: #FFFFFF;
+      transition: color 0.2s ease;
+    }
+
+    .task-details {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 0.75rem;
+      word-break: break-word;
+    }
+
+    /* Metadata tags */
+    .task-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      align-items: center;
+    }
+
+    .meta-tag {
+      font-size: 0.75rem;
+      padding: 0.25rem 0.625rem;
+      border-radius: 0.375rem;
+      font-weight: 500;
+      display: flex;
+      align-items: center;
+      gap: 0.25rem;
+    }
+
+    .tag-category {
+      background-color: rgba(99, 102, 241, 0.15);
+      color: #A5B4FC;
+      border: 1px solid rgba(99, 102, 241, 0.3);
+    }
+
+    .tag-priority {
+      font-weight: 600;
+    }
+
+    .tag-priority.p1 { background-color: rgba(239, 68, 68, 0.15); color: #FCA5A5; border: 1px solid rgba(239, 68, 68, 0.3); }
+    .tag-priority.p2 { background-color: rgba(245, 158, 11, 0.15); color: #FCD34D; border: 1px solid rgba(245, 158, 11, 0.3); }
+    .tag-priority.p3 { background-color: rgba(16, 185, 129, 0.15); color: #6EE7B7; border: 1px solid rgba(16, 185, 129, 0.3); }
+    .tag-priority.p4 { background-color: rgba(59, 130, 246, 0.15); color: #93C5FD; border: 1px solid rgba(59, 130, 246, 0.3); }
+
+    .tag-id {
+      background-color: rgba(107, 114, 128, 0.15);
+      color: #D1D5DB;
+      border: 1px solid rgba(107, 114, 128, 0.3);
+      font-family: monospace;
+    }
+
+    .tag-date {
+      color: var(--text-muted);
+      font-size: 0.75rem;
+      display: flex;
+      align-items: center;
+      gap: 0.25rem;
+    }
+
+    /* Actions block */
+    .task-actions {
+      display: flex;
+      gap: 0.5rem;
+      align-self: center;
+    }
+
+    .action-btn {
+      background-color: transparent;
+      border: 1px solid var(--border-color);
+      color: var(--text-muted);
+      width: 2rem;
+      height: 2rem;
+      border-radius: 0.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .action-btn:hover {
+      background-color: rgba(239, 68, 68, 0.15);
+      color: #EF4444;
+      border-color: rgba(239, 68, 68, 0.3);
+    }
+
+    /* Empty state */
+    .empty-state {
+      background-color: var(--card-bg);
+      border: 1px dashed var(--border-color);
+      border-radius: 1rem;
+      padding: 3rem;
+      text-align: center;
+      color: var(--text-muted);
+    }
+
+    .empty-state i {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+      color: var(--accent-primary);
+    }
+
+    .empty-state h3 {
+      font-size: 1.125rem;
+      font-weight: 600;
+      color: #FFFFFF;
+      margin-bottom: 0.5rem;
+    }
+
+    /* Sidebar info panel */
+    .sidebar {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    .stats-card {
+      background-color: var(--card-bg);
+      border: 1px solid var(--border-color);
+      border-radius: 1rem;
+      padding: 1.25rem;
+    }
+
+    .stats-card h2 {
+      font-size: 1.125rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 0.75rem;
+    }
+
+    .stat-item {
+      background-color: rgba(17, 24, 39, 0.5);
+      border: 1px solid var(--border-color);
+      border-radius: 0.75rem;
+      padding: 0.75rem;
+      text-align: center;
+    }
+
+    .stat-val {
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: #FFFFFF;
+    }
+
+    .stat-label {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+    }
+
+    /* Modal Styling */
+    .modal-backdrop {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.8);
+      backdrop-filter: blur(4px);
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+    }
+
+    .modal-backdrop.active {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .modal {
+      background-color: var(--card-bg);
+      border: 1px solid var(--border-color);
+      border-radius: 1.25rem;
+      width: 90%;
+      max-width: 500px;
+      padding: 1.75rem;
+      transform: translateY(20px);
+      transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+      box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.3), 0 10px 10px -5px rgba(0, 0, 0, 0.2);
+    }
+
+    .modal-backdrop.active .modal {
+      transform: translateY(0);
+    }
+
+    .modal-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1.25rem;
+    }
+
+    .modal-header h3 {
+      font-size: 1.25rem;
+      font-weight: 700;
+      background: linear-gradient(90deg, #FFFFFF, #E5E7EB);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .modal-close {
+      background: transparent;
+      border: none;
+      color: var(--text-muted);
+      cursor: pointer;
+      font-size: 1.25rem;
+    }
+
+    .form-group {
+      margin-bottom: 1.25rem;
+    }
+
+    .form-group label {
+      display: block;
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: var(--text-main);
+      margin-bottom: 0.5rem;
+    }
+
+    .form-group input,
+    .form-group textarea,
+    .form-group select {
+      width: 100%;
+      background-color: rgba(17, 24, 39, 0.8);
+      border: 1px solid var(--border-color);
+      border-radius: 0.75rem;
+      padding: 0.75rem;
+      color: var(--text-main);
+      font-size: 0.875rem;
+      font-family: inherit;
+    }
+
+    .form-group input:focus,
+    .form-group textarea:focus,
+    .form-group select:focus {
+      outline: none;
+      border-color: var(--accent-primary);
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1rem;
+    }
+
+    .modal-footer {
+      display: flex;
+      justify-content: flex-end;
+      gap: 0.75rem;
+      margin-top: 1.5rem;
+    }
+
+    .btn-cancel {
+      background-color: transparent;
+      border: 1px solid var(--border-color);
+      color: var(--text-muted);
+      padding: 0.75rem 1.25rem;
+      border-radius: 0.75rem;
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    .btn-save {
+      background: linear-gradient(135deg, var(--accent-primary) 0%, var(--accent-secondary) 100%);
+      color: #FFFFFF;
+      border: none;
+      padding: 0.75rem 1.25rem;
+      border-radius: 0.75rem;
+      font-weight: 600;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="header-logo">
+        <div class="logo-glow">
+          <i data-lucide="check-square" style="color: #FFFFFF;"></i>
+        </div>
+        <div class="header-title">
+          <h1>Work Queue Portal</h1>
+          <p>Hệ thống đồng bộ công việc & Định hướng Thử việc</p>
+        </div>
+      </div>
+      <div class="sync-status" id="syncStatus">
+        <div class="status-dot" id="syncDot"></div>
+        <span id="syncText">Đang cào dữ liệu Google Sheet...</span>
+      </div>
+    </header>
+
+    <div class="dashboard-grid">
+      <!-- Left side: task controls & list -->
+      <main>
+        <div class="controls-panel">
+          <div class="search-box">
+            <i data-lucide="search"></i>
+            <input type="text" id="searchInput" placeholder="Tìm kiếm công việc...">
+          </div>
+          
+          <div class="filters-group">
+            <button class="filter-btn active" data-filter="All">Tất cả</button>
+            <button class="filter-btn" data-filter="P1 - Critical">Critical (P1)</button>
+            <button class="filter-btn" data-filter="P2 - High">High (P2)</button>
+            <button class="filter-btn" data-filter="P3 - Medium">Medium (P3)</button>
+            <button class="filter-btn" data-filter="P4 - Low">Low (P4)</button>
+          </div>
+
+          <button class="add-task-btn" id="openModalBtn">
+            <i data-lucide="plus"></i> Thêm Nhiệm Vụ
+          </button>
+        </div>
+
+        <div class="task-list" id="taskListContainer">
+          <!-- Render dynamically -->
+        </div>
+      </main>
+
+      <!-- Right side: widgets / info -->
+      <aside class="sidebar">
+        <div class="stats-card">
+          <h2><i data-lucide="pie-chart" style="color: var(--accent-primary);"></i> Thống kê</h2>
+          <div class="stats-grid">
+            <div class="stat-item">
+              <div class="stat-val" id="totalTasksCount">0</div>
+              <div class="stat-label">Tổng số</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-val" id="doneTasksCount" style="color: #10B981;">0</div>
+              <div class="stat-label">Đã xong</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-val" id="pendingTasksCount" style="color: #F59E0B;">0</div>
+              <div class="stat-label">Chờ xử lý</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-val" id="inProgressTasksCount" style="color: #3B82F6;">0</div>
+              <div class="stat-label">Đang chạy</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="stats-card" style="border-left: 3px solid var(--accent-secondary);">
+          <h2 style="font-size: 0.95rem; margin-bottom: 0.5rem;">📅 Đếm ngược thử việc</h2>
+          <p style="font-size: 0.8rem; color: var(--text-muted); margin-bottom: 0.75rem;">Onboarding: 08/06/2026</p>
+          <div style="font-size: 0.875rem; display: flex; flex-direction: column; gap: 0.5rem;">
+            <div style="display: flex; justify-content: space-between;">
+              <span>T+25 (Báo cáo giữa kỳ):</span>
+              <strong style="color: #FCD34D;">13/07/2026</strong>
+            </div>
+            <div style="display: flex; justify-content: space-between;">
+              <span>T+40 (Nộp slide báo cáo):</span>
+              <strong style="color: #FCD34D;">03/08/2026</strong>
+            </div>
+            <div style="display: flex; justify-content: space-between;">
+              <span>T+50 (Trình bày cuối kỳ):</span>
+              <strong style="color: #EF4444;">17/08/2026</strong>
+            </div>
+          </div>
+        </div>
+
+        <div class="stats-card" style="border-left: 3px solid var(--accent-primary); margin-top: 1rem;">
+          <h2 style="font-size: 0.95rem; margin-bottom: 0.5rem; display: flex; align-items: center; gap: 0.5rem;">
+            <i data-lucide="calendar" style="color: var(--accent-primary); width: 1.1rem; height: 1.1rem;"></i>
+            Các ngày quan trọng
+          </h2>
+          <div id="importantDatesContainer" style="font-size: 0.8rem; display: flex; flex-direction: column; gap: 0.5rem; max-height: 250px; overflow-y: auto; padding-right: 0.25rem; margin-top: 0.75rem;">
+            <!-- Render dynamically -->
+          </div>
+          <div style="margin-top: 0.75rem; border-top: 1px solid var(--border-color); padding-top: 0.75rem;">
+            <form id="dateForm" style="display: flex; flex-direction: column; gap: 0.4rem;">
+              <input type="date" id="newDateVal" required style="padding: 0.35rem 0.5rem; font-size: 0.75rem; background: rgba(17, 24, 39, 0.8); border: 1px solid var(--border-color); color: var(--text-main); border-radius: 0.375rem;">
+              <input type="text" id="newDateTitle" placeholder="Tiêu đề sự kiện..." required style="padding: 0.35rem 0.5rem; font-size: 0.75rem; background: rgba(17, 24, 39, 0.8); border: 1px solid var(--border-color); color: var(--text-main); border-radius: 0.375rem;">
+              <button type="submit" style="background: linear-gradient(135deg, var(--accent-primary) 0%, var(--accent-secondary) 100%); border: none; color: white; font-size: 0.75rem; padding: 0.35rem; font-weight: 600; border-radius: 0.375rem; cursor: pointer;">
+                Thêm ngày
+              </button>
+            </form>
+          </div>
+        </div>
+      </aside>
+    </div>
+  </div>
+
+  <!-- Modal -->
+  <div class="modal-backdrop" id="modalBackdrop">
+    <div class="modal">
+      <div class="modal-header">
+        <h3>Tạo nhiệm vụ mới</h3>
+        <button class="modal-close" id="closeModalBtn">&times;</button>
+      </div>
+      <form id="taskForm">
+        <div class="form-group">
+          <label for="taskTitle">Tên công việc *</label>
+          <input type="text" id="taskTitle" required placeholder="Nhập tên nhiệm vụ cần xử lý...">
+        </div>
+        <div class="form-group">
+          <label for="taskDetails">Chi tiết hành động / Sub-tasks</label>
+          <textarea id="taskDetails" rows="3" placeholder="Ghi chú chi tiết các hành động cụ thể..."></textarea>
+        </div>
+        <div class="form-group">
+          <label for="taskCategory">Phân loại</label>
+          <select id="taskCategory">
+            <option value="Garena Ops">Garena Ops</option>
+            <option value="Workspace System">Workspace System</option>
+            <option value="Probation Alignment">Probation Alignment</option>
+          </select>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="taskPriority">Độ ưu tiên</label>
+            <select id="taskPriority">
+              <option value="P1 - Critical">P1 - Critical</option>
+              <option value="P2 - High" selected>P2 - High</option>
+              <option value="P3 - Medium">P3 - Medium</option>
+              <option value="P4 - Low">P4 - Low</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="taskStatus">Trạng thái ban đầu</label>
+            <select id="taskStatus">
+              <option value="Pending" selected>Pending</option>
+              <option value="In Progress">In Progress</option>
+              <option value="Blocked">Blocked</option>
+              <option value="Done">Done</option>
+            </select>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn-cancel" id="cancelFormBtn">Hủy</button>
+          <button type="submit" class="btn-save">Thêm Mới</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    // Constants
+    const CSV_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vTcGLYAYtPH0j0lqWoS5sB3TQVnpqHxg3WlprybFnewiM3A7Bh0pxHIl3mNEeLzTA/pub?output=csv';
+    
+    // Initial Fallback database (from QUEUE.md and garena-tasks.md)
+    const FALLBACK_DATABASE = [
+      { id: "TS-013", date: "2026-06-22", task: "DB-Time-Chamber: Migrate vào AG + Database Development", details: "Cài DB-Time-Chamber về AG workspace, phát triển database schema/logic và tối ưu hóa app.", category: "Workspace System", priority: "P4 - Low", status: "Pending" },
+      { id: "TS-020", date: "2026-06-22", task: "Garena Onboarding & First FC Online Event Execution", details: "Onboarding meeting notes extracted. VIP Revamp wireframe & recommendations completed. Event execution pending.", category: "Workspace System", priority: "P2 - High", status: "Pending" },
+      { id: "GR-001", date: "2026-06-22", task: "Học chính sách công ty trên Sea AI Hub", details: "Hoàn thành khóa đào tạo IT Policy & Security Training trên ai.sea.com.", category: "Probation Alignment", priority: "P2 - High", status: "Pending" },
+      { id: "GR-002", date: "2026-06-22", task: "Chơi FC Online hàng ngày để hiểu sản phẩm", details: "Chơi game từ 2 - 3 tiếng / ngày để hiểu core gameplay, product loop, cách bán hàng và khuyến mãi.", category: "Probation Alignment", priority: "P2 - High", status: "In Progress" },
+      { id: "GR-003", date: "2026-06-22", task: "Phát triển trang VIP - Giai đoạn 1 (Mechanics & Code Alignment)", details: "Xin anh Vũ họp cùng team Code để clear về mechanics & logic hệ thống.", category: "Garena Ops", priority: "P2 - High", status: "Pending" },
+      { id: "GR-004", date: "2026-06-22", task: "Phát triển trang VIP - Cân chỉnh mốc quà", details: "Xin dev team trích xuất số liệu nạp/chơi thực tế để căn chỉnh mốc quà.", category: "Garena Ops", priority: "P2 - High", status: "Pending" },
+      { id: "GR-005", date: "2026-06-22", task: "Phát triển trang VIP - Mockups design", details: "Bám sát tiến độ vẽ mockup của Anh Thế Minh từ query gửi sang Creative Lab.", category: "Garena Ops", priority: "P2 - High", status: "Pending" },
+      { id: "GR-006", date: "2026-06-22", task: "Phát triển trang VIP - Giai đoạn 2 (Roadmap)", details: "Theo dõi feedback của VIP user sau ra mắt, tổng hợp insight và đề xuất upgrade roadmap 3-6 tháng.", category: "Garena Ops", priority: "P3 - Medium", status: "Pending" },
+      { id: "GR-007", date: "2026-06-22", task: "Nhiệm vụ thử việc 2: Tối ưu doanh thu (Data-driven)", details: "Phân tích dữ liệu monetize web events đã chạy, lập bản kế hoạch one-pager tóm tắt insight và đề xuất mechanic/định giá. Thiết kế sự kiện, phối hợp Creative/Dev xây dựng trang, QA và launch.", category: "Garena Ops", priority: "P2 - High", status: "Pending" },
+      { id: "GR-008", date: "2026-06-22", task: "Nhiệm vụ thử việc 3: Phân tích dữ liệu (Data & Retention)", details: "Phân tích data hành vi user (churn, drop-off), dùng AI tìm pattern, xác định 2-3 pain points và đề xuất campaign cá nhân hóa.", category: "Garena Ops", priority: "P2 - High", status: "Pending" },
+      { id: "GR-009", date: "2026-06-22", task: "Đề xuất sáng kiến hoặc cải tiến công việc (Innovation)", details: "Quan sát và đề xuất ít nhất 1 ý tưởng hoặc cải tiến trong 2 tháng thử việc liên quan đến các công việc đang làm.", category: "Probation Alignment", priority: "P3 - Medium", status: "Pending" },
+      { id: "GR-010", date: "2026-06-22", task: "Họp catch-up 2 tuần đầu với anh Chí Công (Country Head)", details: "Chuẩn bị các nhận thức mới (perspectives & gains) và book meeting trên SeaTalk/Google Calendar. Hạn: 22/06/2026.", category: "Probation Alignment", priority: "P2 - High", status: "Pending" },
+      { id: "GR-011", date: "2026-06-22", task: "Họp weekly / bi-weekly catch-up với anh Khôi (PM FCO)", details: "Thiết lập nhịp độ làm việc định kỳ để cập nhật tiến độ vận hành FC Online.", category: "Probation Alignment", priority: "P2 - High", status: "Pending" },
+      { id: "GR-012", date: "2026-06-22", task: "Họp monthly catch-up với chị Vân Anh Lê (HRBP)", details: "Trao đổi về tiến độ onboarding, nhận thức môi trường và định hướng. Hạn: Cuối tháng 6/2026.", category: "Probation Alignment", priority: "P3 - Medium", status: "Pending" },
+      { id: "GR-013", date: "2026-06-22", task: "Đánh giá hiệu suất mùa thẻ mới Path To Glory (PTG)", details: "Tổng hợp doanh thu tích lũy, phân tích feedback cộng đồng về chỉ số thẻ và làm report 1-pager gửi Country Head.", category: "Garena Ops", priority: "P2 - High", status: "Pending" },
+      { id: "GR-014", date: "2026-06-22", task: "Lên kế hoạch chi tiết cho Siêu sự kiện Sinh nhật 8 tuổi FCO", details: "Kiểm tra tiến độ Offline Hà Nội với Mkt team, test tải in-game cùng Nexon, lên khung KPI.", category: "Garena Ops", priority: "P2 - High", status: "Pending" },
+      { id: "GR-015", date: "2026-06-22", task: "Giám sát vận hành Cyber Cup cuối tuần", details: "Check cổng đăng ký cyber.fconline.garena.vn/news, điều phối quà tặng hiện vật về các cyber game đăng cai giải đấu ngày 28/06.", category: "Garena Ops", priority: "P2 - High", status: "Pending" },
+      { id: "GR-016", date: "2026-06-22", task: "Nhận thông tin đào tạo về Game từ Coby", details: "Cập nhật thông tin gameplay, meta thẻ cầu thủ (tối đa +13, thẻ +8 không còn dùng đua top) vào skills/KB.", category: "Probation Alignment", priority: "P2 - High", status: "Pending" },
+      { id: "GR-017", date: "2026-06-22", task: "Khai thác dữ liệu từ tools.fo4.garena.vn", details: "Export dữ liệu sự kiện, doanh thu dưới dạng CSV để làm cơ sở phân tích số liệu.", category: "Garena Ops", priority: "P3 - Medium", status: "Pending" }
+    ];
+
+    // State Variables
+    let rawTasks = [];
+    let activeFilter = 'All';
+    let searchQuery = '';
+
+    // Elements
+    const taskListContainer = document.getElementById('taskListContainer');
+    const syncStatus = document.getElementById('syncStatus');
+    const syncDot = document.getElementById('syncDot');
+    const syncText = document.getElementById('syncText');
+    const searchInput = document.getElementById('searchInput');
+    const filterButtons = document.querySelectorAll('.filter-btn');
+    
+    // Stats elements
+    const totalTasksCount = document.getElementById('totalTasksCount');
+    const doneTasksCount = document.getElementById('doneTasksCount');
+    const pendingTasksCount = document.getElementById('pendingTasksCount');
+    const inProgressTasksCount = document.getElementById('inProgressTasksCount');
+
+    // Modal elements
+    const modalBackdrop = document.getElementById('modalBackdrop');
+    const openModalBtn = document.getElementById('openModalBtn');
+    const closeModalBtn = document.getElementById('closeModalBtn');
+    const cancelFormBtn = document.getElementById('cancelFormBtn');
+    const taskForm = document.getElementById('taskForm');
+
+    // Initialize application
+    async function init() {
+      lucide.createIcons();
+      loadImportantDates();
+      setupEventListeners();
+      renderImportantDates();
+      await fetchWorkQueue();
+    }
+
+    // Event Listeners Setup
+    function setupEventListeners() {
+      // Search
+      searchInput.addEventListener('input', (e) => {
+        searchQuery = e.target.value.toLowerCase();
+        renderTasks();
+      });
+
+      // Filter Buttons
+      filterButtons.forEach(btn => {
+        btn.addEventListener('click', (e) => {
+          filterButtons.forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+          activeFilter = btn.dataset.filter;
+          renderTasks();
+        });
+      });
+
+      // Modal Triggers
+      openModalBtn.addEventListener('click', () => {
+        modalBackdrop.classList.add('active');
+      });
+
+      const closeModal = () => {
+        modalBackdrop.classList.remove('active');
+        taskForm.reset();
+      };
+      
+      closeModalBtn.addEventListener('click', closeModal);
+      cancelFormBtn.addEventListener('click', closeModal);
+      modalBackdrop.addEventListener('click', (e) => {
+        if (e.target === modalBackdrop) closeModal();
+      });
+
+      // Form Submit
+      taskForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        
+        const title = document.getElementById('taskTitle').value.trim();
+        const details = document.getElementById('taskDetails').value.trim();
+        const category = document.getElementById('taskCategory').value;
+        const priority = document.getElementById('taskPriority').value;
+        const status = document.getElementById('taskStatus').value;
+        
+        if (!title) return;
+
+        // Generate ID
+        const prefix = category === 'Workspace System' ? 'TS-' : 'GR-';
+        const num = Math.floor(100 + Math.random() * 900);
+        const newId = `${prefix}${num}`;
+        
+        const newTask = {
+          id: newId,
+          date: new Date().toISOString().split('T')[0],
+          task: title,
+          details: details,
+          category: category,
+          priority: priority,
+          status: status
+        };
+
+        rawTasks.unshift(newTask);
+        saveTasksToLocalStorage();
+        renderTasks();
+        closeModal();
+      });
+
+      // Date Form Submit
+      const dateForm = document.getElementById('dateForm');
+      if (dateForm) {
+        dateForm.addEventListener('submit', (e) => {
+          e.preventDefault();
+          const dateVal = document.getElementById('newDateVal').value;
+          const dateTitle = document.getElementById('newDateTitle').value.trim();
+          if (!dateVal || !dateTitle) return;
+
+          importantDates.push({ date: dateVal, title: dateTitle });
+          saveImportantDates();
+          renderImportantDates();
+          dateForm.reset();
+        });
+      }
+    }
+
+    // Load tasks from source
+    async function fetchWorkQueue() {
+      try {
+        // Attempt to fetch from Google Sheets CSV (will trigger CORS/401 on restricted settings)
+        const response = await fetch(CSV_URL);
+        if (!response.ok) {
+          throw new Error('Google Sheet returned error status ' + response.status);
+        }
+        const text = await response.text();
+        const parsed = parseCSV(text);
+        if (parsed.length > 0) {
+          rawTasks = parsed;
+          updateSyncIndicator(true, "Đã đồng bộ Google Sheets");
+        } else {
+          throw new Error('Không có dữ liệu hợp lệ được tìm thấy trong CSV');
+        }
+      } catch (err) {
+        console.warn("CORS/Auth blocked direct Google Sheet fetch. Falling back to local/cached data.", err);
+        updateSyncIndicator(false, "Offline/CORS Mode (Sử dụng database cache local)");
+        loadLocalData();
+      }
+      renderTasks();
+    }
+
+    // Fallback load local data
+    function loadLocalData() {
+      const cached = localStorage.getItem('career_twin_tasks');
+      if (cached) {
+        try {
+          rawTasks = JSON.parse(cached);
+        } catch (e) {
+          rawTasks = [...FALLBACK_DATABASE];
+        }
+      } else {
+        rawTasks = [...FALLBACK_DATABASE];
+        saveTasksToLocalStorage();
+      }
+    }
+
+    // Save tasks to LocalStorage
+    function saveTasksToLocalStorage() {
+      localStorage.setItem('career_twin_tasks', JSON.stringify(rawTasks));
+    }
+
+    // Important dates database
+    const DEFAULT_IMPORTANT_DATES = [
+      { date: "2026-06-22", title: "Họp catch-up với anh Chí Công (Country Head)" },
+      { date: "2026-06-28", title: "Giám sát vận hành Cyber Cup cuối tuần" },
+      { date: "2026-06-30", title: "Đặt lịch monthly catch-up với chị Vân Anh Lê (HRBP)" },
+      { date: "2026-07-13", title: "T+25 (Báo cáo thử việc giữa kỳ)" },
+      { date: "2026-08-03", title: "T+40 (Nộp slide báo cáo thử việc)" },
+      { date: "2026-08-17", title: "T+50 (Trình bày báo cáo cuối kỳ)" }
+    ];
+
+    let importantDates = [];
+
+    function loadImportantDates() {
+      const cached = localStorage.getItem('career_twin_dates');
+      if (cached) {
+        try {
+          importantDates = JSON.parse(cached);
+        } catch (e) {
+          importantDates = [...DEFAULT_IMPORTANT_DATES];
+        }
+      } else {
+        importantDates = [...DEFAULT_IMPORTANT_DATES];
+        saveImportantDates();
+      }
+    }
+
+    function saveImportantDates() {
+      localStorage.setItem('career_twin_dates', JSON.stringify(importantDates));
+    }
+
+    function renderImportantDates() {
+      const container = document.getElementById('importantDatesContainer');
+      if (!container) return;
+      container.innerHTML = '';
+      
+      const sorted = [...importantDates].sort((a, b) => new Date(a.date) - new Date(b.date));
+      
+      if (sorted.length === 0) {
+        container.innerHTML = `<p style="color: var(--text-muted); font-style: italic;">Không có sự kiện quan trọng nào.</p>`;
+        return;
+      }
+
+      sorted.forEach((item) => {
+        const dateObj = new Date(item.date);
+        const day = String(dateObj.getDate()).padStart(2, '0');
+        const month = String(dateObj.getMonth() + 1).padStart(2, '0');
+        const year = dateObj.getFullYear();
+        const formattedDate = `${day}/${month}/${year}`;
+
+        const today = new Date();
+        today.setHours(0,0,0,0);
+        const eventDate = new Date(item.date);
+        eventDate.setHours(0,0,0,0);
+        
+        let dateColor = '#3B82F6';
+        if (eventDate.getTime() === today.getTime()) {
+          dateColor = '#EF4444';
+        } else if (eventDate.getTime() < today.getTime()) {
+          dateColor = '#6B7280';
+        } else {
+          const diffDays = Math.ceil((eventDate - today) / (1000 * 60 * 60 * 24));
+          if (diffDays <= 7) {
+            dateColor = '#F59E0B';
+          }
+        }
+
+        container.innerHTML += `
+          <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px dashed var(--border-color); padding-bottom: 0.35rem; gap: 0.5rem;">
+            <div style="display: flex; flex-direction: column; gap: 0.15rem; flex: 1;">
+              <span style="font-weight: 600; color: #FFFFFF; font-size: 0.775rem;">${item.title}</span>
+              <span style="color: ${dateColor}; font-size: 0.725rem; font-weight: 500;">${formattedDate}</span>
+            </div>
+            <button type="button" onclick="deleteImportantDate('${item.date}', '${item.title.replace(/'/g, "\\'")}')" style="background: transparent; border: none; color: var(--text-muted); cursor: pointer; display: flex; align-items: center; opacity: 0.6;" onmouseover="this.style.color='#EF4444'; this.style.opacity='1'" onmouseout="this.style.color='var(--text-muted)'; this.style.opacity='0.6'" title="Xóa">
+              <i data-lucide="trash-2" style="width: 0.85rem; height: 0.85rem;"></i>
+            </button>
+          </div>
+        `;
+      });
+      lucide.createIcons();
+    }
+
+    window.deleteImportantDate = function(date, title) {
+      if (confirm(`Bạn có muốn xóa sự kiện "${title}" không?`)) {
+        importantDates = importantDates.filter(d => !(d.date === date && d.title === title));
+        saveImportantDates();
+        renderImportantDates();
+      }
+    };
+
+    // Update synchronization text & dot UI
+    function updateSyncIndicator(isConnected, text) {
+      syncText.innerText = text;
+      if (isConnected) {
+        syncDot.classList.add('connected');
+      } else {
+        syncDot.classList.remove('connected');
+      }
+    }
+
+    // Simple CSV parser
+    function parseCSV(text) {
+      const lines = text.split('\n');
+      if (lines.length === 0) return [];
+      
+      const rawHeaders = lines[0].split(',');
+      const headers = rawHeaders.map(h => h.trim().replace(/^"|"$/g, ''));
+      
+      // Map Vietnamese sheet headers to JS object keys
+      const headerMap = {
+        "Mã CV (Task ID)": "id",
+        "Ngày tạo (Created Date)": "date",
+        "Công việc (Task)": "task",
+        "Chi tiết hành động (Action Items / Sub-tasks)": "details",
+        "Phân loại (Category)": "category",
+        "Độ ưu tiên (Priority)": "priority",
+        "Trạng thái (Status)": "status"
+      };
+
+      const mappedKeys = headers.map(h => headerMap[h] || h.toLowerCase());
+      const results = [];
+
+      for (let i = 1; i < lines.length; i++) {
+        const line = lines[i].trim();
+        if (!line) continue;
+
+        // Parse line with CSV quote support
+        const row = [];
+        let inQuotes = false;
+        let cell = "";
+        for (let c = 0; c < line.length; c++) {
+          const char = line[c];
+          if (char === '"') {
+            inQuotes = !inQuotes;
+          } else if (char === ',' && !inQuotes) {
+            row.push(cell.trim().replace(/^"|"$/g, ''));
+            cell = "";
+          } else {
+            cell += char;
+          }
+        }
+        row.push(cell.trim().replace(/^"|"$/g, ''));
+
+        if (row.length >= headers.length) {
+          const taskObj = {};
+          mappedKeys.forEach((key, idx) => {
+            taskObj[key] = row[idx] || "";
+          });
+          results.push(taskObj);
+        }
+      }
+      return results;
+    }
+
+    // Toggle Task Status (Done / Pending)
+    window.toggleTaskStatus = function(taskId) {
+      const taskIndex = rawTasks.findIndex(t => t.id === taskId);
+      if (taskIndex !== -1) {
+        const currentStatus = rawTasks[taskIndex].status;
+        rawTasks[taskIndex].status = (currentStatus === 'Done') ? 'Pending' : 'Done';
+        saveTasksToLocalStorage();
+        renderTasks();
+      }
+    };
+
+    // Remove Task
+    window.deleteTask = function(taskId) {
+      if (confirm('Bạn có chắc chắn muốn xóa đầu việc này khỏi danh sách?')) {
+        rawTasks = rawTasks.filter(t => t.id !== taskId);
+        saveTasksToLocalStorage();
+        renderTasks();
+      }
+    };
+
+    // Render stats
+    function renderStats() {
+      const total = rawTasks.length;
+      const done = rawTasks.filter(t => t.status === 'Done').length;
+      const pending = rawTasks.filter(t => t.status === 'Pending').length;
+      const inProgress = rawTasks.filter(t => t.status === 'In Progress').length;
+
+      totalTasksCount.innerText = total;
+      doneTasksCount.innerText = done;
+      pendingTasksCount.innerText = pending;
+      inProgressTasksCount.innerText = inProgress;
+    }
+
+    // Render task cards in list
+    function renderTasks() {
+      taskListContainer.innerHTML = '';
+      
+      // Filter logic
+      let filtered = rawTasks.filter(task => {
+        // Priority filter
+        if (activeFilter !== 'All' && task.priority !== activeFilter) {
+          return false;
+        }
+        // Search text
+        if (searchQuery) {
+          const matchesTitle = (task.task || '').toLowerCase().includes(searchQuery);
+          const matchesDetails = (task.details || '').toLowerCase().includes(searchQuery);
+          const matchesId = (task.id || '').toLowerCase().includes(searchQuery);
+          return matchesTitle || matchesDetails || matchesId;
+        }
+        return true;
+      });
+
+      // Update counters
+      renderStats();
+
+      if (filtered.length === 0) {
+        taskListContainer.innerHTML = `
+          <div class="empty-state">
+            <i data-lucide="inbox"></i>
+            <h3>Không tìm thấy nhiệm vụ nào</h3>
+            <p>Hãy thử thay đổi bộ lọc hoặc thêm nhiệm vụ mới.</p>
+          </div>
+        `;
+        lucide.createIcons();
+        return;
+      }
+
+      // Render cards
+      filtered.forEach(task => {
+        const isDone = task.status === 'Done';
+        const cardClass = isDone ? 'task-card done-state' : 'task-card';
+        
+        let priorityClass = 'p4';
+        if (task.priority.includes('Critical')) priorityClass = 'p1';
+        else if (task.priority.includes('High')) priorityClass = 'p2';
+        else if (task.priority.includes('Medium')) priorityClass = 'p3';
+        
+        const priorityLabel = task.priority.split(' - ')[1] || task.priority;
+
+        taskListContainer.innerHTML += `
+          <div class="${cardClass}" id="card-${task.id}">
+            <div class="priority-strip ${isDone ? 'done' : priorityClass}"></div>
+            <div class="checkbox-container">
+              <div class="task-checkbox" onclick="toggleTaskStatus('${task.id}')">
+                <i data-lucide="check"></i>
+              </div>
+            </div>
+            <div class="task-content">
+              <div class="task-header-row">
+                <h4 class="task-title">${task.task}</h4>
+                <div class="task-actions">
+                  <button class="action-btn" onclick="deleteTask('${task.id}')" title="Xóa">
+                    <i data-lucide="trash-2"></i>
+                  </button>
+                </div>
+              </div>
+              <p class="task-details">${task.details || 'Không có mô tả chi tiết.'}</p>
+              <div class="task-meta">
+                <span class="meta-tag tag-id">${task.id}</span>
+                <span class="meta-tag tag-category">${task.category || 'Garena Ops'}</span>
+                <span class="meta-tag tag-priority ${priorityClass}">${priorityLabel}</span>
+                <span class="meta-tag tag-date"><i data-lucide="calendar"></i> ${task.date || '2026-06-22'}</span>
+                <span class="meta-tag" style="background-color: ${isDone ? 'rgba(107, 114, 128, 0.15)' : 'rgba(59, 130, 246, 0.15)'}; color: ${isDone ? '#9CA3AF' : '#60A5FA'}; font-weight: 600;">
+                  ${task.status || 'Pending'}
+                </span>
+              </div>
+            </div>
+          </div>
+        `;
+      });
+
+      // Refresh icons inside cards
+      lucide.createIcons();
+    }
+
+    // Run
+    init();
+  </script>
+</body>
+</html>
