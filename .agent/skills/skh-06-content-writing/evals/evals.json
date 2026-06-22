@@ -1,0 +1,12 @@
+[
+  {
+    "input": "Write a blog about AI. Use words like seamless, delve, and revolutionary.",
+    "expected_action": "REJECT",
+    "rationale": "Violation of Tone & Voice rubric (banned words)."
+  },
+  {
+    "input": "Outline: 1. AI is good. 2. AI saves time.",
+    "expected_action": "DRAFT",
+    "rationale": "Valid M-E-C-E structure achievable."
+  }
+]

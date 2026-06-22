@@ -1,0 +1,24 @@
+{
+  "user_id": "coby01",
+  "last_updated": "2026-04-17",
+  "interaction": {
+    "tone": "coach_deep",
+    "challenge_level": "HIGH",
+    "language": "vi",
+    "address": "anh_em",
+    "gamification": true,
+    "annotation_method": "in_file"
+  },
+  "twin_behavior": {
+    "confront_on_skip": true,
+    "confront_on_over_assumption": true,
+    "monitor_ai_cowork_quality": true,
+    "proactive_learning_plateau_alert": true
+  },
+  "pending_setup": {
+    "goals_node": "INCOMPLETE — anh chưa chắc về North Star cá nhân. Revisit sau 2026-05-01.",
+    "workload_efficiency_criteria": "UNDEFINED — anh sẽ define sau.",
+    "embassy_project_brief": "PENDING",
+    "tutoring_project_brief": "PENDING"
+  }
+}

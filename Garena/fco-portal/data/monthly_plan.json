@@ -1,0 +1,457 @@
+﻿{
+    "rewards":  {
+                    "pc_m_web_svip":  {
+                                          "total":  0,
+                                          "pp":  0,
+                                          "bp":  0,
+                                          "bp_ratio":  0
+                                      },
+                    "mobile":  {
+                                   "total":  0,
+                                   "pp":  0,
+                                   "bp":  0,
+                                   "bp_ratio":  0
+                               },
+                    "pc_m_regular":  {
+                                         "total":  145783454153190,
+                                         "pp":  93871597449547,
+                                         "bp":  51911856703643,
+                                         "bp_ratio":  0.35608881
+                                     },
+                    "pc_m_web":  {
+                                     "total":  0,
+                                     "pp":  0,
+                                     "bp":  0,
+                                     "bp_ratio":  0
+                                 },
+                    "daily_usd":  {
+                                      "svip":  {
+                                                   "total":  0,
+                                                   "pp":  0,
+                                                   "bp":  0
+                                               },
+                                      "pc_m_regular":  {
+                                                           "total":  0,
+                                                           "pp":  0,
+                                                           "bp":  0
+                                                       },
+                                      "web":  {
+                                                  "total":  0,
+                                                  "pp":  0,
+                                                  "bp":  0
+                                              }
+                                  },
+                    "last_month":  {
+                                       "svip":  {
+                                                    "total":  43515420955,
+                                                    "pp":  26930494804,
+                                                    "bp":  16584926151,
+                                                    "bp_ratio":  0.38
+                                                },
+                                       "pc_m_regular":  {
+                                                            "total":  22914611660,
+                                                            "pp":  12808348210,
+                                                            "bp":  10106263451,
+                                                            "bp_ratio":  0.44
+                                                        },
+                                       "web":  {
+                                                   "total":  73159296305,
+                                                   "pp":  49040095501,
+                                                   "bp":  24119200804
+                                               }
+                                   },
+                    "web":  {
+                                "total":  399659078221220,
+                                "pp":  399659078221220,
+                                "bp":  0
+                            },
+                    "svip":  {
+                                 "total":  123895591760077,
+                                 "pp":  95095591760077,
+                                 "bp":  28800000000000,
+                                 "bp_ratio":  0.2324537911
+                             },
+                    "pc_regular":  {
+                                       "total":  0,
+                                       "pp":  0,
+                                       "bp":  0,
+                                       "bp_ratio":  0
+                                   }
+                },
+    "events":  {
+                   "promotion":  [
+                                     {
+                                         "mechanics":  null,
+                                         "name":  "Long-term",
+                                         "recurring":  true,
+                                         "duration":  30,
+                                         "start":  "2026-06-01",
+                                         "end":  "2026-06-30",
+                                         "impact":  null
+                                     },
+                                     {
+                                         "mechanics":  null,
+                                         "name":  "3-tier top-up promotion",
+                                         "recurring":  true,
+                                         "duration":  4,
+                                         "start":  "2026-06-01",
+                                         "end":  "2026-06-04",
+                                         "impact":  null
+                                     },
+                                     {
+                                         "mechanics":  null,
+                                         "name":  "3-tier top-up promotion",
+                                         "recurring":  true,
+                                         "duration":  4,
+                                         "start":  "2026-06-06",
+                                         "end":  "2026-06-09",
+                                         "impact":  null
+                                     },
+                                     {
+                                         "mechanics":  null,
+                                         "name":  "Special top-up promotion",
+                                         "recurring":  true,
+                                         "duration":  9,
+                                         "start":  "2026-06-13",
+                                         "end":  "2026-06-21",
+                                         "impact":  null
+                                     },
+                                     {
+                                         "mechanics":  null,
+                                         "name":  "3-tier top-up promotion",
+                                         "recurring":  true,
+                                         "duration":  5,
+                                         "start":  "2026-06-25",
+                                         "end":  "2026-06-29",
+                                         "impact":  null
+                                     }
+                                 ],
+                   "rev":  [
+                               {
+                                   "mechanics":  null,
+                                   "name":  "Long-term Jun",
+                                   "recurring":  true,
+                                   "duration":  30,
+                                   "start":  "2026-06-01",
+                                   "end":  "2026-06-30",
+                                   "impact":  null
+                               },
+                               {
+                                   "mechanics":  null,
+                                   "name":  "Foosball",
+                                   "recurring":  true,
+                                   "duration":  9,
+                                   "start":  "2026-06-03",
+                                   "end":  "2026-06-11",
+                                   "impact":  null
+                               },
+                               {
+                                   "mechanics":  null,
+                                   "name":  "8th Anniv monetize web event",
+                                   "recurring":  false,
+                                   "duration":  10,
+                                   "start":  "2026-06-12",
+                                   "end":  "2026-06-21",
+                                   "impact":  null
+                               },
+                               {
+                                   "mechanics":  null,
+                                   "name":  "Monopoly",
+                                   "recurring":  true,
+                                   "duration":  6,
+                                   "start":  "2026-06-22",
+                                   "end":  "2026-06-27",
+                                   "impact":  null
+                               },
+                               {
+                                   "mechanics":  null,
+                                   "name":  "TCSS",
+                                   "recurring":  true,
+                                   "duration":  6,
+                                   "start":  "2026-06-28",
+                                   "end":  "2026-07-03",
+                                   "impact":  null
+                               }
+                           ],
+                   "dau":  [
+                               {
+                                   "mechanics":  null,
+                                   "name":  "KOL - Futsal DAU",
+                                   "recurring":  false,
+                                   "duration":  7,
+                                   "start":  "2026-05-18",
+                                   "end":  "2026-05-24",
+                                   "impact":  "High"
+                               },
+                               {
+                                   "mechanics":  null,
+                                   "name":  "Weekly DAU",
+                                   "recurring":  true,
+                                   "duration":  28,
+                                   "start":  "2026-05-22",
+                                   "end":  "2026-06-18",
+                                   "impact":  "Medium"
+                               },
+                               {
+                                   "mechanics":  null,
+                                   "name":  "Legends Match",
+                                   "recurring":  false,
+                                   "duration":  14,
+                                   "start":  "2026-05-26",
+                                   "end":  "2026-06-08",
+                                   "impact":  "High"
+                               },
+                               {
+                                   "mechanics":  null,
+                                   "name":  "WG DAU",
+                                   "recurring":  true,
+                                   "duration":  41,
+                                   "start":  "2026-06-10",
+                                   "end":  "2026-07-20",
+                                   "impact":  "Medium"
+                               },
+                               {
+                                   "mechanics":  null,
+                                   "name":  "8th Anniversary",
+                                   "recurring":  false,
+                                   "duration":  20,
+                                   "start":  "2026-06-09",
+                                   "end":  "2026-06-28",
+                                   "impact":  "High"
+                               },
+                               {
+                                   "mechanics":  null,
+                                   "name":  "UCL - Final",
+                                   "recurring":  false,
+                                   "duration":  6,
+                                   "start":  "2026-05-28",
+                                   "end":  "2026-06-02",
+                                   "impact":  "High"
+                               },
+                               {
+                                   "mechanics":  null,
+                                   "name":  "FCO Pro Master DAU",
+                                   "recurring":  false,
+                                   "duration":  7,
+                                   "start":  "2026-05-26",
+                                   "end":  "2026-06-01",
+                                   "impact":  "Medium"
+                               }
+                           ]
+               },
+    "promotion_tiers":  [
+                            {
+                                "efficiency":  1.275670062,
+                                "items":  [
+                                              {
+                                                  "value_bp":  47614323258870,
+                                                  "value_usd":  4.306424521,
+                                                  "name":  "Gói UT, JNM, DC OVR 111+ (+8)",
+                                                  "count":  1
+                                              },
+                                              {
+                                                  "value_bp":  49727876985705,
+                                                  "value_usd":  4.497582537,
+                                                  "name":  "Gói CU, 24EP 109+ (7~8)",
+                                                  "count":  1
+                                              },
+                                              {
+                                                  "value_bp":  5406432560137,
+                                                  "value_usd":  0.488978781,
+                                                  "name":  "Gói WG 116+ (+5)",
+                                                  "count":  1
+                                              },
+                                              {
+                                                  "value_bp":  32299738718275,
+                                                  "value_usd":  2.921313952,
+                                                  "name":  "Gói 24EP, MDL, UT 109+ (+8)",
+                                                  "count":  1
+                                              },
+                                              {
+                                                  "value_bp":  15000000000000,
+                                                  "value_usd":  1.35665832,
+                                                  "name":  "15,000,000,000,000 BP",
+                                                  "count":  1
+                                              },
+                                              {
+                                                  "value_bp":  0,
+                                                  "value_usd":  0,
+                                                  "name":  "Phiếu giảm giá thuế các mùa 35%",
+                                                  "count":  3
+                                              },
+                                              {
+                                                  "value_bp":  0,
+                                                  "value_usd":  0,
+                                                  "name":  "Thẻ bảo vệ nâng cấp các mùa (+1~+8) (1000 -50B)",
+                                                  "count":  3
+                                              }
+                                          ],
+                                "tier":  "500 FC"
+                            },
+                            {
+                                "efficiency":  1.373968133,
+                                "items":  [
+                                              {
+                                                  "value_bp":  59116158238593,
+                                                  "value_usd":  5.346695196,
+                                                  "name":  "Gói CU, 24EP 108+ (+8)",
+                                                  "count":  1
+                                              },
+                                              {
+                                                  "value_bp":  46263711547826,
+                                                  "value_usd":  4.184269946,
+                                                  "name":  "Gói CU, 24EP, MDL, UT, JNM 108+ (+8)",
+                                                  "count":  1
+                                              },
+                                              {
+                                                  "value_bp":  23886762575385,
+                                                  "value_usd":  2.160411679,
+                                                  "name":  "Gói MDL, UT, JNM chỉ số 108+ (+8)",
+                                                  "count":  1
+                                              },
+                                              {
+                                                  "value_bp":  23906002742905,
+                                                  "value_usd":  2.162151835,
+                                                  "name":  "Gói CC 106+ (8~9)",
+                                                  "count":  1
+                                              },
+                                              {
+                                                  "value_bp":  20000000000000,
+                                                  "value_usd":  1.80887776,
+                                                  "name":  "20,000,000,000,000 BP",
+                                                  "count":  1
+                                              },
+                                              {
+                                                  "value_bp":  0,
+                                                  "value_usd":  0,
+                                                  "name":  "ICON TM Coin",
+                                                  "count":  50
+                                              },
+                                              {
+                                                  "value_bp":  0,
+                                                  "value_usd":  0,
+                                                  "name":  "Phiếu giảm giá thuế các mùa 40%",
+                                                  "count":  2
+                                              },
+                                              {
+                                                  "value_bp":  0,
+                                                  "value_usd":  0,
+                                                  "name":  "Sổ huấn luyện cao cấp",
+                                                  "count":  1000
+                                              },
+                                              {
+                                                  "value_bp":  0,
+                                                  "value_usd":  0,
+                                                  "name":  "Sổ huấn luyện trung cấp",
+                                                  "count":  1000
+                                              },
+                                              {
+                                                  "value_bp":  0,
+                                                  "value_usd":  0,
+                                                  "name":  "Sổ huấn luyện sơ cấp",
+                                                  "count":  1000
+                                              },
+                                              {
+                                                  "value_bp":  0,
+                                                  "value_usd":  0,
+                                                  "name":  "Thẻ nâng cấp lại các mùa (+1~+8) (1000 -100B)",
+                                                  "count":  2
+                                              }
+                                          ],
+                                "tier":  "1000 FC"
+                            },
+                            {
+                                "efficiency":  1.372631793,
+                                "items":  [
+                                              {
+                                                  "value_bp":  71239719612826,
+                                                  "value_usd":  6.443197223,
+                                                  "name":  "Gói GRU 106+ (6~8)",
+                                                  "count":  1
+                                              },
+                                              {
+                                                  "value_bp":  59225515981735,
+                                                  "value_usd":  5.356585935,
+                                                  "name":  "Gói JVA, FCA All (6~8)",
+                                                  "count":  1
+                                              },
+                                              {
+                                                  "value_bp":  53477817317835,
+                                                  "value_usd":  4.836741721,
+                                                  "name":  "Gói CU, 24EP, MDL, UT 109+ (+8)",
+                                                  "count":  1
+                                              },
+                                              {
+                                                  "value_bp":  42713970984795,
+                                                  "value_usd":  3.863217608,
+                                                  "name":  "Gói GRU, CU, 24EP 106+ (6~8)",
+                                                  "count":  1
+                                              },
+                                              {
+                                                  "value_bp":  65935244536416,
+                                                  "value_usd":  5.963439873,
+                                                  "name":  "Gói 24EP, MDL, UT 111+ (+8)",
+                                                  "count":  1
+                                              },
+                                              {
+                                                  "value_bp":  30000000000000,
+                                                  "value_usd":  2.71331664,
+                                                  "name":  "30,000,000,000,000 BP",
+                                                  "count":  1
+                                              },
+                                              {
+                                                  "value_bp":  0,
+                                                  "value_usd":  0,
+                                                  "name":  "ICON TM Coin",
+                                                  "count":  50
+                                              },
+                                              {
+                                                  "value_bp":  0,
+                                                  "value_usd":  0,
+                                                  "name":  "Phiếu giảm giá thuế các mùa 40%",
+                                                  "count":  3
+                                              },
+                                              {
+                                                  "value_bp":  0,
+                                                  "value_usd":  0,
+                                                  "name":  "SC",
+                                                  "count":  1000
+                                              },
+                                              {
+                                                  "value_bp":  0,
+                                                  "value_usd":  0,
+                                                  "name":  "TC",
+                                                  "count":  10000
+                                              },
+                                              {
+                                                  "value_bp":  0,
+                                                  "value_usd":  0,
+                                                  "name":  "Gói HLV đặc biệt cao cấp Tiền vệ (Xử lý bước một) (8)",
+                                                  "count":  3
+                                              },
+                                              {
+                                                  "value_bp":  0,
+                                                  "value_usd":  0,
+                                                  "name":  "Gói HLV đặc biệt cao cấp Tiền đạo (Xử lý bước một) (8)",
+                                                  "count":  3
+                                              },
+                                              {
+                                                  "value_bp":  0,
+                                                  "value_usd":  0,
+                                                  "name":  "Vé đổi CLB",
+                                                  "count":  3
+                                              },
+                                              {
+                                                  "value_bp":  0,
+                                                  "value_usd":  0,
+                                                  "name":  "Thẻ đổi tên",
+                                                  "count":  3
+                                              }
+                                          ],
+                                "tier":  "2000 FC"
+                            }
+                        ],
+    "month_label":  "June 2026",
+    "month":  "2026-06",
+    "extracted_at":  "2026-06-10T11:12:51"
+}

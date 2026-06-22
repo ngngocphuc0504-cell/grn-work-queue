@@ -1,0 +1,15 @@
+{
+  "schema_id": "review-feedback-schema",
+  "version": "1.0",
+  "required_fields": {
+    "task_id": "string",
+    "artifact_reviewed": "file path string",
+    "user_self_score": "float 1.0-5.0",
+    "twin_scores": {
+      "per_skill": "score float + evidence string per SKH"
+    },
+    "self_vs_twin_delta": "float",
+    "priority_action": "string — 1 specific improvement",
+    "skill_signals": "array of skill_id + delta pairs"
+  }
+}

@@ -1,0 +1,4 @@
+interface:
+  display_name: "Work With Demo System"
+  short_description: "Deploy and operate demo apps through the live tool surface."
+  default_prompt: "Help me use the available Demo System tools to create a project, manage its database, deploy it, inspect logs, and return the public URL safely."

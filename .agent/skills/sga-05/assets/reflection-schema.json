@@ -1,0 +1,14 @@
+{
+  "schema_id": "reflection-schema",
+  "version": "1.0",
+  "required_fields": {
+    "session_id": "string",
+    "task_id": "string",
+    "sentence_1_worked": "string with specific evidence",
+    "sentence_2_failed": "string with specific evidence",
+    "sentence_3_next_change": "string with specific action",
+    "quality_score": "int 0-3",
+    "ki_candidate": "boolean",
+    "skill_signals_extracted": "array"
+  }
+}

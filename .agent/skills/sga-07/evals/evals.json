@@ -1,0 +1,22 @@
+{
+  "skill": "sga-07",
+  "version": "1.0",
+  "test_cases": [
+    {
+      "id": "TC-01",
+      "type": "happy_path",
+      "description": "SMI update with EMA and mode threshold check",
+      "input": "Previous SKH-01 score: 2.5. New signal: 4.0. α = 0.3. Total tasks: 16. Current mode: COWORK.",
+      "expected_output": "New SKH-01 = 0.3 × 4.0 + 0.7 × 2.5 = 2.95. SMI avg recalculated. If SMI avg ≥ 3.0 and tasks ≥ 15 → RECOMMEND DELEGATED unlock to CTO.",
+      "pass_criteria": "EMA formula applied correctly. Mode threshold checked. Recommendation (not auto-unlock) issued to CTO."
+    },
+    {
+      "id": "TC-02",
+      "type": "violation",
+      "description": "Attempt to calculate with insufficient signals",
+      "input": "SKH-04 has only 2 signal data points. SMI average requested.",
+      "expected_output": "SKH-04 marked as UNRELIABLE. Warning displayed. SKH-04 excluded from mode unlock threshold calculation.",
+      "pass_criteria": "Unreliable dimension flagged. NOT used for mode decision. Warning visible to user."
+    }
+  ]
+}

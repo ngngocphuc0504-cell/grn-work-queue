@@ -1,0 +1,4 @@
+interface:
+  display_name: "Outline Memory Ops"
+  short_description: "Safe Outline memory routing"
+  default_prompt: "Use $outline-memory-ops to get, save, or organize my Outline memory safely."

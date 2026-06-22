@@ -1,0 +1,12 @@
+[
+  {
+    "input": "Create 1 slide with 15 bullet points.",
+    "expected_action": "REJECT_AND_SPLIT",
+    "rationale": "Violates max 6 bullets rule. Must split or convert to visual."
+  },
+  {
+    "input": "Title: Q3 Revenue",
+    "expected_action": "REWRITE_TITLE",
+    "rationale": "Title is not an action title (no insight)."
+  }
+]

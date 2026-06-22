@@ -1,0 +1,4 @@
+interface:
+  display_name: "Work With Agentation"
+  short_description: "Process Agentation annotations via live tools or localhost fallback"
+  default_prompt: "Use $work-with-agentation to inspect, triage, reply to, and resolve Agentation annotations from a local app through the available Agentation tools or the localhost fallback, then apply and verify the requested UI changes."

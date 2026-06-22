@@ -1,0 +1,19 @@
+{
+  "tabs": [
+    {
+      "id": "june-event",
+      "name": "June 2026 Event",
+      "type": "single",
+      "file": "dashboard.html",
+      "created": "2026-06-09T18:37:00Z"
+    },
+    {
+      "id": "jun-vs-jul-compare",
+      "name": "Jun vs Jul Comparison",
+      "type": "comparison",
+      "file": "comparison_dashboard.html",
+      "created": "2026-06-09T18:37:00Z"
+    }
+  ],
+  "active_tab": "june-event"
+}

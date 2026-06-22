@@ -1,0 +1,12 @@
+{
+  "timestamp": "2026-06-22T09:33:59",
+  "mode": "REAL",
+  "google": {
+    "configured": false,
+    "warning": "Google Stack credentials.json not configured in workspace. Showing fallback offline placeholders.",
+    "calendar": [],
+    "gmail": [],
+    "gdrive": []
+  },
+  "chats": []
+}

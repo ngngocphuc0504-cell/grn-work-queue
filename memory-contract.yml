@@ -1,0 +1,13 @@
+version: "1.0"
+security_gate:
+  write_lock: true
+  access_zones:
+    - path: "outputs/"
+      permission: "read-write"
+      policy_ref: ".agent/rules/storage-policy.md"
+    - path: "artifacts/"
+      permission: "read-write"
+    - path: "02_twin_memory/"
+      permission: "read-write"
+    - path: "KB/"
+      permission: "read-only"

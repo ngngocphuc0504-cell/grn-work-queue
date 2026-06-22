@@ -1,0 +1,1468 @@
+﻿{
+    "3-tier top-up promotion":  {
+                                    "occurrences":  [
+                                                        {
+                                                            "impact":  null,
+                                                            "name_used":  "3-tier top-up promotion",
+                                                            "duration":  4,
+                                                            "start":  "2026-01-22",
+                                                            "month_label":  "January 2026",
+                                                            "month":  "2026-01",
+                                                            "end":  "2026-01-25"
+                                                        },
+                                                        {
+                                                            "impact":  null,
+                                                            "name_used":  "3-tier top-up promotion",
+                                                            "duration":  4,
+                                                            "start":  "2026-01-17",
+                                                            "month_label":  "January 2026",
+                                                            "month":  "2026-01",
+                                                            "end":  "2026-01-20"
+                                                        },
+                                                        {
+                                                            "impact":  null,
+                                                            "name_used":  "3-tier top-up promotion",
+                                                            "duration":  4,
+                                                            "start":  "2026-01-12",
+                                                            "month_label":  "January 2026",
+                                                            "month":  "2026-01",
+                                                            "end":  "2026-01-15"
+                                                        },
+                                                        {
+                                                            "impact":  null,
+                                                            "name_used":  "3-tier top-up promotion",
+                                                            "duration":  null,
+                                                            "start":  "2026-02-15",
+                                                            "month_label":  "January 2026",
+                                                            "month":  "2026-01",
+                                                            "end":  "2026-02-23"
+                                                        },
+                                                        {
+                                                            "impact":  null,
+                                                            "name_used":  "3-tier top-up promotion",
+                                                            "duration":  5,
+                                                            "start":  "2026-02-05",
+                                                            "month_label":  "January 2026",
+                                                            "month":  "2026-01",
+                                                            "end":  "2026-02-09"
+                                                        },
+                                                        {
+                                                            "impact":  null,
+                                                            "name_used":  "3-tier top-up promotion",
+                                                            "duration":  5,
+                                                            "start":  "2026-01-28",
+                                                            "month_label":  "January 2026",
+                                                            "month":  "2026-01",
+                                                            "end":  "2026-02-01"
+                                                        },
+                                                        {
+                                                            "impact":  "Medium",
+                                                            "name_used":  "3-tier top-up promotion",
+                                                            "duration":  4,
+                                                            "start":  "2025-12-04",
+                                                            "month_label":  "January 2026",
+                                                            "month":  "2026-01",
+                                                            "end":  "2025-12-07"
+                                                        },
+                                                        {
+                                                            "impact":  null,
+                                                            "name_used":  "3-tier top-up promotion",
+                                                            "duration":  null,
+                                                            "start":  "2026-02-25",
+                                                            "month_label":  "January 2026",
+                                                            "month":  "2026-01",
+                                                            "end":  "2026-03-01"
+                                                        },
+                                                        {
+                                                            "impact":  "Medium",
+                                                            "name_used":  "3-tier top-up promotion",
+                                                            "duration":  5,
+                                                            "start":  "2025-12-24",
+                                                            "month_label":  "January 2026",
+                                                            "month":  "2026-01",
+                                                            "end":  "2025-12-28"
+                                                        },
+                                                        {
+                                                            "impact":  "Medium",
+                                                            "name_used":  "3-tier top-up promotion",
+                                                            "duration":  4,
+                                                            "start":  "2025-12-18",
+                                                            "month_label":  "January 2026",
+                                                            "month":  "2026-01",
+                                                            "end":  "2025-12-21"
+                                                        },
+                                                        {
+                                                            "impact":  null,
+                                                            "name_used":  "3-tier top-up promotion",
+                                                            "duration":  5,
+                                                            "start":  "2026-01-28",
+                                                            "month_label":  "February 2026",
+                                                            "month":  "2026-02",
+                                                            "end":  "2026-02-01"
+                                                        },
+                                                        {
+                                                            "impact":  null,
+                                                            "name_used":  "3-tier top-up promotion",
+                                                            "duration":  4,
+                                                            "start":  "2026-02-11",
+                                                            "month_label":  "February 2026",
+                                                            "month":  "2026-02",
+                                                            "end":  "2026-02-14"
+                                                        },
+                                                        {
+                                                            "impact":  null,
+                                                            "name_used":  "3-tier top-up promotion",
+                                                            "duration":  5,
+                                                            "start":  "2026-02-25",
+                                                            "month_label":  "February 2026",
+                                                            "month":  "2026-02",
+                                                            "end":  "2026-03-01"
+                                                        },
+                                                        {
+                                                            "impact":  null,
+                                                            "name_used":  "3-tier top-up promotion",
+                                                            "duration":  5,
+                                                            "start":  "2026-02-05",
+                                                            "month_label":  "February 2026",
+                                                            "month":  "2026-02",
+                                                            "end":  "2026-02-09"
+                                                        },
+                                                        {
+                                                            "impact":  null,
+                                                            "name_used":  "3-tier top-up promotion",
+                                                            "duration":  5,
+                                                            "start":  "2026-02-05",
+                                                            "month_label":  "March 2026",
+                                                            "month":  "2026-03",
+                                                            "end":  "2026-02-09"
+                                                        },
+                                                        {
+                                                            "impact":  null,
+                                                            "name_used":  "3-tier top-up promotion",
+                                                            "duration":  4,
+                                                            "start":  "2026-02-11",
+                                                            "month_label":  "March 2026",
+                                                            "month":  "2026-03",
+                                                            "end":  "2026-02-14"
+                                                        },
+                                                        {
+                                                            "impact":  null,
+                                                            "name_used":  "3-tier top-up promotion",
+                                                            "duration":  5,
+                                                            "start":  "2026-02-25",
+                                                            "month_label":  "March 2026",
+                                                            "month":  "2026-03",
+                                                            "end":  "2026-03-01"
+                                                        },
+                                                        {
+                                                            "impact":  null,
+                                                            "name_used":  "3-tier top-up promotion",
+                                                            "duration":  5,
+                                                            "start":  "2026-01-28",
+                                                            "month_label":  "March 2026",
+                                                            "month":  "2026-03",
+                                                            "end":  "2026-02-01"
+                                                        },
+                                                        {
+                                                            "impact":  null,
+                                                            "name_used":  "3-tier top-up promotion",
+                                                            "duration":  5,
+                                                            "start":  "2026-03-12",
+                                                            "month_label":  "April 2026",
+                                                            "month":  "2026-04",
+                                                            "end":  "2026-03-16"
+                                                        },
+                                                        {
+                                                            "impact":  null,
+                                                            "name_used":  "3-tier top-up promotion",
+                                                            "duration":  5,
+                                                            "start":  "2026-03-26",
+                                                            "month_label":  "April 2026",
+                                                            "month":  "2026-04",
+                                                            "end":  "2026-03-30"
+                                                        },
+                                                        {
+                                                            "impact":  null,
+                                                            "name_used":  "3-tier top-up promotion",
+                                                            "duration":  4,
+                                                            "start":  "2026-04-02",
+                                                            "month_label":  "April 2026",
+                                                            "month":  "2026-04",
+                                                            "end":  "2026-04-05"
+                                                        },
+                                                        {
+                                                            "impact":  null,
+                                                            "name_used":  "3-tier top-up promotion",
+                                                            "duration":  5,
+                                                            "start":  "2026-04-09",
+                                                            "month_label":  "April 2026",
+                                                            "month":  "2026-04",
+                                                            "end":  "2026-04-13"
+                                                        },
+                                                        {
+                                                            "impact":  null,
+                                                            "name_used":  "3-tier top-up promotion",
+                                                            "duration":  5,
+                                                            "start":  "2026-03-05",
+                                                            "month_label":  "April 2026",
+                                                            "month":  "2026-04",
+                                                            "end":  "2026-03-09"
+                                                        },
+                                                        {
+                                                            "impact":  null,
+                                                            "name_used":  "3-tier top-up promotion",
+                                                            "duration":  5,
+                                                            "start":  "2026-04-16",
+                                                            "month_label":  "April 2026",
+                                                            "month":  "2026-04",
+                                                            "end":  "2026-04-20"
+                                                        },
+                                                        {
+                                                            "impact":  null,
+                                                            "name_used":  "3-tier top-up promotion",
+                                                            "duration":  5,
+                                                            "start":  "2026-05-14",
+                                                            "month_label":  "May 2026",
+                                                            "month":  "2026-05",
+                                                            "end":  "2026-05-18"
+                                                        },
+                                                        {
+                                                            "impact":  null,
+                                                            "name_used":  "3-tier top-up promotion",
+                                                            "duration":  5,
+                                                            "start":  "2026-05-07",
+                                                            "month_label":  "May 2026",
+                                                            "month":  "2026-05",
+                                                            "end":  "2026-05-11"
+                                                        },
+                                                        {
+                                                            "impact":  null,
+                                                            "name_used":  "3-tier top-up promotion",
+                                                            "duration":  4,
+                                                            "start":  "2026-05-28",
+                                                            "month_label":  "May 2026",
+                                                            "month":  "2026-05",
+                                                            "end":  "2026-05-31"
+                                                        },
+                                                        {
+                                                            "impact":  null,
+                                                            "name_used":  "3-tier top-up promotion",
+                                                            "duration":  4,
+                                                            "start":  "2026-06-01",
+                                                            "month_label":  "June 2026",
+                                                            "month":  "2026-06",
+                                                            "end":  "2026-06-04"
+                                                        },
+                                                        {
+                                                            "impact":  null,
+                                                            "name_used":  "3-tier top-up promotion",
+                                                            "duration":  4,
+                                                            "start":  "2026-06-06",
+                                                            "month_label":  "June 2026",
+                                                            "month":  "2026-06",
+                                                            "end":  "2026-06-09"
+                                                        },
+                                                        {
+                                                            "impact":  null,
+                                                            "name_used":  "3-tier top-up promotion",
+                                                            "duration":  5,
+                                                            "start":  "2026-06-25",
+                                                            "month_label":  "June 2026",
+                                                            "month":  "2026-06",
+                                                            "end":  "2026-06-29"
+                                                        }
+                                                    ],
+                                    "category":  "promotion",
+                                    "canonical_name":  "3-tier top-up promotion",
+                                    "display_names":  [
+                                                          "3-tier top-up promotion"
+                                                      ]
+                                },
+    "Around The World":  {
+                             "occurrences":  [
+                                                 {
+                                                     "start":  "2026-05-12",
+                                                     "month":  "2026-05",
+                                                     "impact":  null,
+                                                     "bp_metrics":  [
+                                                                        {
+                                                                            "dollar_per_spin":  0.8162,
+                                                                            "bp_all_total":  126689225193932,
+                                                                            "bp_per_spin":  91726926762.1753,
+                                                                            "period":  "2025-03-01",
+                                                                            "bp_only_total":  0,
+                                                                            "cost_to_play":  303
+                                                                        },
+                                                                        {
+                                                                            "dollar_per_spin":  0.8944,
+                                                                            "bp_all_total":  185888290592722,
+                                                                            "bp_per_spin":  125643227158.567,
+                                                                            "period":  "2025-04-01",
+                                                                            "bp_only_total":  0,
+                                                                            "cost_to_play":  303
+                                                                        },
+                                                                        {
+                                                                            "dollar_per_spin":  0.9609,
+                                                                            "bp_all_total":  240881234903885,
+                                                                            "bp_per_spin":  175482779387.553,
+                                                                            "period":  "2025-05-01",
+                                                                            "bp_only_total":  137186378410166,
+                                                                            "cost_to_play":  303
+                                                                        },
+                                                                        {
+                                                                            "dollar_per_spin":  0.8461,
+                                                                            "bp_all_total":  433456452559152,
+                                                                            "bp_per_spin":  301302972827.185,
+                                                                            "period":  "2025-06-01",
+                                                                            "bp_only_total":  166482359355878,
+                                                                            "cost_to_play":  303
+                                                                        },
+                                                                        {
+                                                                            "dollar_per_spin":  0.9144,
+                                                                            "bp_all_total":  528180702495567,
+                                                                            "bp_per_spin":  423309962619.218,
+                                                                            "period":  "2025-07-01",
+                                                                            "bp_only_total":  276318030756198,
+                                                                            "cost_to_play":  303
+                                                                        },
+                                                                        {
+                                                                            "dollar_per_spin":  0.8977,
+                                                                            "bp_all_total":  662210340515584,
+                                                                            "bp_per_spin":  540268575152,
+                                                                            "period":  "2025-08-01",
+                                                                            "bp_only_total":  314043524380518,
+                                                                            "cost_to_play":  303
+                                                                        },
+                                                                        {
+                                                                            "dollar_per_spin":  0.6905,
+                                                                            "bp_all_total":  958190017045404,
+                                                                            "bp_per_spin":  540268575152,
+                                                                            "period":  "2025-09-01",
+                                                                            "bp_only_total":  424100644911034,
+                                                                            "cost_to_play":  303
+                                                                        },
+                                                                        {
+                                                                            "dollar_per_spin":  0.9666,
+                                                                            "bp_all_total":  1.21938863069658E+15,
+                                                                            "bp_per_spin":  929701274139.646,
+                                                                            "period":  "2025-10-01",
+                                                                            "bp_only_total":  405970073678117,
+                                                                            "cost_to_play":  303
+                                                                        },
+                                                                        {
+                                                                            "dollar_per_spin":  0.7237,
+                                                                            "bp_all_total":  1.45294565949817E+15,
+                                                                            "bp_per_spin":  920097484681.136,
+                                                                            "period":  "2025-11-01",
+                                                                            "bp_only_total":  670566740316140,
+                                                                            "cost_to_play":  303
+                                                                        },
+                                                                        {
+                                                                            "dollar_per_spin":  0.8632,
+                                                                            "bp_all_total":  1.78351790331858E+15,
+                                                                            "bp_per_spin":  1426663467294.91,
+                                                                            "period":  "2025-12-01",
+                                                                            "bp_only_total":  759412669107554,
+                                                                            "cost_to_play":  303
+                                                                        },
+                                                                        {
+                                                                            "dollar_per_spin":  0.6884,
+                                                                            "bp_all_total":  1.90836525676868E+15,
+                                                                            "bp_per_spin":  1479177531962.15,
+                                                                            "period":  "2026-01-01",
+                                                                            "bp_only_total":  782637778019155,
+                                                                            "cost_to_play":  303
+                                                                        },
+                                                                        {
+                                                                            "dollar_per_spin":  0.902,
+                                                                            "bp_all_total":  4.96870561555129E+15,
+                                                                            "bp_per_spin":  4064207613945.35,
+                                                                            "period":  "2026-03-01",
+                                                                            "bp_only_total":  2.01790493081453E+15,
+                                                                            "cost_to_play":  303
+                                                                        },
+                                                                        {
+                                                                            "dollar_per_spin":  1.052,
+                                                                            "bp_all_total":  6.87694103383814E+15,
+                                                                            "bp_per_spin":  6144575794939.73,
+                                                                            "period":  "2026-04-01",
+                                                                            "bp_only_total":  2.97197801763403E+15,
+                                                                            "cost_to_play":  303
+                                                                        },
+                                                                        {
+                                                                            "dollar_per_spin":  1.1055,
+                                                                            "bp_all_total":  9.54827142270979E+15,
+                                                                            "bp_per_spin":  8922824267786.27,
+                                                                            "period":  "2026-05-01",
+                                                                            "bp_only_total":  4.61923340164918E+15,
+                                                                            "cost_to_play":  303
+                                                                        }
+                                                                    ],
+                                                     "month_label":  "May 2026",
+                                                     "duration":  6,
+                                                     "end":  "2026-05-17",
+                                                     "name_used":  "Around The World"
+                                                 }
+                                             ],
+                             "category":  "rev",
+                             "canonical_name":  "Around The World",
+                             "display_names":  [
+                                                   "Around The World"
+                                               ]
+                         },
+    "Foosball":  {
+                     "occurrences":  [
+                                         {
+                                             "start":  "2026-02-02",
+                                             "month":  "2026-02",
+                                             "impact":  null,
+                                             "bp_metrics":  [
+                                                                {
+                                                                    "dollar_per_spin":  0.7962,
+                                                                    "bp_all_total":  117524278721186,
+                                                                    "bp_per_spin":  89483345126.7621,
+                                                                    "period":  "2025-03-01",
+                                                                    "bp_only_total":  85686116435322.1,
+                                                                    "cost_to_play":  330.2
+                                                                },
+                                                                {
+                                                                    "dollar_per_spin":  0.7678,
+                                                                    "bp_all_total":  164411005276593,
+                                                                    "bp_per_spin":  107864848022.314,
+                                                                    "period":  "2025-04-01",
+                                                                    "bp_only_total":  86624245267347.3,
+                                                                    "cost_to_play":  330.2
+                                                                },
+                                                                {
+                                                                    "dollar_per_spin":  0.7574,
+                                                                    "bp_all_total":  254835303495053,
+                                                                    "bp_per_spin":  138320889308.828,
+                                                                    "period":  "2025-05-01",
+                                                                    "bp_only_total":  121429483478903,
+                                                                    "cost_to_play":  330.2
+                                                                },
+                                                                {
+                                                                    "dollar_per_spin":  0.6634,
+                                                                    "bp_all_total":  423755653770564,
+                                                                    "bp_per_spin":  236228630116.914,
+                                                                    "period":  "2025-06-01",
+                                                                    "bp_only_total":  193396863842583,
+                                                                    "cost_to_play":  330.2
+                                                                },
+                                                                {
+                                                                    "dollar_per_spin":  0.6727,
+                                                                    "bp_all_total":  498616539069674,
+                                                                    "bp_per_spin":  311443156869.05,
+                                                                    "period":  "2025-07-01",
+                                                                    "bp_only_total":  208547943986009,
+                                                                    "cost_to_play":  284.66
+                                                                },
+                                                                {
+                                                                    "dollar_per_spin":  0.665,
+                                                                    "bp_all_total":  589268712841521,
+                                                                    "bp_per_spin":  400229675084,
+                                                                    "period":  "2025-08-01",
+                                                                    "bp_only_total":  244498919369029,
+                                                                    "cost_to_play":  284.66
+                                                                },
+                                                                {
+                                                                    "dollar_per_spin":  0.88,
+                                                                    "bp_all_total":  930948669846859,
+                                                                    "bp_per_spin":  688482695565.002,
+                                                                    "period":  "2025-09-01",
+                                                                    "bp_only_total":  361216833886749,
+                                                                    "cost_to_play":  284.66
+                                                                },
+                                                                {
+                                                                    "dollar_per_spin":  0.7,
+                                                                    "bp_all_total":  1.12678342595325E+15,
+                                                                    "bp_per_spin":  673277619858.791,
+                                                                    "period":  "2025-10-01",
+                                                                    "bp_only_total":  405970073678117,
+                                                                    "cost_to_play":  284.66
+                                                                },
+                                                                {
+                                                                    "dollar_per_spin":  0.6792,
+                                                                    "bp_all_total":  1.38975163706577E+15,
+                                                                    "bp_per_spin":  863480292531.52,
+                                                                    "period":  "2025-11-01",
+                                                                    "bp_only_total":  486985951093869,
+                                                                    "cost_to_play":  284.66
+                                                                },
+                                                                {
+                                                                    "dollar_per_spin":  0.6733,
+                                                                    "bp_all_total":  1.54708336279152E+15,
+                                                                    "bp_per_spin":  1112836890277.9,
+                                                                    "period":  "2025-12-01",
+                                                                    "bp_only_total":  590198745501251,
+                                                                    "cost_to_play":  284.66
+                                                                },
+                                                                {
+                                                                    "dollar_per_spin":  0.6712,
+                                                                    "bp_all_total":  2.0257645888243E+15,
+                                                                    "bp_per_spin":  1442219023952.83,
+                                                                    "period":  "2026-01-01",
+                                                                    "bp_only_total":  737753122960845,
+                                                                    "cost_to_play":  284.66
+                                                                },
+                                                                {
+                                                                    "dollar_per_spin":  0.7212,
+                                                                    "bp_all_total":  2.86877552153181E+15,
+                                                                    "bp_per_spin":  2339743088060.62,
+                                                                    "period":  "2026-02-01",
+                                                                    "bp_only_total":  1.12174660764119E+15,
+                                                                    "cost_to_play":  284.66
+                                                                }
+                                                            ],
+                                             "month_label":  "February 2026",
+                                             "duration":  6,
+                                             "end":  "2026-02-07",
+                                             "name_used":  "Foosball"
+                                         },
+                                         {
+                                             "start":  "2026-02-02",
+                                             "month":  "2026-03",
+                                             "impact":  null,
+                                             "bp_metrics":  [
+                                                                {
+                                                                    "dollar_per_spin":  0.7962,
+                                                                    "bp_all_total":  117524278721186,
+                                                                    "bp_per_spin":  89483345126.7621,
+                                                                    "period":  "2025-03-01",
+                                                                    "bp_only_total":  85686116435322.1,
+                                                                    "cost_to_play":  330.2
+                                                                },
+                                                                {
+                                                                    "dollar_per_spin":  0.7678,
+                                                                    "bp_all_total":  164411005276593,
+                                                                    "bp_per_spin":  107864848022.314,
+                                                                    "period":  "2025-04-01",
+                                                                    "bp_only_total":  86624245267347.3,
+                                                                    "cost_to_play":  330.2
+                                                                },
+                                                                {
+                                                                    "dollar_per_spin":  0.7574,
+                                                                    "bp_all_total":  254835303495053,
+                                                                    "bp_per_spin":  138320889308.828,
+                                                                    "period":  "2025-05-01",
+                                                                    "bp_only_total":  121429483478903,
+                                                                    "cost_to_play":  330.2
+                                                                },
+                                                                {
+                                                                    "dollar_per_spin":  0.6634,
+                                                                    "bp_all_total":  423755653770564,
+                                                                    "bp_per_spin":  236228630116.914,
+                                                                    "period":  "2025-06-01",
+                                                                    "bp_only_total":  193396863842583,
+                                                                    "cost_to_play":  330.2
+                                                                },
+                                                                {
+                                                                    "dollar_per_spin":  0.6727,
+                                                                    "bp_all_total":  498616539069674,
+                                                                    "bp_per_spin":  311443156869.05,
+                                                                    "period":  "2025-07-01",
+                                                                    "bp_only_total":  208547943986009,
+                                                                    "cost_to_play":  284.66
+                                                                },
+                                                                {
+                                                                    "dollar_per_spin":  0.665,
+                                                                    "bp_all_total":  589268712841521,
+                                                                    "bp_per_spin":  400229675084,
+                                                                    "period":  "2025-08-01",
+                                                                    "bp_only_total":  244498919369029,
+                                                                    "cost_to_play":  284.66
+                                                                },
+                                                                {
+                                                                    "dollar_per_spin":  0.88,
+                                                                    "bp_all_total":  930948669846859,
+                                                                    "bp_per_spin":  688482695565.002,
+                                                                    "period":  "2025-09-01",
+                                                                    "bp_only_total":  361216833886749,
+                                                                    "cost_to_play":  284.66
+                                                                },
+                                                                {
+                                                                    "dollar_per_spin":  0.7,
+                                                                    "bp_all_total":  1.12678342595325E+15,
+                                                                    "bp_per_spin":  673277619858.791,
+                                                                    "period":  "2025-10-01",
+                                                                    "bp_only_total":  405970073678117,
+                                                                    "cost_to_play":  284.66
+                                                                },
+                                                                {
+                                                                    "dollar_per_spin":  0.6792,
+                                                                    "bp_all_total":  1.38975163706577E+15,
+                                                                    "bp_per_spin":  863480292531.52,
+                                                                    "period":  "2025-11-01",
+                                                                    "bp_only_total":  486985951093869,
+                                                                    "cost_to_play":  284.66
+                                                                },
+                                                                {
+                                                                    "dollar_per_spin":  0.6733,
+                                                                    "bp_all_total":  1.54708336279152E+15,
+                                                                    "bp_per_spin":  1112836890277.9,
+                                                                    "period":  "2025-12-01",
+                                                                    "bp_only_total":  590198745501251,
+                                                                    "cost_to_play":  284.66
+                                                                },
+                                                                {
+                                                                    "dollar_per_spin":  0.6712,
+                                                                    "bp_all_total":  2.0257645888243E+15,
+                                                                    "bp_per_spin":  1442219023952.83,
+                                                                    "period":  "2026-01-01",
+                                                                    "bp_only_total":  737753122960845,
+                                                                    "cost_to_play":  284.66
+                                                                },
+                                                                {
+                                                                    "dollar_per_spin":  0.7212,
+                                                                    "bp_all_total":  2.86877552153181E+15,
+                                                                    "bp_per_spin":  2339743088060.62,
+                                                                    "period":  "2026-02-01",
+                                                                    "bp_only_total":  1.12174660764119E+15,
+                                                                    "cost_to_play":  284.66
+                                                                }
+                                                            ],
+                                             "month_label":  "March 2026",
+                                             "duration":  6,
+                                             "end":  "2026-02-07",
+                                             "name_used":  "Foosball"
+                                         },
+                                         {
+                                             "start":  "2026-05-04",
+                                             "month":  "2026-05",
+                                             "impact":  null,
+                                             "bp_metrics":  [
+                                                                {
+                                                                    "dollar_per_spin":  0.7962,
+                                                                    "bp_all_total":  117524278721186,
+                                                                    "bp_per_spin":  89483345126.7621,
+                                                                    "period":  "2025-03-01",
+                                                                    "bp_only_total":  85686116435322.1,
+                                                                    "cost_to_play":  330.2
+                                                                },
+                                                                {
+                                                                    "dollar_per_spin":  0.7678,
+                                                                    "bp_all_total":  164411005276593,
+                                                                    "bp_per_spin":  107864848022.314,
+                                                                    "period":  "2025-04-01",
+                                                                    "bp_only_total":  86624245267347.3,
+                                                                    "cost_to_play":  330.2
+                                                                },
+                                                                {
+                                                                    "dollar_per_spin":  0.7574,
+                                                                    "bp_all_total":  254835303495053,
+                                                                    "bp_per_spin":  138320889308.828,
+                                                                    "period":  "2025-05-01",
+                                                                    "bp_only_total":  121429483478903,
+                                                                    "cost_to_play":  330.2
+                                                                },
+                                                                {
+                                                                    "dollar_per_spin":  0.6634,
+                                                                    "bp_all_total":  423755653770564,
+                                                                    "bp_per_spin":  236228630116.914,
+                                                                    "period":  "2025-06-01",
+                                                                    "bp_only_total":  193396863842583,
+                                                                    "cost_to_play":  330.2
+                                                                },
+                                                                {
+                                                                    "dollar_per_spin":  0.6727,
+                                                                    "bp_all_total":  498616539069674,
+                                                                    "bp_per_spin":  311443156869.05,
+                                                                    "period":  "2025-07-01",
+                                                                    "bp_only_total":  208547943986009,
+                                                                    "cost_to_play":  284.66
+                                                                },
+                                                                {
+                                                                    "dollar_per_spin":  0.665,
+                                                                    "bp_all_total":  589268712841521,
+                                                                    "bp_per_spin":  400229675084,
+                                                                    "period":  "2025-08-01",
+                                                                    "bp_only_total":  244498919369029,
+                                                                    "cost_to_play":  284.66
+                                                                },
+                                                                {
+                                                                    "dollar_per_spin":  0.88,
+                                                                    "bp_all_total":  930948669846859,
+                                                                    "bp_per_spin":  688482695565.002,
+                                                                    "period":  "2025-09-01",
+                                                                    "bp_only_total":  361216833886749,
+                                                                    "cost_to_play":  284.66
+                                                                },
+                                                                {
+                                                                    "dollar_per_spin":  0.7,
+                                                                    "bp_all_total":  1.12678342595325E+15,
+                                                                    "bp_per_spin":  673277619858.791,
+                                                                    "period":  "2025-10-01",
+                                                                    "bp_only_total":  405970073678117,
+                                                                    "cost_to_play":  284.66
+                                                                },
+                                                                {
+                                                                    "dollar_per_spin":  0.6792,
+                                                                    "bp_all_total":  1.38975163706577E+15,
+                                                                    "bp_per_spin":  863480292531.52,
+                                                                    "period":  "2025-11-01",
+                                                                    "bp_only_total":  486985951093869,
+                                                                    "cost_to_play":  284.66
+                                                                },
+                                                                {
+                                                                    "dollar_per_spin":  0.6733,
+                                                                    "bp_all_total":  1.54708336279152E+15,
+                                                                    "bp_per_spin":  1112836890277.9,
+                                                                    "period":  "2025-12-01",
+                                                                    "bp_only_total":  590198745501251,
+                                                                    "cost_to_play":  284.66
+                                                                },
+                                                                {
+                                                                    "dollar_per_spin":  0.6712,
+                                                                    "bp_all_total":  2.0257645888243E+15,
+                                                                    "bp_per_spin":  1442219023952.83,
+                                                                    "period":  "2026-01-01",
+                                                                    "bp_only_total":  737753122960845,
+                                                                    "cost_to_play":  284.66
+                                                                },
+                                                                {
+                                                                    "dollar_per_spin":  0.7212,
+                                                                    "bp_all_total":  2.86877552153181E+15,
+                                                                    "bp_per_spin":  2339743088060.62,
+                                                                    "period":  "2026-02-01",
+                                                                    "bp_only_total":  1.12174660764119E+15,
+                                                                    "cost_to_play":  284.66
+                                                                },
+                                                                {
+                                                                    "dollar_per_spin":  0.7149,
+                                                                    "bp_all_total":  4.16868606478111E+15,
+                                                                    "bp_per_spin":  3221535973064,
+                                                                    "period":  "2026-03-01",
+                                                                    "bp_only_total":  1.44540731550265E+15,
+                                                                    "cost_to_play":  284.66
+                                                                },
+                                                                {
+                                                                    "dollar_per_spin":  0.7626,
+                                                                    "bp_all_total":  5.38245894246869E+15,
+                                                                    "bp_per_spin":  4454044379354.2,
+                                                                    "period":  "2026-04-01",
+                                                                    "bp_only_total":  1.26110096371238E+15,
+                                                                    "cost_to_play":  284.66
+                                                                },
+                                                                {
+                                                                    "dollar_per_spin":  0.7443,
+                                                                    "bp_all_total":  6.68824231000886E+15,
+                                                                    "bp_per_spin":  6007235269989.27,
+                                                                    "period":  "2026-05-01",
+                                                                    "bp_only_total":  2.3791842660046E+15,
+                                                                    "cost_to_play":  284.66
+                                                                }
+                                                            ],
+                                             "month_label":  "May 2026",
+                                             "duration":  8,
+                                             "end":  "2026-05-11",
+                                             "name_used":  "Foosball"
+                                         },
+                                         {
+                                             "impact":  null,
+                                             "name_used":  "Foosball",
+                                             "duration":  9,
+                                             "start":  "2026-06-03",
+                                             "month_label":  "June 2026",
+                                             "month":  "2026-06",
+                                             "end":  "2026-06-11"
+                                         }
+                                     ],
+                     "category":  "rev",
+                     "canonical_name":  "Foosball",
+                     "display_names":  [
+                                           "Foosball"
+                                       ]
+                 },
+    "WG DAU":  {
+                   "occurrences":  [
+                                       {
+                                           "impact":  "Medium",
+                                           "name_used":  "WG DAU",
+                                           "duration":  41,
+                                           "start":  "2026-06-10",
+                                           "month_label":  "June 2026",
+                                           "month":  "2026-06",
+                                           "end":  "2026-07-20"
+                                       }
+                                   ],
+                   "category":  "dau",
+                   "canonical_name":  "WG DAU",
+                   "display_names":  [
+                                         "WG DAU"
+                                     ]
+               },
+    "TCSS":  {
+                 "occurrences":  [
+                                     {
+                                         "impact":  null,
+                                         "name_used":  "TCSS",
+                                         "duration":  6,
+                                         "start":  "2026-06-28",
+                                         "month_label":  "June 2026",
+                                         "month":  "2026-06",
+                                         "end":  "2026-07-03"
+                                     }
+                                 ],
+                 "category":  "rev",
+                 "canonical_name":  "TCSS",
+                 "display_names":  [
+                                       "TCSS"
+                                   ]
+             },
+    "Long-term Feb":  {
+                          "occurrences":  [
+                                              {
+                                                  "impact":  null,
+                                                  "name_used":  "Long-term Feb",
+                                                  "duration":  28,
+                                                  "start":  "2026-02-01",
+                                                  "month_label":  "February 2026",
+                                                  "month":  "2026-02",
+                                                  "end":  "2026-02-28"
+                                              },
+                                              {
+                                                  "impact":  null,
+                                                  "name_used":  "Long-term Feb",
+                                                  "duration":  28,
+                                                  "start":  "2026-02-01",
+                                                  "month_label":  "March 2026",
+                                                  "month":  "2026-03",
+                                                  "end":  "2026-02-28"
+                                              }
+                                          ],
+                          "category":  "rev",
+                          "canonical_name":  "Long-term Feb",
+                          "display_names":  [
+                                                "Long-term Feb"
+                                            ]
+                      },
+    "Legends Match":  {
+                          "occurrences":  [
+                                              {
+                                                  "impact":  "High",
+                                                  "name_used":  "Legends Match",
+                                                  "duration":  16,
+                                                  "start":  "2026-05-25",
+                                                  "month_label":  "May 2026",
+                                                  "month":  "2026-05",
+                                                  "end":  "2026-06-09"
+                                              },
+                                              {
+                                                  "impact":  null,
+                                                  "name_used":  "Legends Match",
+                                                  "duration":  8,
+                                                  "start":  "2026-05-20",
+                                                  "month_label":  "May 2026",
+                                                  "month":  "2026-05",
+                                                  "end":  "2026-05-27"
+                                              }
+                                          ],
+                          "category":  "rev",
+                          "canonical_name":  "Legends Match",
+                          "display_names":  [
+                                                "Legends Match"
+                                            ]
+                      },
+    "Special top-up promotion":  {
+                                     "occurrences":  [
+                                                         {
+                                                             "impact":  null,
+                                                             "name_used":  "Special top-up promotion",
+                                                             "duration":  7,
+                                                             "start":  "2026-01-01",
+                                                             "month_label":  "January 2026",
+                                                             "month":  "2026-01",
+                                                             "end":  "2026-01-07"
+                                                         },
+                                                         {
+                                                             "impact":  "High",
+                                                             "name_used":  "Special top-up promotion",
+                                                             "duration":  4,
+                                                             "start":  "2025-12-11",
+                                                             "month_label":  "January 2026",
+                                                             "month":  "2026-01",
+                                                             "end":  "2025-12-14"
+                                                         },
+                                                         {
+                                                             "impact":  null,
+                                                             "name_used":  "Special top-up promotion",
+                                                             "duration":  null,
+                                                             "start":  "2026-02-11",
+                                                             "month_label":  "January 2026",
+                                                             "month":  "2026-01",
+                                                             "end":  "2026-02-14"
+                                                         },
+                                                         {
+                                                             "impact":  null,
+                                                             "name_used":  "Special top-up promotion",
+                                                             "duration":  9,
+                                                             "start":  "2026-02-15",
+                                                             "month_label":  "February 2026",
+                                                             "month":  "2026-02",
+                                                             "end":  "2026-02-23"
+                                                         },
+                                                         {
+                                                             "impact":  null,
+                                                             "name_used":  "Special top-up promotion",
+                                                             "duration":  9,
+                                                             "start":  "2026-02-15",
+                                                             "month_label":  "March 2026",
+                                                             "month":  "2026-03",
+                                                             "end":  "2026-02-23"
+                                                         },
+                                                         {
+                                                             "impact":  null,
+                                                             "name_used":  "Special top-up promotion",
+                                                             "duration":  4,
+                                                             "start":  "2026-03-19",
+                                                             "month_label":  "April 2026",
+                                                             "month":  "2026-04",
+                                                             "end":  "2026-03-22"
+                                                         },
+                                                         {
+                                                             "impact":  null,
+                                                             "name_used":  "Special top-up promotion",
+                                                             "duration":  5,
+                                                             "start":  "2026-05-21",
+                                                             "month_label":  "May 2026",
+                                                             "month":  "2026-05",
+                                                             "end":  "2026-05-25"
+                                                         },
+                                                         {
+                                                             "impact":  null,
+                                                             "name_used":  "Special top-up promotion",
+                                                             "duration":  9,
+                                                             "start":  "2026-06-13",
+                                                             "month_label":  "June 2026",
+                                                             "month":  "2026-06",
+                                                             "end":  "2026-06-21"
+                                                         }
+                                                     ],
+                                     "category":  "promotion",
+                                     "canonical_name":  "Special top-up promotion",
+                                     "display_names":  [
+                                                           "Special top-up promotion"
+                                                       ]
+                                 },
+    "Long-term Goal":  {
+                           "occurrences":  [
+                                               {
+                                                   "impact":  "Medium",
+                                                   "name_used":  "Long-term Goal",
+                                                   "duration":  31,
+                                                   "start":  "2026-01-09",
+                                                   "month_label":  "January 2026",
+                                                   "month":  "2026-01",
+                                                   "end":  "2026-02-08"
+                                               }
+                                           ],
+                           "category":  "dau",
+                           "canonical_name":  "Long-term Goal",
+                           "display_names":  [
+                                                 "Long-term Goal"
+                                             ]
+                       },
+    "FCO Pro Master DAU":  {
+                               "occurrences":  [
+                                                   {
+                                                       "impact":  "Medium",
+                                                       "name_used":  "FCO Pro Master DAU",
+                                                       "duration":  7,
+                                                       "start":  "2026-05-26",
+                                                       "month_label":  "May 2026",
+                                                       "month":  "2026-05",
+                                                       "end":  "2026-06-01"
+                                                   }
+                                               ],
+                               "category":  "dau",
+                               "canonical_name":  "FCO Pro Master DAU",
+                               "display_names":  [
+                                                     "FCO Pro Master DAU"
+                                                 ]
+                           },
+    "Special top-up promotion (TBD)":  {
+                                           "occurrences":  [
+                                                               {
+                                                                   "impact":  null,
+                                                                   "name_used":  "Special top-up promotion (TBD)",
+                                                                   "duration":  7,
+                                                                   "start":  "2026-04-28",
+                                                                   "month_label":  "April 2026",
+                                                                   "month":  "2026-04",
+                                                                   "end":  "2026-05-04"
+                                                               }
+                                                           ],
+                                           "category":  "dau",
+                                           "canonical_name":  "Special top-up promotion (TBD)",
+                                           "display_names":  [
+                                                                 "Special top-up promotion (TBD)"
+                                                             ]
+                                       },
+    "Weekly DAU":  {
+                       "occurrences":  [
+                                           {
+                                               "impact":  "High",
+                                               "name_used":  "Weekly DAU",
+                                               "duration":  29,
+                                               "start":  "2026-01-30",
+                                               "month_label":  "January 2026",
+                                               "month":  "2026-01",
+                                               "end":  "2026-02-27"
+                                           },
+                                           {
+                                               "impact":  "Medium",
+                                               "name_used":  "Weekly DAU",
+                                               "duration":  29,
+                                               "start":  "2026-01-30",
+                                               "month_label":  "February 2026",
+                                               "month":  "2026-02",
+                                               "end":  "2026-02-27"
+                                           },
+                                           {
+                                               "impact":  "Medium",
+                                               "name_used":  "Weekly DAU",
+                                               "duration":  29,
+                                               "start":  "2026-01-30",
+                                               "month_label":  "March 2026",
+                                               "month":  "2026-03",
+                                               "end":  "2026-02-27"
+                                           },
+                                           {
+                                               "impact":  "Medium",
+                                               "name_used":  "Weekly DAU",
+                                               "duration":  28,
+                                               "start":  "2026-03-27",
+                                               "month_label":  "April 2026",
+                                               "month":  "2026-04",
+                                               "end":  "2026-04-23"
+                                           },
+                                           {
+                                               "impact":  "Medium",
+                                               "name_used":  "Weekly DAU",
+                                               "duration":  28,
+                                               "start":  "2026-04-24",
+                                               "month_label":  "May 2026",
+                                               "month":  "2026-05",
+                                               "end":  "2026-05-21"
+                                           },
+                                           {
+                                               "impact":  "Medium",
+                                               "name_used":  "Weekly DAU",
+                                               "duration":  28,
+                                               "start":  "2026-05-22",
+                                               "month_label":  "May 2026",
+                                               "month":  "2026-05",
+                                               "end":  "2026-06-18"
+                                           },
+                                           {
+                                               "impact":  "Medium",
+                                               "name_used":  "Weekly DAU",
+                                               "duration":  28,
+                                               "start":  "2026-05-22",
+                                               "month_label":  "June 2026",
+                                               "month":  "2026-06",
+                                               "end":  "2026-06-18"
+                                           }
+                                       ],
+                       "category":  "dau",
+                       "canonical_name":  "Weekly DAU",
+                       "display_names":  [
+                                             "Weekly DAU"
+                                         ]
+                   },
+    "Long-term May":  {
+                          "occurrences":  [
+                                              {
+                                                  "impact":  null,
+                                                  "name_used":  "Long-term May",
+                                                  "duration":  31,
+                                                  "start":  "2026-05-01",
+                                                  "month_label":  "May 2026",
+                                                  "month":  "2026-05",
+                                                  "end":  "2026-05-31"
+                                              }
+                                          ],
+                          "category":  "rev",
+                          "canonical_name":  "Long-term May",
+                          "display_names":  [
+                                                "Long-term May"
+                                            ]
+                      },
+    "Monopoly":  {
+                     "occurrences":  [
+                                         {
+                                             "start":  "2026-02-24",
+                                             "month":  "2026-02",
+                                             "impact":  null,
+                                             "bp_metrics":  [
+                                                                {
+                                                                    "dollar_per_spin":  0.8354,
+                                                                    "bp_all_total":  190237983440897,
+                                                                    "bp_per_spin":  117352289588,
+                                                                    "period":  "2025-04-01",
+                                                                    "bp_only_total":  95570989475975.8,
+                                                                    "cost_to_play":  282.67
+                                                                },
+                                                                {
+                                                                    "dollar_per_spin":  0.7115,
+                                                                    "bp_all_total":  447358704873344,
+                                                                    "bp_per_spin":  329392897001.346,
+                                                                    "period":  "2025-07-01",
+                                                                    "bp_only_total":  236277371552001,
+                                                                    "cost_to_play":  282.67
+                                                                },
+                                                                {
+                                                                    "dollar_per_spin":  0.7367,
+                                                                    "bp_all_total":  584823319863598,
+                                                                    "bp_per_spin":  443353110217.882,
+                                                                    "period":  "2025-08-01",
+                                                                    "bp_only_total":  284221049004733,
+                                                                    "cost_to_play":  282.67
+                                                                },
+                                                                {
+                                                                    "dollar_per_spin":  0.7373,
+                                                                    "bp_all_total":  767524408353187,
+                                                                    "bp_per_spin":  576851043103.328,
+                                                                    "period":  "2025-09-01",
+                                                                    "bp_only_total":  340362667892341,
+                                                                    "cost_to_play":  282.67
+                                                                },
+                                                                {
+                                                                    "dollar_per_spin":  0.7237,
+                                                                    "bp_all_total":  1.28237347222808E+15,
+                                                                    "bp_per_spin":  920097484681.136,
+                                                                    "period":  "2025-11-01",
+                                                                    "bp_only_total":  510689983297966,
+                                                                    "cost_to_play":  282.67
+                                                                },
+                                                                {
+                                                                    "dollar_per_spin":  0.7369,
+                                                                    "bp_all_total":  1.61805667387883E+15,
+                                                                    "bp_per_spin":  1217868074186.03,
+                                                                    "period":  "2025-12-01",
+                                                                    "bp_only_total":  641963679223804,
+                                                                    "cost_to_play":  282.67
+                                                                },
+                                                                {
+                                                                    "dollar_per_spin":  0.6891,
+                                                                    "bp_all_total":  2.1567705405254E+15,
+                                                                    "bp_per_spin":  1480600650995.82,
+                                                                    "period":  "2026-01-01",
+                                                                    "bp_only_total":  782637778019155,
+                                                                    "cost_to_play":  282.67
+                                                                },
+                                                                {
+                                                                    "dollar_per_spin":  0.809,
+                                                                    "bp_all_total":  3.80208290564736E+15,
+                                                                    "bp_per_spin":  2624700140387.29,
+                                                                    "period":  "2026-02-01",
+                                                                    "bp_only_total":  1.44956265123399E+15,
+                                                                    "cost_to_play":  282.67
+                                                                }
+                                                            ],
+                                             "month_label":  "February 2026",
+                                             "duration":  7,
+                                             "end":  "2026-03-02",
+                                             "name_used":  "Monopoly"
+                                         },
+                                         {
+                                             "start":  "2026-02-24",
+                                             "month":  "2026-03",
+                                             "impact":  null,
+                                             "bp_metrics":  [
+                                                                {
+                                                                    "dollar_per_spin":  0.8354,
+                                                                    "bp_all_total":  190237983440897,
+                                                                    "bp_per_spin":  117352289588,
+                                                                    "period":  "2025-04-01",
+                                                                    "bp_only_total":  95570989475975.8,
+                                                                    "cost_to_play":  282.67
+                                                                },
+                                                                {
+                                                                    "dollar_per_spin":  0.7115,
+                                                                    "bp_all_total":  447358704873344,
+                                                                    "bp_per_spin":  329392897001.346,
+                                                                    "period":  "2025-07-01",
+                                                                    "bp_only_total":  236277371552001,
+                                                                    "cost_to_play":  282.67
+                                                                },
+                                                                {
+                                                                    "dollar_per_spin":  0.7367,
+                                                                    "bp_all_total":  584823319863598,
+                                                                    "bp_per_spin":  443353110217.882,
+                                                                    "period":  "2025-08-01",
+                                                                    "bp_only_total":  284221049004733,
+                                                                    "cost_to_play":  282.67
+                                                                },
+                                                                {
+                                                                    "dollar_per_spin":  0.7373,
+                                                                    "bp_all_total":  767524408353187,
+                                                                    "bp_per_spin":  576851043103.328,
+                                                                    "period":  "2025-09-01",
+                                                                    "bp_only_total":  340362667892341,
+                                                                    "cost_to_play":  282.67
+                                                                },
+                                                                {
+                                                                    "dollar_per_spin":  0.7237,
+                                                                    "bp_all_total":  1.28237347222808E+15,
+                                                                    "bp_per_spin":  920097484681.136,
+                                                                    "period":  "2025-11-01",
+                                                                    "bp_only_total":  510689983297966,
+                                                                    "cost_to_play":  282.67
+                                                                },
+                                                                {
+                                                                    "dollar_per_spin":  0.7369,
+                                                                    "bp_all_total":  1.61805667387883E+15,
+                                                                    "bp_per_spin":  1217868074186.03,
+                                                                    "period":  "2025-12-01",
+                                                                    "bp_only_total":  641963679223804,
+                                                                    "cost_to_play":  282.67
+                                                                },
+                                                                {
+                                                                    "dollar_per_spin":  0.6891,
+                                                                    "bp_all_total":  2.1567705405254E+15,
+                                                                    "bp_per_spin":  1480600650995.82,
+                                                                    "period":  "2026-01-01",
+                                                                    "bp_only_total":  782637778019155,
+                                                                    "cost_to_play":  282.67
+                                                                },
+                                                                {
+                                                                    "dollar_per_spin":  0.809,
+                                                                    "bp_all_total":  3.80208290564736E+15,
+                                                                    "bp_per_spin":  2624700140387.29,
+                                                                    "period":  "2026-02-01",
+                                                                    "bp_only_total":  1.44956265123399E+15,
+                                                                    "cost_to_play":  282.67
+                                                                }
+                                                            ],
+                                             "month_label":  "March 2026",
+                                             "duration":  7,
+                                             "end":  "2026-03-02",
+                                             "name_used":  "Monopoly"
+                                         },
+                                         {
+                                             "start":  "2026-05-28",
+                                             "month":  "2026-05",
+                                             "impact":  null,
+                                             "bp_metrics":  [
+                                                                {
+                                                                    "dollar_per_spin":  0.8354,
+                                                                    "bp_all_total":  190237983440897,
+                                                                    "bp_per_spin":  117352289588,
+                                                                    "period":  "2025-04-01",
+                                                                    "bp_only_total":  95570989475975.8,
+                                                                    "cost_to_play":  282.67
+                                                                },
+                                                                {
+                                                                    "dollar_per_spin":  0.7115,
+                                                                    "bp_all_total":  447358704873344,
+                                                                    "bp_per_spin":  329392897001.346,
+                                                                    "period":  "2025-07-01",
+                                                                    "bp_only_total":  236277371552001,
+                                                                    "cost_to_play":  282.67
+                                                                },
+                                                                {
+                                                                    "dollar_per_spin":  0.7367,
+                                                                    "bp_all_total":  584823319863598,
+                                                                    "bp_per_spin":  443353110217.882,
+                                                                    "period":  "2025-08-01",
+                                                                    "bp_only_total":  284221049004733,
+                                                                    "cost_to_play":  282.67
+                                                                },
+                                                                {
+                                                                    "dollar_per_spin":  0.7373,
+                                                                    "bp_all_total":  767524408353187,
+                                                                    "bp_per_spin":  576851043103.328,
+                                                                    "period":  "2025-09-01",
+                                                                    "bp_only_total":  340362667892341,
+                                                                    "cost_to_play":  282.67
+                                                                },
+                                                                {
+                                                                    "dollar_per_spin":  0.7237,
+                                                                    "bp_all_total":  1.28237347222808E+15,
+                                                                    "bp_per_spin":  920097484681.136,
+                                                                    "period":  "2025-11-01",
+                                                                    "bp_only_total":  510689983297966,
+                                                                    "cost_to_play":  282.67
+                                                                },
+                                                                {
+                                                                    "dollar_per_spin":  0.7369,
+                                                                    "bp_all_total":  1.61805667387883E+15,
+                                                                    "bp_per_spin":  1217868074186.03,
+                                                                    "period":  "2025-12-01",
+                                                                    "bp_only_total":  641963679223804,
+                                                                    "cost_to_play":  282.67
+                                                                },
+                                                                {
+                                                                    "dollar_per_spin":  0.6891,
+                                                                    "bp_all_total":  2.1567705405254E+15,
+                                                                    "bp_per_spin":  1480600650995.82,
+                                                                    "period":  "2026-01-01",
+                                                                    "bp_only_total":  782637778019155,
+                                                                    "cost_to_play":  282.67
+                                                                },
+                                                                {
+                                                                    "dollar_per_spin":  0.809,
+                                                                    "bp_all_total":  3.80208290564736E+15,
+                                                                    "bp_per_spin":  2624700140387.29,
+                                                                    "period":  "2026-02-01",
+                                                                    "bp_only_total":  1.44956265123399E+15,
+                                                                    "cost_to_play":  282.67
+                                                                },
+                                                                {
+                                                                    "dollar_per_spin":  0.7871,
+                                                                    "bp_all_total":  4.64195079267339E+15,
+                                                                    "bp_per_spin":  3546671972274.02,
+                                                                    "period":  "2026-03-01",
+                                                                    "bp_only_total":  1.71400406462191E+15,
+                                                                    "cost_to_play":  282.67
+                                                                }
+                                                            ],
+                                             "month_label":  "May 2026",
+                                             "duration":  6,
+                                             "end":  "2026-06-02",
+                                             "name_used":  "Monopoly"
+                                         },
+                                         {
+                                             "impact":  null,
+                                             "name_used":  "Monopoly",
+                                             "duration":  6,
+                                             "start":  "2026-06-22",
+                                             "month_label":  "June 2026",
+                                             "month":  "2026-06",
+                                             "end":  "2026-06-27"
+                                         }
+                                     ],
+                     "category":  "rev",
+                     "canonical_name":  "Monopoly",
+                     "display_names":  [
+                                           "Monopoly"
+                                       ]
+                 },
+    "Long-term":  {
+                      "occurrences":  [
+                                          {
+                                              "impact":  null,
+                                              "name_used":  "Long-term",
+                                              "duration":  31,
+                                              "start":  "2026-01-01",
+                                              "month_label":  "January 2026",
+                                              "month":  "2026-01",
+                                              "end":  "2026-01-31"
+                                          },
+                                          {
+                                              "impact":  "Medium",
+                                              "name_used":  "Long-term",
+                                              "duration":  31,
+                                              "start":  "2025-12-01",
+                                              "month_label":  "January 2026",
+                                              "month":  "2026-01",
+                                              "end":  "2025-12-31"
+                                          },
+                                          {
+                                              "impact":  null,
+                                              "name_used":  "Long-term",
+                                              "duration":  null,
+                                              "start":  "2026-02-01",
+                                              "month_label":  "January 2026",
+                                              "month":  "2026-01",
+                                              "end":  "2026-02-28"
+                                          },
+                                          {
+                                              "impact":  null,
+                                              "name_used":  "Long-term",
+                                              "duration":  28,
+                                              "start":  "2026-02-01",
+                                              "month_label":  "February 2026",
+                                              "month":  "2026-02",
+                                              "end":  "2026-02-28"
+                                          },
+                                          {
+                                              "impact":  null,
+                                              "name_used":  "Long-term",
+                                              "duration":  28,
+                                              "start":  "2026-02-01",
+                                              "month_label":  "March 2026",
+                                              "month":  "2026-03",
+                                              "end":  "2026-02-28"
+                                          },
+                                          {
+                                              "impact":  null,
+                                              "name_used":  "Long-term",
+                                              "duration":  31,
+                                              "start":  "2026-03-01",
+                                              "month_label":  "April 2026",
+                                              "month":  "2026-04",
+                                              "end":  "2026-03-31"
+                                          },
+                                          {
+                                              "impact":  null,
+                                              "name_used":  "Long-term",
+                                              "duration":  30,
+                                              "start":  "2026-04-01",
+                                              "month_label":  "April 2026",
+                                              "month":  "2026-04",
+                                              "end":  "2026-04-30"
+                                          },
+                                          {
+                                              "impact":  null,
+                                              "name_used":  "Long-term",
+                                              "duration":  31,
+                                              "start":  "2026-05-01",
+                                              "month_label":  "May 2026",
+                                              "month":  "2026-05",
+                                              "end":  "2026-05-31"
+                                          },
+                                          {
+                                              "impact":  null,
+                                              "name_used":  "Long-term",
+                                              "duration":  30,
+                                              "start":  "2026-06-01",
+                                              "month_label":  "June 2026",
+                                              "month":  "2026-06",
+                                              "end":  "2026-06-30"
+                                          }
+                                      ],
+                      "category":  "promotion",
+                      "canonical_name":  "Long-term",
+                      "display_names":  [
+                                            "Long-term"
+                                        ]
+                  },
+    "Long-term Jun":  {
+                          "occurrences":  [
+                                              {
+                                                  "impact":  null,
+                                                  "name_used":  "Long-term Jun",
+                                                  "duration":  30,
+                                                  "start":  "2026-06-01",
+                                                  "month_label":  "June 2026",
+                                                  "month":  "2026-06",
+                                                  "end":  "2026-06-30"
+                                              }
+                                          ],
+                          "category":  "rev",
+                          "canonical_name":  "Long-term Jun",
+                          "display_names":  [
+                                                "Long-term Jun"
+                                            ]
+                      },
+    "Special top-up promotion (200% max 300 FC)":  {
+                                                       "occurrences":  [
+                                                                           {
+                                                                               "impact":  null,
+                                                                               "name_used":  "Special top-up promotion (200% max 300 FC)",
+                                                                               "duration":  3,
+                                                                               "start":  "2026-04-24",
+                                                                               "month_label":  "April 2026",
+                                                                               "month":  "2026-04",
+                                                                               "end":  "2026-04-26"
+                                                                           }
+                                                                       ],
+                                                       "category":  "dau",
+                                                       "canonical_name":  "Special top-up promotion (200% max 300 FC)",
+                                                       "display_names":  [
+                                                                             "Special top-up promotion (200% max 300 FC)"
+                                                                         ]
+                                                   }
+}

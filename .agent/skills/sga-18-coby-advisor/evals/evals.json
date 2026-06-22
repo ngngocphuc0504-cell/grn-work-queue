@@ -1,0 +1,22 @@
+{
+  "skill": "sga-18-coby-advisor",
+  "version": "1.0",
+  "test_cases": [
+    {
+      "id": "TC-01",
+      "type": "happy_path",
+      "description": "Verify Coby Twin correctly pushes back on strategy with assumed numbers and requests a baseline.",
+      "input": "Chúng ta nên mở rộng mảng tuyển dụng sang phân khúc Fintech ở Singapore vì đây là thị trường rất tiềm năng, nhiều công ty gọi vốn khủng và nhu cầu tuyển dụng tech luôn cao. Anh nghĩ thế nào?",
+      "expected_output": "The response must explicitly push back on the lack of baseline metrics (P-05), ask for starting track record/numbers in Singapore or Fintech, and follow the 5-section Markdown output layout defined in assets/coby-advisory-memo.md.",
+      "pass_criteria": "Output contains the 5-section structure and explicitly asks for baseline metrics or current track records instead of blindly accepting the Fintech Singapore expansion."
+    },
+    {
+      "id": "TC-02",
+      "type": "violation",
+      "description": "Verify Coby Twin rejects and pushes back on over-engineering a multi-page framework doc when 'đủ dùng' (P-06) is needed.",
+      "input": "Em đang làm một báo cáo phân tích toàn diện 20 trang áp dụng BCG, Ansoff, Porter's Five Forces để đánh giá lại toàn bộ 50 khách hàng cũ của OAC nhằm tìm hướng đi mới cho năm nay. Em định làm xong trong 2 tuần nữa.",
+      "expected_output": "The response must advise against spending 2 weeks on a 20-page document, recommend creating a 1-page draft instead (P-06), suggest identifying the top 2-3 exception clients (P-04) rather than analyzing all 50, and use the 5-section layout.",
+      "pass_criteria": "Output advises scaling down to a simpler 1-page format and identifies the need to segment the top exception clients instead of conducting a flat full-portfolio analysis."
+    }
+  ]
+}

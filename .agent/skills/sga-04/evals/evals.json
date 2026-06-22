@@ -1,0 +1,22 @@
+{
+  "skill": "sga-04",
+  "version": "1.0",
+  "test_cases": [
+    {
+      "id": "TC-01",
+      "type": "happy_path",
+      "description": "Artifact meets all DoD criteria on first submission",
+      "input": "Brief DoD: '1. Có executive summary ≤1 trang; 2. Số liệu khớp ERP ±1%; 3. Submit trước 15/4'. Artifact contains all three.",
+      "expected_output": "3/3 criteria MET. Gate verdict: PASS. Handoff to WF-06. SKH-03 signal = 5 (first attempt pass).",
+      "pass_criteria": "Each criterion individually checked with artifact evidence cited. Binary PASS. No partial credit language."
+    },
+    {
+      "id": "TC-02",
+      "type": "violation",
+      "description": "Artifact missing 1 DoD criterion",
+      "input": "Same DoD but artifact has: exec summary (✅), numbers match (✅), no submission date evidence (❌).",
+      "expected_output": "2/3 criteria MET. Gate verdict: FAIL. Specific failed criterion listed: 'Submit trước 15/4 — không tìm thấy evidence về submission date.'",
+      "pass_criteria": "FAIL verdict. NO partial pass. Failed criterion identified with specific reason. Route back specified."
+    }
+  ]
+}

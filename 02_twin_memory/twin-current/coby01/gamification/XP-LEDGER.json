@@ -1,0 +1,305 @@
+{
+  "total_xp": 1630,
+  "level": 4,
+  "rank": "THE ASSOCIATE",
+  "history": [
+    {
+      "date": "2026-04-17",
+      "session_id": "S20260417-1408",
+      "event": "Onboarding Phase 2 — Twin Architecture Build",
+      "xp_delta": 130,
+      "breakdown": {
+        "TS-011_completed": 60,
+        "research_skill_digitized": 30,
+        "CST_FRT_settings_built": 25,
+        "session_closure": 15
+      },
+      "blind_trust_penalty": 0,
+      "net_xp": 130,
+      "reason": "Hoàn thành Onboarding Phase 2: CST, FRT, SKILL-MATRIX, settings.json, và Research Process Skill được khởi tạo. Anh tự nhận learning plateau và goals node uncertainty — demonstrates self-awareness và intellectual honesty."
+    },
+    {
+      "date": "2026-04-20",
+      "session_id": "S20260420-0859",
+      "event": "XP Decay Penalty",
+      "xp_delta": -10,
+      "reason": "3 days of inactivity detected since 2026-04-17."
+    },
+    {
+      "date": "2026-04-24",
+      "session_id": "S20260424-1556",
+      "event": "XP Decay Penalty",
+      "xp_delta": -10,
+      "reason": "4 days of inactivity detected since last session 2026-04-20."
+    },
+    {
+      "date": "2026-04-28",
+      "session_id": "S20260428-0956",
+      "event": "XP Decay Penalty",
+      "xp_delta": -10,
+      "reason": "3 days of inactivity detected since last session 2026-04-25."
+    },
+    {
+      "date": "2026-05-03",
+      "session_id": "S20260503-1205",
+      "event": "XP Decay Penalty",
+      "xp_delta": -25,
+      "reason": "5 days of inactivity detected since last session 2026-04-28."
+    },
+    {
+      "date": "2026-05-12",
+      "session_id": "S20260512-1006",
+      "event": "XP Decay Penalty",
+      "xp_delta": -50,
+      "reason": "9 days of inactivity detected since last session 2026-05-03."
+    },
+    {
+      "date": "2026-05-15",
+      "session_id": "S20260515-0924",
+      "event": "XP Decay Penalty",
+      "xp_delta": -10,
+      "reason": "3 days of inactivity detected since last session 2026-05-12."
+    },
+    {
+      "date": "2026-05-15",
+      "session_id": "S20260515-1056",
+      "event": "OAC BD Reminder Tool Completion",
+      "xp_delta": 100,
+      "breakdown": {
+        "script_manager_built": 50,
+        "ui_ux_refinement": 30,
+        "workflow_clarification": 20
+      },
+      "blind_trust_penalty": 0,
+      "net_xp": 100,
+      "reason": "Hoàn thiện tool OAC BD Reminder. Phân chia rõ ràng mô hình Target Emails và Assignees, tích hợp localStorage speedups, và publish Web User Guide."
+    },
+    {
+      "date": "2026-05-18",
+      "session_id": "S20260518-1408",
+      "event": "XP Decay Penalty",
+      "xp_delta": -10,
+      "reason": "3 days of inactivity detected since last session 2026-05-15."
+    },
+    {
+      "date": "2026-05-19",
+      "session_id": "S20260519-0926",
+      "event": "Content Factory Pipeline Establishment",
+      "xp_delta": 50,
+      "breakdown": {
+        "blueprint_architected": 20,
+        "workflows_and_skills_built": 30
+      },
+      "blind_trust_penalty": 0,
+      "net_xp": 50,
+      "reason": "Thiết kế và triển khai thành công 4 Workflows và 2 Skills cho Content Factory, mở rộng năng lực Digital Twin sang mảng xây dựng thương hiệu cá nhân."
+    },
+    {
+      "date": "2026-05-20",
+      "session_id": "S20260520-1621",
+      "event": "Structured Image Generation Setup & Integration",
+      "xp_delta": 80,
+      "breakdown": {
+        "mcp_configured": 30,
+        "skill_4tier_built": 30,
+        "workflow_wired": 20
+      },
+      "blind_trust_penalty": 0,
+      "net_xp": 80,
+      "reason": "Cấu hình thành công server MCP Nano Banana và xây dựng Skill sga-17-image-generator chuẩn 4-Tier cùng workflow WF-17-image-generation, tích hợp tính năng sinh ảnh chất lượng cao vào workspace."
+    },
+    {
+      "date": "2026-05-21",
+      "session_id": "S20260521-1445",
+      "event": "Coby Nguyen Cognitive Twin Packaging",
+      "xp_delta": 120,
+      "breakdown": {
+        "coby_mindset_blueprint_built": 30,
+        "t4_coby_advisor_agent_built": 40,
+        "transplant_prompt_created": 30,
+        "agents_md_registered_and_dryrun": 20
+      },
+      "blind_trust_penalty": 0,
+      "net_xp": 120,
+      "reason": "Đóng gói thành công Cognitive Twin của Coby Nguyen (Playbook, T4 Agent, và Portable Transplant Prompt). Tích hợp vào AGENTS.md và hoàn thành kiểm thử giả định đạt kỳ vọng."
+    },
+    {
+      "date": "2026-05-23",
+      "session_id": "S20260523-0141",
+      "event": "OAC Strategy & AI Product Lead JD Draft",
+      "xp_delta": 40,
+      "breakdown": {
+        "jd_drafted": 30,
+        "session_closure": 10
+      },
+      "blind_trust_penalty": 0,
+      "net_xp": 40,
+      "reason": "Drafted the Strategy & AI Product Lead JD in English to replace Coby at OAC Hanoi. Customized responsibilities for AI agent spec design, market intelligence, and AI-native culture nurturing based on Coby's active role context."
+    },
+    {
+      "date": "2026-05-26",
+      "session_id": "S20260526-0842",
+      "event": "XP Decay Penalty",
+      "xp_delta": -10,
+      "reason": "3 days of inactivity detected since last session 2026-05-23."
+    },
+    {
+      "date": "2026-05-26",
+      "session_id": "S20260526-0842",
+      "event": "OAC Onboarding Workflow & Design System Completion",
+      "xp_delta": 100,
+      "breakdown": {
+        "TS-004_onboard_workflow_completed": 40,
+        "local_html_design_bugs_fixed": 30,
+        "scrape_rss_established": 20,
+        "session_closure": 10
+      },
+      "blind_trust_penalty": 0,
+      "net_xp": 100,
+      "reason": "Hoàn thiện /onboard command cho beginner workspace, giải quyết triệt để 3 lỗi hiển thị local, cào thành công 242 tin tức hot qua RSS và tối ưu hóa master design system instructions cho Claude."
+    },
+    {
+      "date": "2026-05-26",
+      "session_id": "S20260526-1439",
+      "event": "OAC Master Handover Checklist Finalization & Consolidation",
+      "xp_delta": 100,
+      "breakdown": {
+        "TS-019_handover_checklist_completed": 60,
+        "workspace_consolidation_and_refinement": 40,
+        "session_closure": 10
+      },
+      "blind_trust_penalty": 0,
+      "net_xp": 100,
+      "reason": "Hoàn thành xuất sắc việc xây dựng và gộp cẩm nang bàn giao hợp nhất OAC Handover Checklist từ 2 workspaces. Đặc tả chi tiết hệ thống Swarm AI 15 agents, 23 workflows và sharded KIs, định vị Data Center BD strategy và roll out Content Factory."
+    },
+    {
+      "date": "2026-05-29",
+      "session_id": "S20260529-1211",
+      "event": "XP Decay Penalty",
+      "xp_delta": -10,
+      "reason": "3 days of inactivity detected since last session 2026-05-26."
+    },
+    {
+      "date": "2026-06-02",
+      "session_id": "S20260602-1632",
+      "event": "XP Decay Penalty",
+      "xp_delta": -10,
+      "reason": "4 days of inactivity detected since last session 2026-05-29."
+    },
+    {
+      "date": "2026-06-05",
+      "session_id": "S20260605-2120",
+      "event": "XP Decay Penalty",
+      "xp_delta": -10,
+      "reason": "3 days of inactivity detected since last session 2026-06-02."
+    },
+    {
+      "date": "2026-06-08",
+      "session_id": "S20260608-0742",
+      "event": "XP Decay Penalty",
+      "xp_delta": -10,
+      "reason": "3 days of inactivity detected since last session 2026-06-05."
+    },
+    {
+      "date": "2026-06-08",
+      "session_id": "S20260608-0742",
+      "event": "Garena Onboarding & Setup Completion",
+      "xp_delta": 160,
+      "breakdown": {
+        "garena_folder_setup": 30,
+        "docx_and_ocr_workaround": 50,
+        "meeting_note_distillation": 40,
+        "milestone_automation_and_refinement": 30,
+        "session_closure": 10
+      },
+      "blind_trust_penalty": 0,
+      "net_xp": 160,
+      "reason": "Hoàn thành Onboarding Garena, cấu trúc lại thư mục dự án, trích xuất & xử lý ảnh của meeting note 08/06, tự động hóa lịch countdown và giải quyết phản hồi giao diện dạng text."
+    },
+    {
+      "date": "2026-06-08",
+      "session_id": "S20260608-0742",
+      "event": "Excel Data Integration & Briefing Separation",
+      "xp_delta": 40,
+      "breakdown": {
+        "briefing_separation": 20,
+        "excel_schedule_integration": 20
+      },
+      "blind_trust_penalty": 0,
+      "net_xp": 40,
+      "reason": "Phân tách thành công Supervisor Briefing thành bản ghi chép độc lập, trả hồ sơ chị Vân Anh về nguyên bản và tích hợp lịch trình dự án thử việc từ Excel vào work queue."
+    },
+    {
+      "date": "2026-06-08",
+      "session_id": "S20260608-1710",
+      "event": "Knowledge Base & Data Integration Sync",
+      "xp_delta": 140,
+      "breakdown": {
+        "sync_up_notes_correction": 20,
+        "brief_and_qa_playbook_generation": 50,
+        "knowledge_base_currency_update": 40,
+        "csv_data_analysis": 30
+      },
+      "blind_trust_penalty": 0,
+      "net_xp": 140,
+      "reason": "Hiệu chỉnh chính xác thông tin PM Khôi, xây dựng cẩm nang QA & project brief hoàn chỉnh cho VIP Revamp, số hóa thành công phân loại FC/MC & Web Events, và phân tích sâu sắc xu hướng dữ liệu CSV."
+    },
+    {
+      "date": "2026-06-09",
+      "session_id": "S20260609-1444",
+      "event": "VIP Revamp Interactive Wireframe & Specs",
+      "xp_delta": 100,
+      "breakdown": {
+        "wireframe_design": 40,
+        "word_specs_delivery": 40,
+        "recommendations_logic": 20
+      },
+      "blind_trust_penalty": 0,
+      "net_xp": 100,
+      "reason": "Hoàn thành thiết kế Wireframe tương tác v2.2 trên Vercel và xây dựng tài liệu Word Specs chi tiết với 2 khuyến nghị (Activity Snapshot & Daily Gift on Map) cho hệ thống VIP Revamp."
+    },
+    {
+      "date": "2026-06-11",
+      "session_id": "S20260611-0921",
+      "event": "Spec Consolidation & Search Engine Upgrade",
+      "xp_delta": 170,
+      "breakdown": {
+        "TS-022_spec_consolidation": 60,
+        "TS-023_portal_advanced_filters": 100,
+        "session_closure": 10
+      },
+      "blind_trust_penalty": 0,
+      "net_xp": 170,
+      "reason": "Hoàn thành đặc tả Member Web System v1.0 hợp nhất và nâng cấp bộ lọc tìm kiếm nâng cao cho cổng Portal vận hành Garena FCO (strict levels, designated/top-price types, nullable OVR bounds và fix lỗi regex match Top Price)."
+    },
+    {
+      "date": "2026-06-18",
+      "session_id": "S20260618-0937",
+      "event": "XP Decay Penalty",
+      "xp_delta": -50,
+      "reason": "7 days of inactivity detected since last session 2026-06-11."
+    },
+    {
+      "date": "2026-06-18",
+      "session_id": "S20260618-1747",
+      "event": "Drag-and-Drop Sorting & Auto-Scrolling Implementation",
+      "xp_delta": 140,
+      "breakdown": {
+        "drag_and_drop_reordering": 60,
+        "edge_auto_scrolling": 40,
+        "interactive_verification": 30,
+        "session_closure": 10
+      },
+      "blind_trust_penalty": 0,
+      "net_xp": 140,
+      "reason": "Triển khai thành công tính năng kéo-thả sắp xếp danh sách và tự động cuộn trang (auto-scrolling) khi kéo sát rìa trong portal FCO Item Search, thực hiện kiểm thử tự động hai chiều đạt kết quả xuất sắc."
+    },
+    {
+      "date": "2026-06-22",
+      "session_id": "S20260622-0933",
+      "event": "XP Decay Penalty",
+      "xp_delta": -10,
+      "reason": "4 days of inactivity detected since last session 2026-06-18."
+    }
+  ]
+}

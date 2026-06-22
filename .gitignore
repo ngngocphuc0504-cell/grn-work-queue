@@ -1,0 +1,21 @@
+twin-current/*/KI-STORE/*.private.md
+twin-current/*/PATTERN-LOG.md
+.env
+*.token
+*.key
+/exports/temp/
+# Scraper sessions
+**/content_factory/.agent/scraper_sessions/
+.agent/credentials/
+OAC_Legacy/
+ai-skill-for-non-tech/
+*.rar
+*.zip
+*.pptx
+*.xlsx
+!Work_Queue.xlsx
+# Exclude system caches
+**/node_modules/
+.tmp/
+Garena/reportsfiles/
+scratch/

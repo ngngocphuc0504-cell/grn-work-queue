@@ -1,0 +1,22 @@
+{
+  "skill": "sga-17-image-generator",
+  "version": "1.0",
+  "test_cases": [
+    {
+      "id": "TC-01",
+      "type": "happy_path",
+      "description": "Standard brand-aligned flat vector illustration generation request.",
+      "input": "Request: 'Create a 1:1 image representing a chatbot rejecting a candidate CV and a human recruiter shaking hands with them. Style should be a flat vector diagram with deep corporate theme.'",
+      "expected_output": "The output must contain an embedded markdown image pointing to content_factory/assets/images/ and a valid YAML metadata log with style set to 'flat_vector', aspect_ratio set to '1:1', and engine_used set to 'nanobanana-mcp' or 'built-in-fallback'.",
+      "pass_criteria": "Output contains markdown image format '![...](file:///...)' and a YAML block with the required metadata keys."
+    },
+    {
+      "id": "TC-02",
+      "type": "violation",
+      "description": "Request violating prompt safety SOP boundaries by using banned generic buzzwords.",
+      "input": "Request: 'Create a hyperrealistic photorealistic ultra high quality 4K portrait of an executive.'",
+      "expected_output": "The skill must strip the banned words ('hyperrealistic', 'photorealistic', 'ultra high quality', '4K') from the optimized prompt and warn the user, or reject the input requesting a reframe following the SOP guidelines.",
+      "pass_criteria": "The optimized prompt in the YAML block does not contain any of the banned quality booster words, and is structured matching the cinematic photo archetype."
+    }
+  ]
+}

@@ -1,0 +1,970 @@
+﻿{
+    "rewards":  {
+                    "svip":  {
+                                 "total":  36329768937248,
+                                 "pp":  29529768937248,
+                                 "bp":  6800000000000,
+                                 "bp_ratio":  0.1871743256
+                             },
+                    "pc_m_regular":  {
+                                         "total":  48485205142378,
+                                         "pp":  33155205142378,
+                                         "bp":  15330000000000,
+                                         "bp_ratio":  0.3161789242
+                                     },
+                    "web":  {
+                                "total":  4.70822E+15,
+                                "pp":  4.70822E+15,
+                                "bp":  0
+                            }
+                },
+    "events":  {
+                   "promotion":  [
+                                     {
+                                         "start":  "2026-01-28",
+                                         "mechanics":  null,
+                                         "impact":  null,
+                                         "name":  "3-tier top-up promotion",
+                                         "recurring":  true,
+                                         "duration":  5,
+                                         "end":  "2026-02-01",
+                                         "canonical":  "3-tier top-up promotion"
+                                     },
+                                     {
+                                         "start":  "2026-02-01",
+                                         "mechanics":  null,
+                                         "impact":  null,
+                                         "name":  "Long-term",
+                                         "recurring":  true,
+                                         "duration":  28,
+                                         "end":  "2026-02-28",
+                                         "canonical":  "Long-term"
+                                     },
+                                     {
+                                         "start":  "2026-02-05",
+                                         "mechanics":  null,
+                                         "impact":  null,
+                                         "name":  "3-tier top-up promotion",
+                                         "recurring":  true,
+                                         "duration":  5,
+                                         "end":  "2026-02-09",
+                                         "canonical":  "3-tier top-up promotion"
+                                     },
+                                     {
+                                         "start":  "2026-02-11",
+                                         "mechanics":  null,
+                                         "impact":  null,
+                                         "name":  "3-tier top-up promotion",
+                                         "recurring":  true,
+                                         "duration":  4,
+                                         "end":  "2026-02-14",
+                                         "canonical":  "3-tier top-up promotion"
+                                     },
+                                     {
+                                         "start":  "2026-02-15",
+                                         "mechanics":  null,
+                                         "impact":  null,
+                                         "name":  "Special top-up promotion",
+                                         "recurring":  true,
+                                         "duration":  9,
+                                         "end":  "2026-02-23",
+                                         "canonical":  "Special top-up promotion"
+                                     },
+                                     {
+                                         "start":  "2026-02-25",
+                                         "mechanics":  null,
+                                         "impact":  null,
+                                         "name":  "3-tier top-up promotion",
+                                         "recurring":  true,
+                                         "duration":  5,
+                                         "end":  "2026-03-01",
+                                         "canonical":  "3-tier top-up promotion"
+                                     }
+                                 ],
+                   "rev":  [
+                               {
+                                   "start":  "2026-02-01",
+                                   "mechanics":  null,
+                                   "impact":  null,
+                                   "name":  "Long-term Feb",
+                                   "recurring":  true,
+                                   "duration":  28,
+                                   "end":  "2026-02-28",
+                                   "canonical":  "Long-term Feb"
+                               },
+                               {
+                                   "start":  "2026-02-02",
+                                   "mechanics":  null,
+                                   "impact":  null,
+                                   "name":  "Foosball",
+                                   "recurring":  true,
+                                   "duration":  6,
+                                   "end":  "2026-02-07",
+                                   "canonical":  "Foosball"
+                               },
+                               {
+                                   "start":  "2026-02-06",
+                                   "mechanics":  null,
+                                   "impact":  null,
+                                   "name":  "Guaranteed wheel",
+                                   "recurring":  false,
+                                   "duration":  9,
+                                   "end":  "2026-02-14",
+                                   "canonical":  "Guaranteed wheel"
+                               },
+                               {
+                                   "start":  "2026-02-08",
+                                   "mechanics":  null,
+                                   "impact":  null,
+                                   "name":  "Fortune Lantern",
+                                   "recurring":  false,
+                                   "duration":  6,
+                                   "end":  "2026-02-13",
+                                   "canonical":  "Fortune Lantern"
+                               },
+                               {
+                                   "start":  "2026-02-14",
+                                   "mechanics":  null,
+                                   "impact":  null,
+                                   "name":  "LNY",
+                                   "recurring":  false,
+                                   "duration":  10,
+                                   "end":  "2026-02-23",
+                                   "canonical":  "Lunar New Year"
+                               },
+                               {
+                                   "start":  "2026-02-24",
+                                   "mechanics":  null,
+                                   "impact":  null,
+                                   "name":  "Monopoly",
+                                   "recurring":  true,
+                                   "duration":  7,
+                                   "end":  "2026-03-02",
+                                   "canonical":  "Monopoly"
+                               },
+                               {
+                                   "start":  "2026-02-10",
+                                   "mechanics":  null,
+                                   "impact":  "High",
+                                   "name":  "TET 2026",
+                                   "recurring":  false,
+                                   "duration":  17,
+                                   "end":  "2026-02-26",
+                                   "canonical":  "TET 2026"
+                               },
+                               {
+                                   "start":  "2026-02-26",
+                                   "mechanics":  null,
+                                   "impact":  "High",
+                                   "name":  "FVPL - SWISS Stage",
+                                   "recurring":  false,
+                                   "duration":  25,
+                                   "end":  "2026-03-22",
+                                   "canonical":  "FVPL - SWISS Stage"
+                               },
+                               {
+                                   "start":  "2026-01-30",
+                                   "mechanics":  null,
+                                   "impact":  "Medium",
+                                   "name":  "Weekly DAU",
+                                   "recurring":  true,
+                                   "duration":  29,
+                                   "end":  "2026-02-27",
+                                   "canonical":  "Weekly DAU"
+                               }
+                           ],
+                   "dau":  [
+
+                           ]
+               },
+    "bp_per_event":  [
+                         {
+                             "canonical":  "Gacha Ball",
+                             "bp_only_total":  100991474788866,
+                             "event_name":  "Gacha ball",
+                             "bp_per_spin":  87895430054.2498,
+                             "bp_all_total":  134831742732333,
+                             "cost_to_play":  880.01,
+                             "dollar_per_spin":  0.7821,
+                             "period":  "2025-03-01"
+                         },
+                         {
+                             "canonical":  "Foosball",
+                             "bp_only_total":  85686116435322.1,
+                             "event_name":  "Slot Machine",
+                             "bp_per_spin":  89483345126.7621,
+                             "bp_all_total":  117524278721186,
+                             "cost_to_play":  330.2,
+                             "dollar_per_spin":  0.7962,
+                             "period":  "2025-03-01"
+                         },
+                         {
+                             "canonical":  "Around the world",
+                             "bp_only_total":  0,
+                             "event_name":  "Around the world",
+                             "bp_per_spin":  91726926762.1753,
+                             "bp_all_total":  126689225193932,
+                             "cost_to_play":  303,
+                             "dollar_per_spin":  0.8162,
+                             "period":  "2025-03-01"
+                         },
+                         {
+                             "canonical":  "PinBall",
+                             "bp_only_total":  80100940732120.8,
+                             "event_name":  "PinBall",
+                             "bp_per_spin":  79570187296.8048,
+                             "bp_all_total":  103137780060622,
+                             "cost_to_play":  259.44,
+                             "dollar_per_spin":  0.708,
+                             "period":  "2025-03-01"
+                         },
+                         {
+                             "canonical":  "PowerShot",
+                             "bp_only_total":  41370596127517,
+                             "event_name":  "PowerShot",
+                             "bp_per_spin":  85763329400.3918,
+                             "bp_all_total":  99612768834830.4,
+                             "cost_to_play":  267.84,
+                             "dollar_per_spin":  0.7631,
+                             "period":  "2025-03-01"
+                         },
+                         {
+                             "canonical":  "Balldrop",
+                             "bp_only_total":  85890687637979.4,
+                             "event_name":  "New Ball Drop",
+                             "bp_per_spin":  97091479186.7049,
+                             "bp_all_total":  153978046516135,
+                             "cost_to_play":  233.6,
+                             "dollar_per_spin":  0.6912,
+                             "period":  "2025-04-01"
+                         },
+                         {
+                             "canonical":  "Foosball",
+                             "bp_only_total":  86624245267347.3,
+                             "event_name":  "Slot Machine",
+                             "bp_per_spin":  107864848022.314,
+                             "bp_all_total":  164411005276593,
+                             "cost_to_play":  330.2,
+                             "dollar_per_spin":  0.7678,
+                             "period":  "2025-04-01"
+                         },
+                         {
+                             "canonical":  "Power Pack",
+                             "bp_only_total":  91238197088991,
+                             "event_name":  "Power Pack",
+                             "bp_per_spin":  113335924019.837,
+                             "bp_all_total":  186098584122418,
+                             "cost_to_play":  297.59,
+                             "dollar_per_spin":  0.8068,
+                             "period":  "2025-04-01"
+                         },
+                         {
+                             "canonical":  "Around the world",
+                             "bp_only_total":  0,
+                             "event_name":  "Around the world",
+                             "bp_per_spin":  125643227158.567,
+                             "bp_all_total":  185888290592722,
+                             "cost_to_play":  303,
+                             "dollar_per_spin":  0.8944,
+                             "period":  "2025-04-01"
+                         },
+                         {
+                             "canonical":  "Monopoly",
+                             "bp_only_total":  95570989475975.8,
+                             "event_name":  "Monopoly",
+                             "bp_per_spin":  117352289588,
+                             "bp_all_total":  190237983440897,
+                             "cost_to_play":  282.67,
+                             "dollar_per_spin":  0.8354,
+                             "period":  "2025-04-01"
+                         },
+                         {
+                             "canonical":  "Lucky Ball",
+                             "bp_only_total":  85123945113242.2,
+                             "event_name":  "New Lucky Ball",
+                             "bp_per_spin":  122695095585.582,
+                             "bp_all_total":  172037994325794,
+                             "cost_to_play":  255.05,
+                             "dollar_per_spin":  0.6719,
+                             "period":  "2025-05-01"
+                         },
+                         {
+                             "canonical":  "Foosball",
+                             "bp_only_total":  121429483478903,
+                             "event_name":  "Slot Machine",
+                             "bp_per_spin":  138320889308.828,
+                             "bp_all_total":  254835303495053,
+                             "cost_to_play":  330.2,
+                             "dollar_per_spin":  0.7574,
+                             "period":  "2025-05-01"
+                         },
+                         {
+                             "canonical":  "Power Pack",
+                             "bp_only_total":  117759765726058,
+                             "event_name":  "Power Pack",
+                             "bp_per_spin":  147909437864.234,
+                             "bp_all_total":  234918663173641,
+                             "cost_to_play":  297.59,
+                             "dollar_per_spin":  0.8099,
+                             "period":  "2025-05-01"
+                         },
+                         {
+                             "canonical":  "Around the world",
+                             "bp_only_total":  137186378410166,
+                             "event_name":  "Around the world",
+                             "bp_per_spin":  175482779387.553,
+                             "bp_all_total":  240881234903885,
+                             "cost_to_play":  303,
+                             "dollar_per_spin":  0.9609,
+                             "period":  "2025-05-01"
+                         },
+                         {
+                             "canonical":  "PowerShot",
+                             "bp_only_total":  122748229006536,
+                             "event_name":  "PowerShot",
+                             "bp_per_spin":  145354835953.124,
+                             "bp_all_total":  221139045041998,
+                             "cost_to_play":  267.84,
+                             "dollar_per_spin":  0.7959,
+                             "period":  "2025-05-01"
+                         },
+                         {
+                             "canonical":  "Amazing Goal",
+                             "bp_only_total":  151801151374267,
+                             "event_name":  "Amazing Goal",
+                             "bp_per_spin":  229157905103,
+                             "bp_all_total":  285582565098637,
+                             "cost_to_play":  231.58,
+                             "dollar_per_spin":  0.6435,
+                             "period":  "2025-06-01"
+                         },
+                         {
+                             "canonical":  "Foosball",
+                             "bp_only_total":  193396863842583,
+                             "event_name":  "Slot Machine",
+                             "bp_per_spin":  236228630116.914,
+                             "bp_all_total":  423755653770564,
+                             "cost_to_play":  330.2,
+                             "dollar_per_spin":  0.6634,
+                             "period":  "2025-06-01"
+                         },
+                         {
+                             "canonical":  "Superstar Pick",
+                             "bp_only_total":  189324154131653,
+                             "event_name":  "The Superstar Pick",
+                             "bp_per_spin":  255976426081.651,
+                             "bp_all_total":  399539675058169,
+                             "cost_to_play":  288.71,
+                             "dollar_per_spin":  0.7188,
+                             "period":  "2025-06-01"
+                         },
+                         {
+                             "canonical":  "Around the world",
+                             "bp_only_total":  166482359355878,
+                             "event_name":  "Around the world",
+                             "bp_per_spin":  301302972827.185,
+                             "bp_all_total":  433456452559152,
+                             "cost_to_play":  303,
+                             "dollar_per_spin":  0.8461,
+                             "period":  "2025-06-01"
+                         },
+                         {
+                             "canonical":  "Monopoly",
+                             "bp_only_total":  236277371552001,
+                             "event_name":  "Monopoly",
+                             "bp_per_spin":  329392897001.346,
+                             "bp_all_total":  447358704873344,
+                             "cost_to_play":  282.67,
+                             "dollar_per_spin":  0.7115,
+                             "period":  "2025-07-01"
+                         },
+                         {
+                             "canonical":  "Balldrop",
+                             "bp_only_total":  181352370922436,
+                             "event_name":  "New Ball Drop",
+                             "bp_per_spin":  307851023271,
+                             "bp_all_total":  422502400604341,
+                             "cost_to_play":  240.83,
+                             "dollar_per_spin":  0.665,
+                             "period":  "2025-07-01"
+                         },
+                         {
+                             "canonical":  "Foosball",
+                             "bp_only_total":  208547943986009,
+                             "event_name":  "Slot Machine",
+                             "bp_per_spin":  311443156869.05,
+                             "bp_all_total":  498616539069674,
+                             "cost_to_play":  284.66,
+                             "dollar_per_spin":  0.6727,
+                             "period":  "2025-07-01"
+                         },
+                         {
+                             "canonical":  "Around the world",
+                             "bp_only_total":  276318030756198,
+                             "event_name":  "Around the world",
+                             "bp_per_spin":  423309962619.218,
+                             "bp_all_total":  528180702495567,
+                             "cost_to_play":  303,
+                             "dollar_per_spin":  0.9144,
+                             "period":  "2025-07-01"
+                         },
+                         {
+                             "canonical":  "PinBall",
+                             "bp_only_total":  210694705896559,
+                             "event_name":  "PinBall",
+                             "bp_per_spin":  348969138889.755,
+                             "bp_all_total":  485908323502250,
+                             "cost_to_play":  259.44,
+                             "dollar_per_spin":  0.7538,
+                             "period":  "2025-07-01"
+                         },
+                         {
+                             "canonical":  "Power Pack",
+                             "bp_only_total":  241103012088113,
+                             "event_name":  "Power Pack",
+                             "bp_per_spin":  357679169150.918,
+                             "bp_all_total":  515653019260216,
+                             "cost_to_play":  297.59,
+                             "dollar_per_spin":  0.7726,
+                             "period":  "2025-07-01"
+                         },
+                         {
+                             "canonical":  "Lucky Ball",
+                             "bp_only_total":  217426558451969,
+                             "event_name":  "New Lucky Ball",
+                             "bp_per_spin":  400502355348.072,
+                             "bp_all_total":  497999734778619,
+                             "cost_to_play":  254.73,
+                             "dollar_per_spin":  0.6655,
+                             "period":  "2025-08-01"
+                         },
+                         {
+                             "canonical":  "Foosball",
+                             "bp_only_total":  244498919369029,
+                             "event_name":  "Slot Machine",
+                             "bp_per_spin":  400229675084,
+                             "bp_all_total":  589268712841521,
+                             "cost_to_play":  284.66,
+                             "dollar_per_spin":  0.665,
+                             "period":  "2025-08-01"
+                         },
+                         {
+                             "canonical":  "Monopoly",
+                             "bp_only_total":  284221049004733,
+                             "event_name":  "Monopoly",
+                             "bp_per_spin":  443353110217.882,
+                             "bp_all_total":  584823319863598,
+                             "cost_to_play":  282.67,
+                             "dollar_per_spin":  0.7367,
+                             "period":  "2025-08-01"
+                         },
+                         {
+                             "canonical":  "Around the world",
+                             "bp_only_total":  314043524380518,
+                             "event_name":  "Around the world",
+                             "bp_per_spin":  540268575152,
+                             "bp_all_total":  662210340515584,
+                             "cost_to_play":  303,
+                             "dollar_per_spin":  0.8977,
+                             "period":  "2025-08-01"
+                         },
+                         {
+                             "canonical":  "Superstar Pick",
+                             "bp_only_total":  302079732453120,
+                             "event_name":  "The Superstar Pick",
+                             "bp_per_spin":  476145641537.418,
+                             "bp_all_total":  636383548660623,
+                             "cost_to_play":  288.71,
+                             "dollar_per_spin":  0.7912,
+                             "period":  "2025-08-01"
+                         },
+                         {
+                             "canonical":  "Amazing Goal",
+                             "bp_only_total":  281767242019474,
+                             "event_name":  "Amazing Goal",
+                             "bp_per_spin":  521649065866.527,
+                             "bp_all_total":  653535816302586,
+                             "cost_to_play":  231.58,
+                             "dollar_per_spin":  0.6667,
+                             "period":  "2025-09-01"
+                         },
+                         {
+                             "canonical":  "Foosball",
+                             "bp_only_total":  361216833886749,
+                             "event_name":  "Slot Machine",
+                             "bp_per_spin":  688482695565.002,
+                             "bp_all_total":  930948669846859,
+                             "cost_to_play":  284.66,
+                             "dollar_per_spin":  0.88,
+                             "period":  "2025-09-01"
+                         },
+                         {
+                             "canonical":  "Around the world",
+                             "bp_only_total":  424100644911034,
+                             "event_name":  "Around the world",
+                             "bp_per_spin":  540268575152,
+                             "bp_all_total":  958190017045404,
+                             "cost_to_play":  303,
+                             "dollar_per_spin":  0.6905,
+                             "period":  "2025-09-01"
+                         },
+                         {
+                             "canonical":  "Monopoly",
+                             "bp_only_total":  340362667892341,
+                             "event_name":  "Monopoly",
+                             "bp_per_spin":  576851043103.328,
+                             "bp_all_total":  767524408353187,
+                             "cost_to_play":  282.67,
+                             "dollar_per_spin":  0.7373,
+                             "period":  "2025-09-01"
+                         },
+                         {
+                             "canonical":  "Balldrop",
+                             "bp_only_total":  367839792353022,
+                             "event_name":  "New Ball Drop",
+                             "bp_per_spin":  627072080776.553,
+                             "bp_all_total":  914375354087467,
+                             "cost_to_play":  240.83,
+                             "dollar_per_spin":  0.6519,
+                             "period":  "2025-10-01"
+                         },
+                         {
+                             "canonical":  "Mid Autum Festival",
+                             "bp_only_total":  470487077626020,
+                             "event_name":  "Mid Autum Festival",
+                             "bp_per_spin":  716265238787.565,
+                             "bp_all_total":  1.06601880457633E+15,
+                             "cost_to_play":  295.59,
+                             "dollar_per_spin":  0.7447,
+                             "period":  "2025-10-01"
+                         },
+                         {
+                             "canonical":  "Foosball",
+                             "bp_only_total":  405970073678117,
+                             "event_name":  "Slot Machine",
+                             "bp_per_spin":  673277619858.791,
+                             "bp_all_total":  1.12678342595325E+15,
+                             "cost_to_play":  284.66,
+                             "dollar_per_spin":  0.7,
+                             "period":  "2025-10-01"
+                         },
+                         {
+                             "canonical":  "Around the world",
+                             "bp_only_total":  405970073678117,
+                             "event_name":  "Around the world",
+                             "bp_per_spin":  929701274139.646,
+                             "bp_all_total":  1.21938863069658E+15,
+                             "cost_to_play":  303,
+                             "dollar_per_spin":  0.9666,
+                             "period":  "2025-10-01"
+                         },
+                         {
+                             "canonical":  "Superstar Pick",
+                             "bp_only_total":  456331114979935,
+                             "event_name":  "The Superstar Pick",
+                             "bp_per_spin":  732020652577.701,
+                             "bp_all_total":  1.14013257084549E+15,
+                             "cost_to_play":  288.71,
+                             "dollar_per_spin":  0.761,
+                             "period":  "2025-10-01"
+                         },
+                         {
+                             "canonical":  "Stadium Fever",
+                             "bp_only_total":  456331114979935,
+                             "event_name":  "Stadium Fever",
+                             "bp_per_spin":  890778966010.477,
+                             "bp_all_total":  1.30191572953417E+15,
+                             "cost_to_play":  248.35,
+                             "dollar_per_spin":  0.7006,
+                             "period":  "2025-11-01"
+                         },
+                         {
+                             "canonical":  "Foosball",
+                             "bp_only_total":  486985951093869,
+                             "event_name":  "Slot Machine",
+                             "bp_per_spin":  863480292531.52,
+                             "bp_all_total":  1.38975163706577E+15,
+                             "cost_to_play":  284.66,
+                             "dollar_per_spin":  0.6792,
+                             "period":  "2025-11-01"
+                         },
+                         {
+                             "canonical":  "Monopoly",
+                             "bp_only_total":  510689983297966,
+                             "event_name":  "Monopoly",
+                             "bp_per_spin":  920097484681.136,
+                             "bp_all_total":  1.28237347222808E+15,
+                             "cost_to_play":  282.67,
+                             "dollar_per_spin":  0.7237,
+                             "period":  "2025-11-01"
+                         },
+                         {
+                             "canonical":  "Around the world",
+                             "bp_only_total":  670566740316140,
+                             "event_name":  "Around the world",
+                             "bp_per_spin":  920097484681.136,
+                             "bp_all_total":  1.45294565949817E+15,
+                             "cost_to_play":  303,
+                             "dollar_per_spin":  0.7237,
+                             "period":  "2025-11-01"
+                         },
+                         {
+                             "canonical":  "Lucky Ball",
+                             "bp_only_total":  447431067447635,
+                             "event_name":  "New Lucky Ball",
+                             "bp_per_spin":  1039954729727.12,
+                             "bp_all_total":  1.25841250214594E+15,
+                             "cost_to_play":  254.73,
+                             "dollar_per_spin":  0.6292,
+                             "period":  "2025-12-01"
+                         },
+                         {
+                             "canonical":  "Foosball",
+                             "bp_only_total":  590198745501251,
+                             "event_name":  "Slot Machine",
+                             "bp_per_spin":  1112836890277.9,
+                             "bp_all_total":  1.54708336279152E+15,
+                             "cost_to_play":  284.66,
+                             "dollar_per_spin":  0.6733,
+                             "period":  "2025-12-01"
+                         },
+                         {
+                             "canonical":  "Around the world",
+                             "bp_only_total":  759412669107554,
+                             "event_name":  "Around the world",
+                             "bp_per_spin":  1426663467294.91,
+                             "bp_all_total":  1.78351790331858E+15,
+                             "cost_to_play":  303,
+                             "dollar_per_spin":  0.8632,
+                             "period":  "2025-12-01"
+                         },
+                         {
+                             "canonical":  "Monopoly",
+                             "bp_only_total":  641963679223804,
+                             "event_name":  "Monopoly",
+                             "bp_per_spin":  1217868074186.03,
+                             "bp_all_total":  1.61805667387883E+15,
+                             "cost_to_play":  282.67,
+                             "dollar_per_spin":  0.7369,
+                             "period":  "2025-12-01"
+                         },
+                         {
+                             "canonical":  "Superstar Pick",
+                             "bp_only_total":  641963679223804,
+                             "event_name":  "The Superstar Pick",
+                             "bp_per_spin":  1260869806757.04,
+                             "bp_all_total":  1.80381153530477E+15,
+                             "cost_to_play":  288.71,
+                             "dollar_per_spin":  0.7629,
+                             "period":  "2025-12-01"
+                         },
+                         {
+                             "canonical":  "Balldrop",
+                             "bp_only_total":  652386141225020,
+                             "event_name":  "New Ball Drop",
+                             "bp_per_spin":  1365685672518.24,
+                             "bp_all_total":  1.75221091015689E+15,
+                             "cost_to_play":  240.83,
+                             "dollar_per_spin":  0.6356,
+                             "period":  "2026-01-01"
+                         },
+                         {
+                             "canonical":  "Foosball",
+                             "bp_only_total":  737753122960845,
+                             "event_name":  "Slot Machine",
+                             "bp_per_spin":  1442219023952.83,
+                             "bp_all_total":  2.0257645888243E+15,
+                             "cost_to_play":  284.66,
+                             "dollar_per_spin":  0.6712,
+                             "period":  "2026-01-01"
+                         },
+                         {
+                             "canonical":  "Around the world",
+                             "bp_only_total":  782637778019155,
+                             "event_name":  "Around the world",
+                             "bp_per_spin":  1479177531962.15,
+                             "bp_all_total":  1.90836525676868E+15,
+                             "cost_to_play":  303,
+                             "dollar_per_spin":  0.6884,
+                             "period":  "2026-01-01"
+                         },
+                         {
+                             "canonical":  "Monopoly",
+                             "bp_only_total":  782637778019155,
+                             "event_name":  "Monopoly",
+                             "bp_per_spin":  1480600650995.82,
+                             "bp_all_total":  2.1567705405254E+15,
+                             "cost_to_play":  282.67,
+                             "dollar_per_spin":  0.6891,
+                             "period":  "2026-01-01"
+                         },
+                         {
+                             "canonical":  "Superstar Pick",
+                             "bp_only_total":  902714973573211,
+                             "event_name":  "The Superstar Pick",
+                             "bp_per_spin":  1442078750114.45,
+                             "bp_all_total":  2.24709757912838E+15,
+                             "cost_to_play":  288.71,
+                             "dollar_per_spin":  0.6712,
+                             "period":  "2026-01-01"
+                         },
+                         {
+                             "canonical":  "Amazing Goal",
+                             "bp_only_total":  885488285085297,
+                             "event_name":  "Amazing Goal",
+                             "bp_per_spin":  2198039185752.05,
+                             "bp_all_total":  2.29737559093933E+15,
+                             "cost_to_play":  231.58,
+                             "dollar_per_spin":  0.6775,
+                             "period":  "2026-02-01"
+                         },
+                         {
+                             "canonical":  "Foosball",
+                             "bp_only_total":  1.12174660764119E+15,
+                             "event_name":  "Slot Machine",
+                             "bp_per_spin":  2339743088060.62,
+                             "bp_all_total":  2.86877552153181E+15,
+                             "cost_to_play":  284.66,
+                             "dollar_per_spin":  0.7212,
+                             "period":  "2026-02-01"
+                         },
+                         {
+                             "canonical":  "Guaranteed wheel",
+                             "bp_only_total":  140000000000000,
+                             "event_name":  "Guaranteed wheel",
+                             "bp_per_spin":  3926212830106,
+                             "bp_all_total":  1.60849773488931E+15,
+                             "cost_to_play":  203.02,
+                             "dollar_per_spin":  1.2102,
+                             "period":  "2026-02-01"
+                         },
+                         {
+                             "canonical":  "Fortune Lantern",
+                             "bp_only_total":  1.00716819380003E+15,
+                             "event_name":  "Fortune Lantern",
+                             "bp_per_spin":  2517804992344.49,
+                             "bp_all_total":  3.179187186202E+15,
+                             "cost_to_play":  295.59,
+                             "dollar_per_spin":  0.776,
+                             "period":  "2026-02-01"
+                         },
+                         {
+                             "canonical":  "REV LUNAR",
+                             "bp_only_total":  1.36011824043306E+15,
+                             "event_name":  "REV LUNAR",
+                             "bp_per_spin":  2853849659256.47,
+                             "bp_all_total":  4.17073181187695E+15,
+                             "cost_to_play":  290.97,
+                             "dollar_per_spin":  0.8796,
+                             "period":  "2026-02-01"
+                         },
+                         {
+                             "canonical":  "Monopoly",
+                             "bp_only_total":  1.44956265123399E+15,
+                             "event_name":  "Monopoly",
+                             "bp_per_spin":  2624700140387.29,
+                             "bp_all_total":  3.80208290564736E+15,
+                             "cost_to_play":  282.67,
+                             "dollar_per_spin":  0.809,
+                             "period":  "2026-02-01"
+                         },
+                         {
+                             "canonical":  "14168750",
+                             "bp_only_total":  333753964000,
+                             "event_name":  "14168750",
+                             "bp_per_spin":  0,
+                             "bp_all_total":  0,
+                             "cost_to_play":  566.75,
+                             "dollar_per_spin":  0,
+                             "period":  null
+                         }
+                     ],
+    "promotion_tiers":  [
+                            {
+                                "efficiency":  1.376807035,
+                                "items":  [
+                                              {
+                                                  "value_bp":  11492633295249,
+                                                  "name":  "Gói UT, JNM, DC 105+ (6~8)",
+                                                  "count":  1
+                                              },
+                                              {
+                                                  "value_bp":  9520889647485,
+                                                  "name":  "Gói DC, JNM, CC 104+ (+8)",
+                                                  "count":  1
+                                              },
+                                              {
+                                                  "value_bp":  7958450445726,
+                                                  "name":  "Gói DC 107+ (7~8)",
+                                                  "count":  1
+                                              },
+                                              {
+                                                  "value_bp":  13548268511819,
+                                                  "name":  "Gói MDL, DC, JNM 104+ (6~8)",
+                                                  "count":  1
+                                              },
+                                              {
+                                                  "value_bp":  5000000000000,
+                                                  "name":  "5000,000,000,000 BP",
+                                                  "count":  1
+                                              },
+                                              {
+                                                  "value_bp":  0,
+                                                  "name":  "Phiếu giảm giá thuế các mùa 35%",
+                                                  "count":  3
+                                              },
+                                              {
+                                                  "value_bp":  0,
+                                                  "name":  "Thẻ bảo vệ nâng cấp các mùa (+1~+8) (1000 -50B)",
+                                                  "count":  3
+                                              }
+                                          ],
+                                "tier":  "500 FC"
+                            },
+                            {
+                                "efficiency":  1.535030222,
+                                "items":  [
+                                              {
+                                                  "value_bp":  14232657805203,
+                                                  "name":  "Gói UT, MDL, DC, JNM 107+ (7~8)",
+                                                  "count":  1
+                                              },
+                                              {
+                                                  "value_bp":  15875413461268,
+                                                  "name":  "DC, JNM, CC, HW Top Price 300 (+8)",
+                                                  "count":  1
+                                              },
+                                              {
+                                                  "value_bp":  15844528611328,
+                                                  "name":  "Gói HG 102+ (8~10)",
+                                                  "count":  1
+                                              },
+                                              {
+                                                  "value_bp":  5439730530973,
+                                                  "name":  "Gói 26TOTY-N, FAC, 25DP, WS 118+ (1~4)",
+                                                  "count":  1
+                                              },
+                                              {
+                                                  "value_bp":  7000000000000,
+                                                  "name":  "7000,000,000,000 BP",
+                                                  "count":  1
+                                              },
+                                              {
+                                                  "value_bp":  1000000000,
+                                                  "name":  "ICON TM Coin",
+                                                  "count":  50
+                                              },
+                                              {
+                                                  "value_bp":  0,
+                                                  "name":  "Phiếu giảm giá thuế các mùa 40%",
+                                                  "count":  2
+                                              },
+                                              {
+                                                  "value_bp":  0,
+                                                  "name":  "Sổ huấn luyện cao cấp",
+                                                  "count":  1000
+                                              },
+                                              {
+                                                  "value_bp":  0,
+                                                  "name":  "Sổ huấn luyện trung cấp",
+                                                  "count":  1000
+                                              },
+                                              {
+                                                  "value_bp":  0,
+                                                  "name":  "Sổ huấn luyện sơ cấp",
+                                                  "count":  1000
+                                              },
+                                              {
+                                                  "value_bp":  100000000000,
+                                                  "name":  "Thẻ nâng cấp lại các mùa (+1~+8) (1000 -100B)",
+                                                  "count":  2
+                                              }
+                                          ],
+                                "tier":  "1000 FC"
+                            },
+                            {
+                                "efficiency":  1.449241824,
+                                "items":  [
+                                              {
+                                                  "value_bp":  13325358555555,
+                                                  "name":  "Gói 24EP, MDL, UT, JNM, DC, CC 103+ (6~8)",
+                                                  "count":  2
+                                              },
+                                              {
+                                                  "value_bp":  19294752089369,
+                                                  "name":  "Gói UT, MDL, DC, JNM, CC 104+ (+8)",
+                                                  "count":  1
+                                              },
+                                              {
+                                                  "value_bp":  12096886600041,
+                                                  "name":  "Gói MDL, DC, JNM 103+ (6~8)",
+                                                  "count":  1
+                                              },
+                                              {
+                                                  "value_bp":  12598223331565,
+                                                  "name":  "Gói TC, TT, TB, GR All (GK) (+8~+10)",
+                                                  "count":  1
+                                              },
+                                              {
+                                                  "value_bp":  13428109961105,
+                                                  "name":  "Gói DC, CC, HW OVR 107+ (+8)",
+                                                  "count":  1
+                                              },
+                                              {
+                                                  "value_bp":  10000000000000,
+                                                  "name":  "10000,000,000,000 BP",
+                                                  "count":  1
+                                              },
+                                              {
+                                                  "value_bp":  1000000000,
+                                                  "name":  "ICON TM Coin",
+                                                  "count":  50
+                                              },
+                                              {
+                                                  "value_bp":  0,
+                                                  "name":  "Phiếu giảm giá thuế các mùa 40%",
+                                                  "count":  3
+                                              },
+                                              {
+                                                  "value_bp":  0,
+                                                  "name":  "SC",
+                                                  "count":  1000
+                                              },
+                                              {
+                                                  "value_bp":  0,
+                                                  "name":  "TC",
+                                                  "count":  10000
+                                              },
+                                              {
+                                                  "value_bp":  0,
+                                                  "name":  "Gói HLV DF đặc biệt (9)",
+                                                  "count":  1
+                                              },
+                                              {
+                                                  "value_bp":  0,
+                                                  "name":  "Gói HLV MF đặc biệt (9)",
+                                                  "count":  1
+                                              },
+                                              {
+                                                  "value_bp":  0,
+                                                  "name":  "Gói HLV FW đặc biệt (9)",
+                                                  "count":  1
+                                              },
+                                              {
+                                                  "value_bp":  0,
+                                                  "name":  "Vé đổi CLB",
+                                                  "count":  3
+                                              },
+                                              {
+                                                  "value_bp":  0,
+                                                  "name":  "Thẻ đổi tên",
+                                                  "count":  3
+                                              }
+                                          ],
+                                "tier":  "2000 FC"
+                            }
+                        ],
+    "month_label":  "March 2026",
+    "month":  "2026-03",
+    "extracted_at":  "2026-06-10T12:01:48"
+}

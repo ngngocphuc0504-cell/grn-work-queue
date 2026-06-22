@@ -1,0 +1,4 @@
+interface:
+  display_name: "Clone Reference UI"
+  short_description: "Capture, interactively scan differences, brief, build, QA, and gap UI clones"
+  default_prompt: "Use $clone-reference-ui to capture a logged-in reference app, including toolbar icon menus/popovers; run an independent Difference Scanner Agent top-to-bottom and left-to-right until the page end; click every safe function/filter/button/tab/dropdown/menu/toolbar icon to capture opened states; brief its UI; rebuild it locally; QA every captured interaction state; and run gap analysis."

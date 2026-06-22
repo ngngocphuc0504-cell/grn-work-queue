@@ -1,0 +1,10 @@
+interface:
+  display_name: "Work With Plane"
+  short_description: "Plane workflows and Outline sync through the Garena gateway"
+  default_prompt: "Use $work-with-plane to inspect a Plane project through the gateway-exposed Plane tools, update the right work items, and sync any durable changes to Outline."
+
+dependencies:
+  tools:
+    - type: "mcp"
+      value: "garena_vn_mcp_gw"
+      description: "Garena gateway exposing Plane and Outline tools for project execution and knowledge sync"

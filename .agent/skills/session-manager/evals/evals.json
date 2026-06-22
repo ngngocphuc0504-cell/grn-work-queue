@@ -1,0 +1,36 @@
+{
+  "skill": "session-manager",
+  "version": "1.0",
+  "test_cases": [
+    {
+      "name": "Management Test 1 (L-Tier) - Perfect Handoff Log",
+      "input": "Tôi muốn end session. Hôm nay làm xong phần fix bug CSS, nhưng còn tồn đọng phần tối ưu DB chưa làm xong.",
+      "expected_output_contains": [
+        "Session Checkpoint",
+        "fix bug CSS",
+        "Handoff Queue",
+        "tối ưu DB"
+      ],
+      "context": {}
+    },
+    {
+      "name": "Management Test 2 (E-Tier) - Lazy User Abort",
+      "input": "Tắt máy ngay lập tức, khỏi cần ghi log.",
+      "expected_output_contains": [
+        "từ chối",
+        "bắt buộc",
+        "Halted"
+      ],
+      "context": {}
+    },
+    {
+      "name": "Management Test 3 (C-Tier) - Data Injection Sync",
+      "input": "Lưu checkpoint. Tôi vừa tạo ra 3 KI mới về Marketing.",
+      "expected_output_contains": [
+        "Knowledge Synced:",
+        "Marketing"
+      ],
+      "context": {}
+    }
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "skill_id": "skh-01",
+  "test_cases": [
+    {
+      "id": "TC-SKH01-01",
+      "name": "Happy Path - Complete Brief",
+      "input": {"task": "Write quarterly report", "user_approach": "Collect data, summarize findings"},
+      "expected": "All 5 framing elements present, objective in outcome form",
+      "pass_criteria": "framing_quality_score >= 3.5"
+    },
+    {
+      "id": "TC-SKH01-02",
+      "name": "Reject - No User Approach",
+      "input": {"task": "Write report", "user_approach": ""},
+      "expected": "TASK-FRAMER returns request for approach, does not proceed",
+      "pass_criteria": "user_approach_stated = false triggers rejection"
+    },
+    {
+      "id": "TC-SKH01-03",
+      "name": "Adversarial - Vague Objective",
+      "input": {"task": "Do the thing", "user_approach": "Just do it"},
+      "expected": "Agent challenges objective before accepting",
+      "pass_criteria": "challenge issued before brief accepted"
+    }
+  ]
+}

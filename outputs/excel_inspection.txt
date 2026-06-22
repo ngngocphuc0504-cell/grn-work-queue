@@ -1,0 +1,41 @@
+﻿Total sheets: 1
+Sheet: QA Checklist
+  Used Range: 20 rows x 8 columns
+  First 25 rows:
+    Row 1: Test Case ID | Category | Test Case Name / Description | Steps to Reproduce | Expected Outcome | Severity | Status | Notes/Feedback
+    Row 2: FN-01 | Pay Track Integration | Dong bo nap tien (Pay Track) | 1. Nap tien (FC+MC) in-game.
+2. Kiem tra diem VIP tich luy thang tren Web. | Diem tang dung bang so FC+MC da nap. Do tre dong bo < 5 phut. | Critical | Untested | 
+    Row 3: FN-02 | Play Track Integration | Dong bo da tran (Play Track) | 1. Da 1 tran trong game (Ranked/League).
+2. Kiem tra so tran tich luy cua Play Zone tren Web. | So tran tang len +1. Ho tro ca da gia lap (Manager) va da may. | Major | Untested | 
+    Row 4: FN-03 | Reward Deduction | Khau tru diem va Doi qua | 1. Click nut 'Nhan qua' tren cay tich luy.
+2. Kiem tra trang thai web va hom thu in-game. | Nut chuyen sang 'Da nhan', hom thu in-game nhan dung vat pham. | Critical | Untested | 
+    Row 5: FN-04 | Composite Score | Tinh Composite Score Play Top 5 | 1. Chay thu cong thuc Composite Score.
+2. Kiem tra phan hang 5 nguoi choi dung dau. | Score = (Tran * 0.6) + (Rank quy doi * 0.4). Loc dung Top 5. | Major | Untested | 
+    Row 6: FN-05 | Cycle Reset | Reset Chu ky nam va Legacy thap | 1. Gia lap thoi gian he thong sang ngay 01/01.
+2. Kiem tra trang thai thap va diem tich luy nam. | Thap SVIP/VVIP cu chuyen sang visual 'Legacy' (mo + badge nam cu). Diem nam reset ve 0. | Major | Untested | 
+    Row 7: UI-01 | Performance | Tai trang Isometric Map (PC/Mobile) | 1. Truy cap web Complex Map bang PC va Mobile.
+2. Äo thoi gian render do hoa. | Ban do tai < 3s tren mang tieu chuan. Khong bi giat/lag khung hinh. | Major | Untested | 
+    Row 8: UI-02 | Responsive Layout | Progressive Reveal hien thi moc qua | 1. Cuon ngang/doc cay qua tren Mobile.
+2. Dem so luong moc hien thi. | Chi hien thi toi da 3 moc (Moc hien tai, moc +1, moc +2). Cac moc khac an. | Minor | Untested | 
+    Row 9: UI-03 | Central Features | Hien thi thap SVIP/VVIP va Visit mode | 1. Dat moc 1M/2M nap nam.
+2. Su dung che do ghe tham (Visit) Complex khac. | Thap SVIP/VVIP xuat hien noi bat. Xem dung Complex cua nguoi khac khi click Visit. | Major | Untested | 
+    Row 10: UI-04 | Leaderboard | Sanh Danh Vong (Hall of Fame) Top 100 | 1. Mo bang xep hang Top 100 nap va play nam.
+2. Kiem tra can le, font chu. | Hien thi chuan, khong loi font, cap nhat real-time du lieu. | Minor | Untested | 
+    Row 11: UI-05 | User Onboarding | Guided Tour cho nguoi choi moi | 1. Äang nhap tai khoan moi lan dau.
+2. Äi qua 3-4 buoc huong dan. | Xuat hien Guided Tour giai thich ro rang cac phan khu Complex. | Minor | Untested | 
+    Row 12: UI-06 | Crossover Visual | Spectator Mode (Hien thi dong thoi) | 1. Mo man hinh Complex ca nhan.
+2. Kiem tra bo cuc Pay Zone va Play Zone. | Hien thi song song hai khu vuc ro rang, can doi. | Minor | Untested | 
+    Row 13: WF-01 | UI/UX Layout | Vi tri hien thi SVIP/VVIP Tower | 1. Truy cap ban do Isometric Map cua Complex.
+2. Quan sat vi tri hien thi cua toa thap doi SVIP & VVIP Tower. | Toa thap hien thi o goc duoi ben phai (bottom-right) theo dung spec thiet ke (khong nam o cac goc phia tren). | Major | Untested | Loi layout tren Wireframe hien tai (ve o top corners).
+    Row 14: WF-02 | Boundary Value Testing | Ten moc hien thi tren Pay Tree | 1. Truy cap giao dien Pay Tree (Cay nap tich luy).
+2. Quan sat thong so hien thi tai cac moc qua. | Hien thi chinh xac so moc nap tich luy thuc te bang so (FC/MC), khong chi hien thi ten Tier chung chung. | Major | Untested | Loi Wireframe hien tai (dang hien thi ten Tier).
+    Row 15: WF-03 | System Integration Testing | Hien thi diem tich luy hien tai (Moc 3,240) | 1. Dang nhap tai khoan VIP co diem tich luy (vi du: 3,240 diem).
+2. Quan sat vi tri hien thi con so nay tren UI. | So diem hien thi ro rang la 'So diem hien tai cua nguoi choi' o khu vuc thong tin ca nhan, khong hien thi de hoac gay nham lan voi moc qua (milestone). | Major | Untested | Loi Wireframe hien tai (hien thi de gay hieu lam la moc qua).
+    Row 16: WF-04 | Boundary Value Testing | Moc dau cua Pay Tree | 1. Truy cap giao dien Pay Tree.
+2. Kiem tra gia tri cua moc tich luy dau tien. | Moc dau tien hien thi gia tri la 10,000 FC theo dung Spec chuan (khong phai 1,000 FC). | Critical | Untested | Loi Wireframe hien tai (dang ve 1,000 FC).
+    Row 17: WF-05 | UI/UX Layout | Hieu ung Progressive Reveal moc qua +2 | 1. Kiem tra cay qua (Pay Tree/Play Tree) tren giao dien.
+2. Quan sat moc qua o vi tri cach moc hien tai +2 moc. | Moc qua +2 hien thi hieu ung lam mo (faded) de goi y qua tiep theo va kich thich nguoi choi, khong hien thi ro rang hoac an hoan toan. | Minor | Untested | Loi Wireframe hien tai (thieu hieu ung faded).
+    Row 18: WF-06 | UI/UX Layout | Thiet ke Badge thu hang Top 50 / Top 5 | 1. Dang nhap bang tai khoan dat thu hang dac biet (Top 50 nap hoac Top 5 choi).
+2. Kiem tra hien thi Badge vinh danh tren ho so/Complex. | Hien thi dung thiet ke mock-state dac quyen danh rieng cho Top 50 / Top 5. | Major | Untested | Loi Wireframe hien tai (chua co thiet ke mock-state).
+    Row 19: WF-07 | UI/UX Layout | Lap chi so % tren UI | 1. Ra soat toan bo cac chi so hien thi dang % tren giao dien chinh. | Khong xay ra tinh trang trung lap hien thi chi so % o 2 noi co y nghia khac nhau (vi du: con so 82% hien thi cho 2 tien trinh khac nhau gay hieu lam). | Minor | Untested | Loi Wireframe hien tai (lap chi so 82%).
+    Row 20: WF-08 | Scope Boundaries | Scope nut Lich su Complex | 1. Kiem tra su xuat hien va hoat dong cua nut 'Lich su Complex'. | Chot ro rang scope cua nut nay. Neu lui sang Phase 3, nut nay phai duoc an di o ban launch Phase 1 (hoac hien thi trang thai Coming Soon hop ly). | Minor | Untested | Loi Wireframe hien tai (chua chot scope phat trien).

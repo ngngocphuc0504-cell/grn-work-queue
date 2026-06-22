@@ -1,0 +1,7 @@
+interface:
+  display_name: "Diagram Mermaid Outline"
+  short_description: "Readable Mermaid diagrams for Outline pages"
+  default_prompt: "Use $diagram-mermaid-outline to improve an Outline page with readable Mermaid diagrams."
+
+policy:
+  allow_implicit_invocation: true

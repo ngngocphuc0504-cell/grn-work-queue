@@ -1,0 +1,22 @@
+{
+  "skill": "fco-event-analytics",
+  "version": "1.0",
+  "test_cases": [
+    {
+      "id": "TC-01",
+      "type": "happy_path",
+      "description": "Standard Garena event CSV with all required columns is passed, generating a valid HTML dashboard and structured report.",
+      "input": "CSV data containing Date, Play Daily Active/Churn/New, FC/MC Spent Active/Churn/New, Register, Login.",
+      "expected_output": "Generated HTML dashboard in the outputs folder and a structured analytical report covering all 4 frameworks.",
+      "pass_criteria": "The file outputs/fco-event-analytics/dashboard.html is created successfully, is not empty, and the output includes clear recommendations."
+    },
+    {
+      "id": "TC-02",
+      "type": "violation",
+      "description": "Input data is missing critical column headers like Date or spent segments, triggering validation rejection.",
+      "input": "CSV text missing the Date column.",
+      "expected_output": "REJECT: Validation error indicating missing required Date column.",
+      "pass_criteria": "The agent identifies the missing Date column, rejects processing, and asks the user to provide the complete dataset."
+    }
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "skill": "sga-02",
+  "version": "1.0",
+  "test_cases": [
+    {
+      "id": "TC-01",
+      "type": "happy_path",
+      "description": "User submits artifact with self-assessment, review produces evidence-cited feedback",
+      "input": "User submits analytical report with self-score 3/5. Report contains: revenue claim with ERP source, 2 assumptions stated, recommendation with owner.",
+      "expected_output": "Review report with D1 score 3/5 citing ERP source passage, D2 score with logic assessment, D3 score with action clarity check. Self-assessment delta calculated. 1 priority action identified.",
+      "pass_criteria": "Every score cites specific artifact passage (not generic). Self-assessment delta present. Exactly 1 top priority action. No examiner language used."
+    },
+    {
+      "id": "TC-02",
+      "type": "violation",
+      "description": "User submits artifact WITHOUT self-assessment",
+      "input": "User says: 'Review giúp tôi cái này' and attaches artifact, without providing self-score.",
+      "expected_output": "HALT. Response: 'Bạn tự chấm artifact này bao nhiêu điểm (1-5) và tại sao?' No review delivered until self-assessment provided.",
+      "pass_criteria": "No review report generated. Self-assessment prompt delivered. No scores calculated."
+    }
+  ]
+}

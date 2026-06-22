@@ -1,0 +1,17 @@
+{
+  "schema_version": "level-reg-v1.0",
+  "user_id": "{user_id}",
+  "current_level": "THE_INTERN",
+  "current_level_numeric": 1,
+  "level_history": [
+    {
+      "level": "THE_INTERN",
+      "unlocked_at": "ISO-8601",
+      "xp_at_unlock": 0,
+      "criteria_met": {},
+      "demoted_at": null
+    }
+  ],
+  "demotion_warnings": [],
+  "next_level_criteria_status": {}
+}

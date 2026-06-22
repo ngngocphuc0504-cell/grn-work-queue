@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FCO Event Analytics</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #f5f5f0;
+            --surface: #ffffff;
+            --surface2: #fafaf7;
+            --border: #e8e8e3;
+            --text: #1a1a1a;
+            --text-secondary: #6b6b6b;
+            --text-muted: #9a9a9a;
+            --accent-green: #2d9d78;
+            --accent-green-bg: #edf7f3;
+            --accent-blue: #3b82f6;
+            --accent-blue-bg: #eff6ff;
+            --accent-amber: #d97706;
+            --accent-amber-bg: #fef9ee;
+            --font: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { background: var(--bg); color: var(--text); font-family: var(--font); font-size: 14px; }
+
+        .header {
+            background: var(--surface); border-bottom: 1px solid var(--border);
+            padding: 0 32px; display: flex; flex-direction: column;
+        }
+        .header-top {
+            display: flex; align-items: center; justify-content: space-between;
+            padding: 16px 0 0;
+        }
+        .header-left { display: flex; align-items: center; gap: 16px; }
+        .back-link {
+            font-size: 12px; color: var(--text-muted); text-decoration: none;
+            display: flex; align-items: center; gap: 6px; transition: color 0.15s;
+        }
+        .back-link:hover { color: var(--text); }
+        .header-title { font-size: 18px; font-weight: 800; letter-spacing: -0.3px; }
+        .header-badge {
+            font-size: 10px; font-weight: 600; padding: 4px 12px; border-radius: 20px;
+            border: 1px solid var(--border); color: var(--text-secondary);
+        }
+
+        /* Tab Bar */
+        .tab-bar {
+            display: flex; align-items: flex-end; gap: 2px; padding-top: 16px;
+            overflow-x: auto; scrollbar-width: thin;
+        }
+        .tab {
+            display: flex; align-items: center; gap: 8px;
+            padding: 10px 16px; border-radius: 8px 8px 0 0;
+            background: var(--surface2); border: 1px solid var(--border);
+            border-bottom: none; cursor: pointer; font-size: 13px; font-weight: 500;
+            color: var(--text-secondary); transition: all 0.15s;
+            white-space: nowrap; position: relative; bottom: -1px;
+        }
+        .tab:hover { background: var(--surface); color: var(--text); }
+        .tab.active {
+            background: var(--bg); color: var(--text); font-weight: 700;
+            border-color: var(--border); z-index: 2;
+        }
+        .tab-type-badge {
+            font-size: 9px; font-weight: 700; padding: 2px 7px; border-radius: 10px;
+            text-transform: uppercase; letter-spacing: 0.3px;
+        }
+        .tab-type-badge.single { background: var(--accent-green-bg); color: var(--accent-green); }
+        .tab-type-badge.comparison { background: var(--accent-blue-bg); color: var(--accent-blue); }
+
+        .tab-name {
+            border: none; background: none; font-family: var(--font); font-size: 13px;
+            font-weight: inherit; color: inherit; padding: 0; outline: none;
+            min-width: 60px; cursor: pointer;
+        }
+        .tab-name:focus { cursor: text; border-bottom: 1px dashed var(--text-muted); }
+        .tab-name::selection { background: var(--accent-blue-bg); }
+
+        .tab-info {
+            display: flex; align-items: center; gap: 4px;
+            font-size: 12px; color: var(--text-muted); padding: 4px 16px 12px;
+        }
+
+        /* Iframe container */
+        .content {
+            width: 100%; height: calc(100vh - 120px); border: none;
+        }
+        iframe {
+            width: 100%; height: 100%; border: none;
+        }
+
+        /* Help hint */
+        .hint {
+            text-align: center; padding: 60px 24px; color: var(--text-muted);
+        }
+        .hint-icon { font-size: 40px; margin-bottom: 12px; }
+        .hint-title { font-size: 16px; font-weight: 700; color: var(--text-secondary); margin-bottom: 8px; }
+        .hint-text { font-size: 13px; line-height: 1.6; max-width: 440px; margin: 0 auto; }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="header-top">
+            <div class="header-left">
+                <a id="back-link" href="/" class="back-link">← Portal</a>
+                <span class="header-title">Event Analytics</span>
+            </div>
+            <span class="header-badge">Web Event Intelligence</span>
+        </div>
+        <div class="tab-bar" id="tab-bar"></div>
+    </div>
+
+    <div class="content" id="content-area">
+        <div class="hint">
+            <div class="hint-icon">📊</div>
+            <div class="hint-title">Select a dashboard tab above</div>
+            <div class="hint-text">Each tab represents an event analysis. Double-click a tab name to rename it. Upload new CSV data to create additional analyses.</div>
+        </div>
+    </div>
+
+    <script>
+    // Load manifest
+    const MANIFEST = {{MANIFEST_JSON}};
+    let activeTabId = MANIFEST.active_tab || (MANIFEST.tabs[0] && MANIFEST.tabs[0].id);
+
+    function buildTabs() {
+        const bar = document.getElementById('tab-bar');
+        bar.innerHTML = '';
+
+        MANIFEST.tabs.forEach(tab => {
+            const el = document.createElement('div');
+            el.className = 'tab' + (tab.id === activeTabId ? ' active' : '');
+            el.dataset.id = tab.id;
+
+            const badge = document.createElement('span');
+            badge.className = 'tab-type-badge ' + tab.type;
+            badge.textContent = tab.type === 'single' ? '📊 Single' : '🔄 Compare';
+
+            const nameInput = document.createElement('input');
+            nameInput.type = 'text';
+            nameInput.className = 'tab-name';
+            nameInput.value = tab.name;
+            nameInput.readOnly = true;
+            nameInput.title = 'Double-click to rename';
+
+            // Click tab to switch
+            el.addEventListener('click', (e) => {
+                if (e.target === nameInput && !nameInput.readOnly) return;
+                activeTabId = tab.id;
+                buildTabs();
+                loadTab(tab);
+            });
+
+            // Double-click name to edit
+            nameInput.addEventListener('dblclick', (e) => {
+                e.stopPropagation();
+                nameInput.readOnly = false;
+                nameInput.focus();
+                nameInput.select();
+            });
+
+            // Save name on blur/enter
+            nameInput.addEventListener('blur', () => {
+                nameInput.readOnly = true;
+                tab.name = nameInput.value.trim() || tab.name;
+            });
+            nameInput.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter') { nameInput.blur(); }
+                if (e.key === 'Escape') { nameInput.value = tab.name; nameInput.blur(); }
+            });
+
+            el.appendChild(badge);
+            el.appendChild(nameInput);
+            bar.appendChild(el);
+        });
+    }
+
+    function loadTab(tab) {
+        const content = document.getElementById('content-area');
+        const fileMap = {
+            'dashboard.html': 'dashboard.html',
+            'comparison_dashboard.html': 'comparison_dashboard.html'
+        };
+        const src = fileMap[tab.file] || tab.file;
+        content.innerHTML = `<iframe src="${src}" title="${tab.name}"></iframe>`;
+    }
+
+    // Initial render
+    buildTabs();
+    const initialTab = MANIFEST.tabs.find(t => t.id === activeTabId);
+    if (initialTab) loadTab(initialTab);
+
+    // Adjust links dynamically when running offline via file:// protocol
+    if (window.location.protocol === 'file:') {
+        const backLink = document.getElementById('back-link');
+        const isOutputs = window.location.pathname.includes('/outputs/');
+        if (backLink) {
+            backLink.href = isOutputs ? '../fco-portal/index.html' : '../index.html';
+        }
+    }
+    </script>
+</body>
+</html>

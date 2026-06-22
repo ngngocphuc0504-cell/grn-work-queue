@@ -1,0 +1,7 @@
+interface:
+  display_name: "Manage Skills"
+  short_description: "Setup, sync, package, and publish skills"
+  default_prompt: "Use $manage-skills to set up a machine, sync a skill to Codex or Claude, package a Claude upload zip, or publish a skill from this repository."
+
+policy:
+  allow_implicit_invocation: true

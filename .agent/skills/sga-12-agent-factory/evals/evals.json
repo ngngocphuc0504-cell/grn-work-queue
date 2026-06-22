@@ -1,0 +1,38 @@
+{
+  "skill": "mas5-agent-factory",
+  "version": "5.0.0",
+  "test_cases": [
+    {
+      "id": "TC-01",
+      "type": "happy_path",
+      "description": "Valid YAML config with all required fields produces a complete 4-file Agent folder",
+      "input": "YAML file containing agent_config with meta (id=TEST-W01-S01, name=Test Analyst, tier=T4, parent=TEST-W01), identity (mission >= 20 words, allowed_scope >= 2, forbidden_scope >= 1), soul (vibe >= 10 words, rules >= 2, motto <= 15 words), operating_rules (steps >= 2, io_contract with input/output/handoff, mandatory_rag, epistemic_lines)",
+      "expected_output": "Directory TEST-W01-S01/ created at dest path containing: INDEX.md (with Meta table showing Agent ID = TEST-W01-S01), IDENTITY.md (with YAML frontmatter), SOUL.md (with Motto block), RULES.md (with I/O Contract section)",
+      "pass_criteria": "All 4 files exist AND each file > 0 bytes AND INDEX.md contains string 'TEST-W01-S01' AND IDENTITY.md starts with '---' AND RULES.md contains '## I/O Contract'"
+    },
+    {
+      "id": "TC-02",
+      "type": "violation",
+      "description": "YAML missing required block 'soul' should be rejected before build",
+      "input": "YAML file containing agent_config with meta, identity, operating_rules but NO soul block",
+      "expected_output": "REJECT with error message: 'Missing block: soul'",
+      "pass_criteria": "build_agent.py returns False or raises ValidationError AND no files are written to disk"
+    },
+    {
+      "id": "TC-03",
+      "type": "violation",
+      "description": "YAML with placeholder mission (TBD) should be rejected",
+      "input": "YAML with identity.mission = 'TBD'",
+      "expected_output": "REJECT with error message citing CQ-02: 'Mission contains placeholder'",
+      "pass_criteria": "Validation rejects before build AND no Agent folder is created"
+    },
+    {
+      "id": "TC-04",
+      "type": "happy_path",
+      "description": "Minimal valid config (no optional fields) still produces valid Agent",
+      "input": "YAML with all required fields only — no mandatory_rag, no epistemic_lines",
+      "expected_output": "Directory created with 4 files. RULES.md has empty KB Connectivity and Epistemic Coupling sections (graceful degradation)",
+      "pass_criteria": "All 4 files exist AND RULES.md contains '## KB Connectivity' with no crash AND RULES.md contains '## Epistemic Coupling'"
+    }
+  ]
+}

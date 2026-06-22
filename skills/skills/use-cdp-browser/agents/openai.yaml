@@ -1,0 +1,4 @@
+interface:
+  display_name: "Use CDP Browser"
+  short_description: "Control visible Chrome through CDP"
+  default_prompt: "Use $use-cdp-browser to open a visible Chrome session with remote debugging and verify safe CDP interaction."

@@ -1,0 +1,23 @@
+{
+  "schema_version": "xp-ledger-v1.0",
+  "user_id": "{user_id}",
+  "created_at": "ISO-8601",
+  "last_updated": "ISO-8601",
+  "totals": {
+    "xp_running_total": 0,
+    "xp_lifetime_earned": 0,
+    "xp_lifetime_penalties": 0,
+    "sessions_total": 0
+  },
+  "current_state": {
+    "level": "THE_INTERN",
+    "level_numeric": 1,
+    "level_unlocked_at": "ISO-8601",
+    "next_level_xp_required": 500,
+    "xp_to_next_level": 500,
+    "pct_to_next_level": 0.0
+  },
+  "session_history": [],
+  "weekly_history": [],
+  "monthly_history": []
+}

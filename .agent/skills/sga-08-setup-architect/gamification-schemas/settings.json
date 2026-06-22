@@ -1,0 +1,117 @@
+{
+  "schema_version": "settings-v1.0",
+  "user_id": "REPLACE_ME",
+  "created_at": "REPLACE_ME",
+  "last_modified": "REPLACE_ME",
+  "last_modified_by": "SYSTEM",
+
+  "identity": {
+    "preferred_name": "",
+    "pronouns": null,
+    "preferred_address": "Sir",
+    "primary_language": "vi",
+    "secondary_language": null,
+    "timezone": "auto-detect"
+  },
+
+  "twin_behavior": {
+    "challenge_intensity": "medium",
+    "verbosity": "standard",
+    "proactivity": "balanced",
+    "humor_enabled": true,
+    "encouragement_enabled": true,
+    "devil_advocate_mode": false,
+    "assumption_challenge_frequency": "always",
+    "self_assessment_prompt_style": "mandatory"
+  },
+
+  "co_work_protocol": {
+    "human_first_strictness": "strict",
+    "blind_trust_threshold_tokens": 500,
+    "blind_trust_warning_style": "end_of_session",
+    "delegation_brief_requirement": "for_complex_tasks",
+    "reflection_prompt_timing": "end_of_session",
+    "reflection_minimum_sentences": 3,
+    "checkin_reminder_enabled": true,
+    "checkin_reminder_time": "08:00"
+  },
+
+  "rhythm": {
+    "session_target_minutes": 60,
+    "daily_capture_target": 3,
+    "weekly_advisory_day": "monday",
+    "weekly_advisory_time": "08:00",
+    "inactivity_alert_days": 3,
+    "decay_grace_days": 2,
+    "monthly_snapshot_day": 1,
+    "quarterly_frt_review_reminder": true
+  },
+
+  "gamification": {
+    "gamification_enabled": true,
+    "xp_display": "end_of_session_only",
+    "level_notifications": "immediate",
+    "streak_display": true,
+    "penalty_visibility": "summary_only",
+    "dashboard_style": "compact",
+    "pairing_name_in_greeting": true
+  },
+
+  "captures": {
+    "knowledge_capture_enabled": true,
+    "networking_capture_enabled": true,
+    "learning_capture_enabled": true,
+    "morning_checkin_enabled": true,
+    "evening_capture_enabled": false,
+    "auto_tag_captures": true,
+    "capture_min_length_chars": 50
+  },
+
+  "notifications": {
+    "inactivity_alert_enabled": true,
+    "blind_trust_alert_enabled": true,
+    "level_up_alert_enabled": true,
+    "ki_staleness_alert_enabled": true,
+    "pattern_detection_alert_enabled": true,
+    "orphan_node_alert_enabled": true,
+    "alert_channel": "inline",
+    "digest_day": "monday",
+    "suppress_alerts_during_focus": false
+  },
+
+  "privacy": {
+    "log_task_content": true,
+    "log_reflection_content": true,
+    "log_capture_content": true,
+    "log_networking_content": false,
+    "ki_store_encryption": false,
+    "data_retention_days": 365,
+    "allow_aggregate_analytics": false,
+    "session_log_verbosity": "summary"
+  },
+
+  "display": {
+    "dashboard_language_style": "default",
+    "date_format": "YYYY-MM-DD",
+    "time_format": "24h",
+    "metric_format": "absolute",
+    "progress_bar_style": "filled",
+    "emoji_in_output": false,
+    "markdown_rendering": true
+  },
+
+  "advanced": {
+    "smi_calculation_window_tasks": 10,
+    "smi_recency_weight": 1.5,
+    "ki_novelty_threshold_pct": 80,
+    "ki_distillation_auto": true,
+    "background_consolidation_delay_minutes": 30,
+    "session_xp_cap": 500,
+    "weekly_xp_cap": 2000,
+    "drift_detection_enabled": true,
+    "drift_variance_threshold_pct": 10,
+    "pattern_detection_min_occurrences": 2,
+    "auto_frt_gap_map_update": true,
+    "debug_mode": false
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "schema_id": "framed-brief-schema",
+  "version": "1.0",
+  "required_fields": {
+    "project_id": "string",
+    "objective": "string — outcome form not activity",
+    "stakeholders": "array with name+role+dod",
+    "assumptions": "array min 3 items with risk_level",
+    "scope": "object with in_scope and out_of_scope arrays",
+    "definition_of_done": "array min 2 measurable criteria",
+    "user_approach_stated": "boolean must be true",
+    "framing_quality_score": "float 1.0-5.0"
+  }
+}

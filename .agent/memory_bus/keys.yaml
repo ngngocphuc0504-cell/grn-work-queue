@@ -1,0 +1,37 @@
+# Memory Bus State Keys — ws-career-twin-v1
+
+domains:
+  coordinator:
+    - key: "current_session_id"
+      type: "string"
+      writer: "CTO"
+    - key: "active_task"
+      type: "string"
+      writer: "CTO"
+    - key: "co_work_mode"
+      type: "enum"
+      writer: "CTO"
+
+  twin_management:
+    - key: "twin_layer_active"
+      type: "enum"
+      writer: "TC-TWIN"
+    - key: "skill_maturity_index"
+      type: "object"
+      writer: "SC-SKILL"
+
+  task_execution:
+    - key: "current_task_dod"
+      type: "string"
+      writer: "TASK-FRAMER"
+    - key: "reflection_pending"
+      type: "boolean"
+      writer: "REFLECTION-HARVESTER"
+
+  training:
+    - key: "onboarding_complete"
+      type: "boolean"
+      writer: "CTO"
+    - key: "labs_completed"
+      type: "array"
+      writer: "CTO"

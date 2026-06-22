@@ -1,0 +1,22 @@
+{
+  "skill": "sga-03",
+  "version": "1.0",
+  "test_cases": [
+    {
+      "id": "TC-01",
+      "type": "happy_path",
+      "description": "Valid delegation request in DELEGATED mode with complete brief",
+      "input": "User in DELEGATED mode submits: 'WHAT: Pivot revenue data from Q1-revenue.xlsx by Product×Quarter. WHY: CFO needs formatted table. CONSTRAINTS: Exact format as template. DoD: Pivot matches ERP totals ±1%.'",
+      "expected_output": "All 4 elements PASS. 3/3 boundedness filters PASS (specific input, deterministic output, no judgment). Verdict: DELEGATE.",
+      "pass_criteria": "Gate report shows all elements ✅. Task permitted for execution. SKH-05 signal recorded."
+    },
+    {
+      "id": "TC-02",
+      "type": "violation",
+      "description": "Delegation attempt in OBSERVE mode",
+      "input": "User in OBSERVE mode says: 'Làm giúp tôi báo cáo này'",
+      "expected_output": "REJECT immediately. Response explains mode gate: 'Mode OBSERVE chỉ cho phép twin hướng dẫn. Nâng lên DELEGATED để delegate.'",
+      "pass_criteria": "No execution permitted. Mode gate rejection logged. Clear mode explanation provided."
+    }
+  ]
+}

@@ -1,0 +1,372 @@
+﻿=== slide1.xml ===
+FOOTBALL COMPLEX
+Facility Design
+References
+VIP Revamp  ·  Design Handoff v2.0  ·  FC Online
+Each facility includes: real-world reference  +  isometric game-asset illustration  +  design notes
+
+Home Stadium
+
+Training Ground
+
+Youth Academy
+
+Medical Center
+
+Club Megastore
+
+Accommodation
+
+=== slide10.xml ===
+
+Training Ground
+
+Lv 1 — Bronze
+
+
+ref
+Một sân cỏ duy nhất, gôn cơ bản
+Ít công trình phụ trợ  (1 nhà kho nhỏ &amp; 1 bãi đỗ xe)
+Tối thiểu — chỉ đủ để thi đấu
+
+
+Lv 2 — Silver
+
+
+ref
+2 sân + phòng thay đồ nhỏ
+Cột tiêu cơ bản, +1 nhà nhỏ(kho thiết bị, văn phòng...) , bãi đỗ xe rộng hơn
+Lối đi lát gạch giữa các sân
+
+=== slide11.xml ===
+
+Training Ground
+
+Lv 3 — Gold
+
+Khu nhiều sân (vẫn 2 sân) với cột đèn pha
+Phòng gym nhỏ trong nhà + kho bãi
+Hàng rào/tường bao quanh các sân
+
+
+Lv 4 — Platinum
+
+Các tòa nhà xung quanh hoàn chỉnh hơn
+Phòng phân tích video + khu vực chiến thuật
+Cơ sở vật chất được mở rộng đáng kể
+
+
+Lv 5 — Diamond
+
+&quot;Pitch Matrix&quot; campus: sân trong nhà + ngoài trời
+Hệ thống bảo dưỡng sân tự động
+Khu hồi phục kết nối tòa nhà chính
+
+=== slide12.xml ===
+FOUNDATION  ·  
+T3 - 
+Youth Academy
+Nurturing the next generation — from modest pitch to full elite campus
+
+
+=== slide13.xml ===
+
+Youth Academy
+
+Lv 1 — Bronze
+
+ref
+Một sân nhỏ, cột tiêu cơ bản
+Chỉ có kho thiết bị nhỏ
+Màu nhận diện: đỏ &amp; trắng
+
+
+Lv 2 — Silver
+
+
+ref
+2 sân + khối phòng thay đồ/huấn luyện
+Mái ngói đỏ trên tòa nhà
+Bảng chiến thuật cơ bản bên trong
+
+=== slide14.xml ===
+
+Youth Academy
+
+Lv 3 — Gold
+
+
+ref
+(vẫn 2 sân) Tòa nhà học viện lớn hơn
+Nhà thi đấu trong nhà + phòng phân tích video
+Mặt tiền kính + mái đỏ
+
+
+Lv 5 — Diamond
+
+
+ref
+Tổ hợp đẳng cấp: khu thi đấu trong nhà có thương hiệu
+Nhiều sân ngoài trời + khu trị liệu
+Quy mô học viện Crystal Palace
+Lv 4 — Platinum
++3 sân bổ sung, thêm facility bên cạnh (chưa tìm/
+nghĩ 
+ 
+được 
+ref)
+
+=== slide15.xml ===
+T4 - 
+Medical Center
+From basic first aid to elite recovery science — keeps players in peak condition
+
+
+=== slide16.xml ===
+
+Medical Center
+
+Lv 1 — Bronze
+
+
+ref
+Tòa phòng khám nhỏ 2 tầng
+Màu nhận diện: xanh &amp; trắng
+Chữ thập đỏ trên mái — điểm nhận dạng
+
+
+Lv 2 — Silver
+
+
+ref
+Phòng khám rộng hơn + mái che lối vào
+Hàng cửa sổ mặt tiền
+Khối văn phòng/phụ trợ nhỏ kèm theo
+
+=== slide17.xml ===
+
+Medical Center
+
+Lv 3 — Gold
+
+Trung tâm điều trị đầy đủ + bể thủy trị liệu
+Tường kính mặt tiền lối vào
+Lưới cửa sổ 3 tầng nhìn thấy rõ
+
+
+Lv 4 — Platinum
+
+Thiết bị liệu pháp lạnh trên mái
+Mặt tiền tường kính toàn bộ
+Khu hồi phục + bể bơi phía sau
+
+
+Lv 5 — Diamond
+
+Phong cách nghỉ dưỡng phục hồi &quot;Sleep Hotel&quot;
+Hồ bơi vô cực + khu spa
+Thiết bị trên mái + ô trời
+
+=== slide18.xml ===
+
+T5 - Club Museum
+Tòa 5 (Club Museum) và Tòa 7 (Performance Tech Centre) phát triển dạng building văn phòng/thương mại tiêu chuẩn — visual direction theo club branding, không cần references kiến trúc đặc thù, nên chưa tìm được references theo progression cụ thể.
+
+
+=== slide19.xml ===
+
+Club Museum
+References
+
+=== slide2.xml ===
+T
+imeline
+
+=== slide20.xml ===
+T6 - 
+Club Megastore
+Club identity made physical — from corner kiosk to landmark retail
+
+
+=== slide21.xml ===
+
+Club Megastore
+
+Lv 1 — Bronze
+
+
+ref
+Chỉ là quầy/ki-ốt nhỏ
+Chương trình ngày thi đấu + hàng hóa cơ bản
+Màu nhận diện: xanh navy &amp; kính
+
+
+Lv 2 — Silver
+
+
+ref
+Cửa hàng độc lập (chỉ 1 tòa nhà duy nhất)
+Mặt tiền thương hiệu + bảng hiệu
+Tủ trưng bày mặt tiền
+
+=== slide22.xml ===
+
+Club Megastore
+
+Lv 3 — Gold
+
+Tòa bán lẻ tầm trung (ref: Carolina Core FC) &lt;+1-2 tòa phụ&gt;
+Mặt tiền kính + dải đèn trời
+Bảng hiệu góc thương hiệu
+
+
+Lv 4 — Platinum
+
+Tòa nhà đa tầng trải nghiệm
+Dải phân tầng trên mặt tiền
+Tháp thương hiệu góc — điểm nhận dạng
+
+
+Lv 5 — Diamond
+
+Flagship lớn: mặt tiền kính 3 phần
+Lưới đèn trời toàn bộ mái
+Tháp thương hiệu bên góc tòa
+
+(không tìm được references tốt hơn, nhưng cơ bản là có thể develop nó ra theo chiều ngang)
+
+=== slide23.xml ===
+
+EXPANSION  ·  T9 (proposed)
+T7 - Performance tech centre
+Tòa 5 (Club Museum) và Tòa 7 (Performance Tech Centre) phát triển dạng building văn phòng/thương mại tiêu chuẩn — visual direction theo club branding, không cần references kiến trúc đặc thù. 
+
+
+=== slide24.xml ===
+T8 - 
+Accommodation Center
+Player welfare at the heart of the complex — rest, recovery, belonging
+
+
+=== slide25.xml ===
+
+Accommodation Center
+
+Lv 1 — Bronze
+
+
+ref
+Khối ký túc xá module nhỏ gọn
+Màu nhận diện: vàng/hổ phách ấm
+Hàng cửa sổ đơn giản + cửa ra vào cơ bản
+
+
+Lv 2 — Silver
+
+
+ref
+Khối nhà ở 2 tầng
+Phòng riêng + không gian dùng chung
+Dải ngang phân tầng
+
+=== slide26.xml ===
+
+Accommodation Center
+
+Lv 3 — Gold
+
+Tòa khách sạn — 3+ tầng
+Mái che kính lối vào tầng trệt
+Lưới cửa sổ toàn bộ mặt tiền
+
+
+Lv 4 — Platinum
+
+Khách sạn boutique — cao hơn, thanh lịch
+Vườn/sân thượng nhìn thấy từ bên
+Đường kẻ tầng + lưới cửa sổ
+
+
+Lv 5 — Diamond
+
+Chưa tìm được ref. Idea có thể là nâng từ plat lên 1 vài các quà xung quanh
+?
+
+=== slide27.xml ===
+T13 - Hall of Fame
+Player welfare at the heart of the complex — rest, recovery, belonging
+
+
+=== slide28.xml ===
+
+Hall of Fame (ideas)
+
+=== slide3.xml ===
+T1 - 
+Home Stadium
+The centerpiece of the complex — scales from bare pitch to iconic mega-arena
+
+
+=== slide4.xml ===
+
+HOME STADIUM
+
+Lv 1 — Bronze
+Bronze
+
+ILLUSTRATION
+
+Chỉ là sân cỏ trống trải, không có công trình gì.
+
+=== slide5.xml ===
+
+HOME STADIUM
+
+Lv 2 — Silver
+Silver
+
+ILLUSTRATION
+
+Có khu khán đài 1-2 tầng bao quanh
+
+=== slide6.xml ===
+HOME STADIUM
+
+Lv 3 — Gold
+Gold
+
+
+Khán đài bao kín 4 mặt. Thêm cờ, màu sắc sân nhà.
+
+=== slide7.xml ===
+
+Game ref
+
+Real life - Turf Moor (Burnley)
+
+HOME STADIUM
+
+Lv 4 — Platinum
+Platinum
+
+
+
+
+=== slide8.xml ===
+HOME STADIUM
+
+Lv 5 — Diamond
+Diamond / Top
+
+Real life ref - Allianz Arena
+Al Alhy stadium (constructing) ref
+Santiago Bernabeu (1)
+Santiago Bernabeu (2)
+King Fhad (planning)
+
+=== slide9.xml ===
+T2 - 
+Training Ground
+Where excellence begins — from a single pitch to a full multi-surface campus
+
+

@@ -1,0 +1,119 @@
+workspace_id: ws-career-twin-v1
+display_name: Career Twin Workspace
+version: "1.0"
+platform: Google Antigravity
+architecture: Standard Swarm (Option B)
+built_by: spec-factory-consultant
+build_date: "2026-04-07"
+
+twins:
+  - id: CPT
+    name: Core Professional Twin
+    status: IMMUTABLE
+    soul_file: twin-core/SOUL-CPT.md
+  - id: CST
+    name: Current Self Twin
+    status: READ-WRITE
+    path: twin-current/{user_id}/
+  - id: FRT
+    name: Future Role Twin
+    status: SEMI-IMMUTABLE
+    path: twin-future/{user_id}/
+
+agents:
+  - id: CTO
+    tier: 1
+    name: Career Twin Orchestrator
+    si_file: agents/CAREER-TWIN-ORCHESTRATOR.md
+  - id: TC-TWIN
+    tier: 2
+    name: Twin Coordinator
+    si_file: agents/TWIN-COORDINATOR.md
+  - id: SC-SKILL
+    tier: 2
+    name: Skill Coordinator
+    si_file: agents/SKILL-COORDINATOR.md
+  - id: TASK-FRAMER
+    tier: 3
+    name: Task Framer
+    si_file: agents/TASK-FRAMER.md
+  - id: REVIEW-COACH
+    tier: 3
+    name: Review Coach
+    si_file: agents/REVIEW-COACH.md
+  - id: REFLECTION-HARVESTER
+    tier: 3
+    name: Reflection Harvester
+    si_file: agents/REFLECTION-HARVESTER.md
+  - id: QUALITY-GATE
+    tier: 3
+    name: Quality Gate & Executor
+    si_file: agents/QUALITY-GATE.md
+  - id: BEHAVIORAL-COACH
+    tier: 4
+    name: Behavioral & Cognitive Coach
+    si_file: tier_4_specialist_agent/BEHAVIORAL-COACH/INDEX.md
+
+skills:
+  human:
+    - id: skh-01
+      name: Work Framing & Requirements
+    - id: skh-02
+      name: Evidence & Analytical Reasoning
+    - id: skh-03
+      name: Execution & Project Control
+    - id: skh-04
+      name: Communication & Stakeholder Alignment
+    - id: skh-05
+      name: AI Co-Work & Reflective Learning
+  agent:
+    - id: sga-01
+      name: Task Framing Methodology
+    - id: sga-02
+      name: Review Rubric Protocol
+    - id: sga-03
+      name: Executor Delegation Rules
+    - id: sga-04
+      name: Quality Gate Checklist
+    - id: sga-05
+      name: Reflection Prompt Library
+    - id: sga-06
+      name: KI Distillation Gate Rules
+    - id: sga-07
+      name: Skill Signal Aggregation
+    - id: sga-17
+      name: Structured Image Generation
+    - id: sga-18
+      name: Coby's Second Eye (Strategic Advisor)
+
+workflows:
+  core:
+    - WF-01: Task Intake & Framing
+    - WF-02: Co-Work Execution Loop
+    - WF-03: Analytical Review
+    - WF-04: Communication Review
+    - WF-05: Quality Gate Validation
+    - WF-06: Reflection Capture
+    - WF-07: Memory Consolidation
+    - WF-08: Skill Signal Update
+    - WF-09: Twin Update (Quarterly)
+    - WF-15: Cognitive Reward Loop
+    - WF-16: Micro-Training Interventions
+    - WF-17: Image Generation
+    - WF-18: Coby Strategic Advisory
+  infrastructure:
+    - WF-INF-01: Start Session
+    - WF-INF-02: End Session
+
+training:
+  - ONBOARDING.md
+  - QUICKSTART.md
+  - COWORK-METHODOLOGY.md
+  - labs/LAB-01-first-win.md
+  - labs/LAB-02-frame-it.md
+  - labs/LAB-03-review-loop.md
+  - labs/LAB-04-delegate-correctly.md
+  - labs/LAB-05-read-your-progress.md
+
+total_parts: 65
+export_chunks: 9

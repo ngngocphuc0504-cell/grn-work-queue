@@ -1,0 +1,22 @@
+{
+  "skill": "sga-05",
+  "version": "1.0",
+  "test_cases": [
+    {
+      "id": "TC-01",
+      "type": "happy_path",
+      "description": "User writes high-quality 3-sentence reflection",
+      "input": "User reflects: 'Điều quan trọng nhất tôi học được là khi phân tích multi-source data, cần cross-validate trước khi kết luận. Tôi biết vì CFO feedback chỉ ra slide 5 thiếu quarterly comparison, dẫn đến overstatement 8%. Lần tới tôi sẽ luôn chạy ERP-POS reconciliation check trước khi viết summary.'",
+      "expected_output": "Score 3/3 (Excellent). All 3 sentences scored individually. KI gate check triggered. reflection_pending set to false.",
+      "pass_criteria": "Each sentence scored with specific reasoning. Score ≥ 2 → proceeds to KI gates. No examples were pre-provided to user."
+    },
+    {
+      "id": "TC-02",
+      "type": "violation",
+      "description": "User writes vague reflection",
+      "input": "User reflects: 'Tôi học được nhiều. Tôi cảm thấy bài học hữu ích. Tôi sẽ cố gắng hơn.'",
+      "expected_output": "Score 0/3. Return for revision. Target: Sentence 1 (no specific learning), Sentence 2 (feeling ≠ evidence), Sentence 3 (no specific action).",
+      "pass_criteria": "Score < 2. Revision loop triggered. Specific weakest sentence identified. reflection_pending remains true."
+    }
+  ]
+}

@@ -1,0 +1,2542 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FCO Item Database Search Engine</title>
+    <!-- Import Google Fonts (Outfit & Inter) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --bg-color: #0b0c10;
+            --panel-bg: rgba(26, 29, 45, 0.75);
+            --panel-border: rgba(255, 255, 255, 0.08);
+            --accent-primary: #a855f7; /* Violet */
+            --accent-secondary: #06b6d4; /* Cyan */
+            --text-main: #f3f4f6;
+            --text-muted: #9ca3af;
+            --card-hover: rgba(168, 85, 247, 0.15);
+            --table-row-even: rgba(255, 255, 255, 0.02);
+            --table-row-hover: rgba(255, 255, 255, 0.05);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            min-height: 100vh;
+            padding: 2rem 1.5rem;
+            background-image: 
+                radial-gradient(at 0% 0%, rgba(168, 85, 247, 0.15) 0px, transparent 50%),
+                radial-gradient(at 100% 100%, rgba(6, 116, 212, 0.12) 0px, transparent 50%);
+            background-attachment: fixed;
+        }
+
+        h1, h2, h3 {
+            font-family: 'Outfit', sans-serif;
+            font-weight: 700;
+        }
+
+        .container {
+            max-width: 1300px;
+            margin: 0 auto;
+        }
+
+        header {
+            position: relative;
+            margin-bottom: 2.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 1px solid var(--panel-border);
+            padding-bottom: 1.5rem;
+        }
+
+        header .title-area h1 {
+            font-size: 2.2rem;
+            background: linear-gradient(135deg, var(--text-main) 30%, var(--accent-secondary) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 0.25rem;
+            letter-spacing: -0.05em;
+        }
+
+        header .title-area p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        .back-btn {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--panel-border);
+            color: var(--text-main);
+            padding: 0.6rem 1.2rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            font-family: 'Outfit', sans-serif;
+            transition: all 0.2s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .back-btn:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: var(--text-muted);
+            transform: translateX(-2px);
+        }
+
+        .grid-layout {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+        }
+
+        @media (min-width: 950px) {
+            .grid-layout {
+                grid-template-columns: 400px 1fr;
+            }
+        }
+
+        .panel {
+            background: var(--panel-bg);
+            border: 1px solid var(--panel-border);
+            border-radius: 16px;
+            padding: 1.5rem;
+            backdrop-filter: blur(12px);
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+            transition: border-color 0.3s ease;
+        }
+
+        .panel:hover {
+            border-color: rgba(168, 85, 247, 0.2);
+        }
+
+        .panel-title {
+            font-size: 1.2rem;
+            margin-bottom: 1.25rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            border-bottom: 1px solid var(--panel-border);
+            padding-bottom: 0.75rem;
+            color: var(--text-main);
+        }
+
+        .input-group {
+            margin-bottom: 1.25rem;
+        }
+
+        .input-group.row-layout {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0.75rem;
+        }
+
+        .input-group label {
+            display: block;
+            font-size: 0.825rem;
+            color: var(--text-muted);
+            margin-bottom: 0.4rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.03em;
+        }
+
+        .input-control {
+            width: 100%;
+            background: rgba(10, 11, 16, 0.8);
+            border: 1px solid var(--panel-border);
+            border-radius: 8px;
+            color: var(--text-main);
+            padding: 0.7rem 0.9rem;
+            font-family: inherit;
+            font-size: 0.9rem;
+            transition: all 0.2s ease;
+        }
+
+        .input-control:focus {
+            outline: none;
+            border-color: var(--accent-primary);
+            box-shadow: 0 0 0 2px rgba(168, 85, 247, 0.2);
+        }
+
+        select.input-control {
+            cursor: pointer;
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%239ca3af'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 9l-7 7-7-7'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 0.75rem center;
+            background-size: 1rem;
+            padding-right: 2rem;
+        }
+
+        textarea.input-control {
+            resize: vertical;
+            min-height: 180px;
+            font-family: monospace;
+            font-size: 0.85rem;
+            line-height: 1.4;
+        }
+
+        /* Season Checklist Grid styles */
+        .season-search-container {
+            margin-bottom: 0.5rem;
+        }
+        
+        .season-grid-wrapper {
+            background: rgba(10, 11, 16, 0.8);
+            border: 1px solid var(--panel-border);
+            border-radius: 8px;
+            padding: 0.75rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .season-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(75px, 1fr));
+            gap: 6px;
+            max-height: 200px;
+            overflow-y: auto;
+            padding-right: 4px;
+        }
+
+        /* Custom scrollbar for grid */
+        .season-grid::-webkit-scrollbar {
+            width: 4px;
+        }
+        .season-grid::-webkit-scrollbar-track {
+            background: rgba(0,0,0,0.1);
+        }
+        .season-grid::-webkit-scrollbar-thumb {
+            background: rgba(255,255,255,0.1);
+            border-radius: 2px;
+        }
+
+        .season-item {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid var(--panel-border);
+            border-radius: 6px;
+            padding: 0.45rem 0.3rem;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-align: center;
+            cursor: pointer;
+            user-select: none;
+            transition: all 0.15s ease;
+            color: var(--text-muted);
+        }
+
+        .season-item input {
+            position: absolute;
+            opacity: 0;
+            cursor: pointer;
+            height: 0;
+            width: 0;
+        }
+
+        .season-item:hover {
+            border-color: rgba(168, 85, 247, 0.3);
+            color: var(--text-main);
+            background: rgba(255, 255, 255, 0.04);
+        }
+
+        .season-item.checked {
+            background: rgba(168, 85, 247, 0.18);
+            color: #d8b4fe;
+            border-color: var(--accent-primary);
+            box-shadow: 0 0 8px rgba(168, 85, 247, 0.15);
+        }
+
+        .selected-tags-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            margin-bottom: 0.5rem;
+            margin-top: 0.25rem;
+        }
+
+        .selected-tag {
+            display: inline-flex;
+            align-items: center;
+            background: rgba(6, 182, 212, 0.15);
+            color: #22d3ee;
+            border: 1px solid rgba(6, 182, 212, 0.3);
+            border-radius: 4px;
+            padding: 2px 8px;
+            font-size: 0.725rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .selected-tag:hover {
+            background: rgba(239, 68, 68, 0.2);
+            color: #fca5a5;
+            border-color: rgba(239, 68, 68, 0.4);
+        }
+
+        .selected-tag .close-icon {
+            margin-left: 6px;
+            font-weight: bold;
+            font-size: 0.85rem;
+            line-height: 1;
+        }
+
+        .season-actions {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.75rem;
+            padding: 0.25rem 0;
+        }
+
+        .season-action-link {
+            color: var(--accent-secondary);
+            cursor: pointer;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .season-action-link:hover {
+            text-decoration: underline;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, var(--accent-primary) 0%, #7c3aed 100%);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            padding: 0.75rem 1.5rem;
+            font-family: 'Outfit', sans-serif;
+            font-weight: 600;
+            font-size: 0.95rem;
+            cursor: pointer;
+            width: 100%;
+            transition: all 0.2s ease;
+            box-shadow: 0 4px 12px rgba(124, 58, 237, 0.25);
+            margin-top: 0.5rem;
+        }
+
+        .btn:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 6px 16px rgba(124, 58, 237, 0.35);
+        }
+
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--panel-border);
+            color: var(--text-main);
+            box-shadow: none;
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: var(--text-muted);
+            box-shadow: none;
+        }
+
+        .stats-badge {
+            background: rgba(6, 182, 212, 0.12);
+            border: 1px solid rgba(6, 182, 212, 0.3);
+            color: var(--accent-secondary);
+            font-size: 0.75rem;
+            font-weight: 600;
+            padding: 0.2rem 0.6rem;
+            border-radius: 999px;
+            margin-left: auto;
+        }
+
+        .results-container {
+            display: flex;
+            flex-direction: column;
+            gap: 1.25rem;
+        }
+
+        .results-header-actions {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 1px solid var(--panel-border);
+            padding-bottom: 0.75rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .results-header-actions .panel-title {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        .meta-summary {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .summary-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--panel-border);
+            border-radius: 12px;
+            padding: 0.75rem 1.25rem;
+            flex: 1;
+            min-width: 200px;
+            transition: all 0.2s ease;
+        }
+
+        .summary-card:hover {
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .summary-card .label {
+            font-size: 0.7rem;
+            color: var(--text-muted);
+            margin-bottom: 0.25rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            font-weight: 600;
+        }
+
+        .summary-card .value {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--text-main);
+        }
+
+        .summary-card.accent .value {
+            color: var(--accent-secondary);
+        }
+
+        .table-wrapper {
+            overflow-x: auto;
+            border-radius: 10px;
+            border: 1px solid var(--panel-border);
+            background: rgba(10, 11, 16, 0.4);
+            max-height: 580px;
+            overflow-y: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: left;
+            font-size: 0.9rem;
+        }
+
+        th {
+            background: rgba(16, 18, 27, 0.95);
+            padding: 0.9rem 1rem;
+            font-family: 'Outfit', sans-serif;
+            font-weight: 600;
+            color: var(--text-main);
+            border-bottom: 1px solid var(--panel-border);
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+
+        td {
+            padding: 0.85rem 1rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+            color: var(--text-main);
+            vertical-align: middle;
+        }
+
+        tr:nth-child(even) td {
+            background: var(--table-row-even);
+        }
+
+        tr:hover td {
+            background: var(--table-row-hover);
+        }
+
+        .item-id-cell {
+            font-family: monospace;
+            font-weight: 600;
+            color: var(--accent-secondary);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            white-space: nowrap;
+        }
+
+        .item-name-cell {
+            font-weight: 500;
+            line-height: 1.4;
+        }
+
+        .number-cell {
+            font-family: monospace;
+            text-align: right;
+            font-weight: 500;
+        }
+
+        .copy-btn {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--panel-border);
+            color: var(--text-muted);
+            border-radius: 4px;
+            padding: 0.2rem 0.5rem;
+            font-size: 0.7rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            font-family: 'Outfit', sans-serif;
+        }
+
+        .copy-btn:hover {
+            background: var(--accent-primary);
+            color: white;
+            border-color: var(--accent-primary);
+        }
+
+        .status-message {
+            padding: 1.25rem;
+            border-radius: 10px;
+            font-size: 0.9rem;
+            background: rgba(255, 255, 255, 0.02);
+            border-left: 4px solid var(--accent-primary);
+            line-height: 1.5;
+        }
+
+        .status-message.info {
+            border-left-color: var(--accent-secondary);
+        }
+
+        .hidden {
+            display: none !important;
+        }
+
+        .loading-screen {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 5rem 2rem;
+            text-align: center;
+        }
+
+        .spinner {
+            width: 50px;
+            height: 50px;
+            border: 4px solid rgba(168, 85, 247, 0.1);
+            border-top-color: var(--accent-primary);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin-bottom: 1.5rem;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        .tabs {
+            display: flex;
+            gap: 0.25rem;
+            margin-bottom: 1.5rem;
+            border-bottom: 1px solid var(--panel-border);
+            padding-bottom: 0.5rem;
+        }
+
+        .tab-btn {
+            background: transparent;
+            border: none;
+            color: var(--text-muted);
+            padding: 0.5rem 0.8rem;
+            cursor: pointer;
+            font-family: 'Outfit', sans-serif;
+            font-weight: 600;
+            font-size: 0.9rem;
+            border-radius: 6px;
+            transition: all 0.2s ease;
+            flex: 1;
+            text-align: center;
+        }
+
+        .tab-btn.active {
+            color: var(--text-main);
+            background: rgba(168, 85, 247, 0.15);
+            box-shadow: inset 0 0 0 1px rgba(168, 85, 247, 0.3);
+        }
+        
+        /* Highlight styled text */
+        .highlight-season {
+            background: rgba(168, 85, 247, 0.25);
+            color: #d8b4fe;
+            padding: 1px 5px;
+            border-radius: 4px;
+            font-weight: 700;
+            border: 1px solid rgba(168, 85, 247, 0.4);
+            display: inline-block;
+            margin: 0 1px;
+        }
+
+        /* Floating Context Menu for Add to List */
+        .floating-menu {
+            position: absolute;
+            background: #161824;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            z-index: 9999;
+            min-width: 180px;
+            padding: 0.5rem 0;
+            backdrop-filter: blur(12px);
+            box-sizing: border-box;
+        }
+        .floating-menu-item {
+            padding: 0.5rem 1rem;
+            font-size: 0.85rem;
+            color: var(--text-main);
+            cursor: pointer;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .floating-menu-item:hover {
+            background: rgba(168, 85, 247, 0.2);
+            color: #d8b4fe;
+        }
+        .floating-menu-divider {
+            height: 1px;
+            background: rgba(255, 255, 255, 0.08);
+            margin: 0.4rem 0;
+        }
+        
+        /* Toast Notification System */
+        .toast-container {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            z-index: 10000;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            pointer-events: none;
+        }
+        .toast {
+            background: #1e293b;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            color: var(--text-main);
+            border-radius: 8px;
+            padding: 0.8rem 1.2rem;
+            font-size: 0.85rem;
+            font-weight: 500;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transform: translateY(100px);
+            opacity: 0;
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            pointer-events: auto;
+        }
+        .toast.show {
+            transform: translateY(0);
+            opacity: 1;
+        }
+        .toast.success {
+            border-left: 4px solid #10b981;
+        }
+        .toast.warning {
+            border-left: 4px solid #ef4444;
+        }
+        
+        /* Highlight Season Item during Keyboard navigation */
+        .season-item.highlighted-season {
+            border-color: var(--accent-secondary);
+            background: rgba(6, 182, 212, 0.12);
+            color: #22d3ee;
+            box-shadow: 0 0 10px rgba(6, 182, 212, 0.2);
+        }
+        
+        .add-to-list-btn {
+            background: rgba(168, 85, 247, 0.1);
+            border: 1px solid rgba(168, 85, 247, 0.3);
+            color: #d8b4fe;
+            border-radius: 4px;
+            padding: 0.2rem 0.5rem;
+            font-size: 0.7rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            margin-left: 0.25rem;
+            font-family: 'Outfit', sans-serif;
+        }
+        .add-to-list-btn:hover {
+            background: var(--accent-primary);
+            color: white;
+            border-color: var(--accent-primary);
+        }
+        
+        /* Drag and Drop styling */
+        .drag-handle {
+            cursor: grab;
+            padding: 2px 6px;
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            user-select: none;
+            display: inline-block;
+            transition: color 0.2s;
+        }
+        .drag-handle:hover {
+            color: var(--accent-secondary);
+        }
+        .drag-handle:active {
+            cursor: grabbing;
+        }
+        tr.dragging {
+            opacity: 0.4;
+            background: rgba(168, 85, 247, 0.15) !important;
+            border: 1px dashed var(--accent-primary);
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <div class="title-area">
+            <h1>FCO Item Database</h1>
+            <p>Tra Cứu và Định Giá Vật Phẩm FC Online Siêu Tốc</p>
+        </div>
+        <a href="../index.html" class="back-btn">
+            <span>← Quay lại Portal</span>
+        </a>
+    </header>
+
+    <!-- LOADING SCREEN -->
+    <div id="loading" class="panel loading-screen">
+        <div class="spinner"></div>
+        <h3>Đang tải cơ sở dữ liệu vật phẩm...</h3>
+        <p style="margin-top: 0.5rem; color: var(--text-muted);">Đang phân tích và lập chỉ mục hơn 66,000 dòng dữ liệu.</p>
+    </div>
+
+    <!-- MAIN APP CONTENT -->
+    <div id="app" class="grid-layout hidden">
+        <!-- CONTROL PANEL -->
+        <div class="panel">
+            <div class="tabs">
+                <button class="tab-btn active" onclick="switchTab('search')">Tìm Kiếm</button>
+                <button class="tab-btn" onclick="switchTab('filter')">Lọc Nâng Cao</button>
+                <button class="tab-btn" onclick="switchTab('bulk')">Tra Cứu Hàng Loạt</button>
+                <button class="tab-btn" onclick="switchTab('lists')">My Lists 📁</button>
+            </div>
+
+            <!-- TAB 1: SINGLE SEARCH -->
+            <div id="tab-search">
+                <div class="panel-title">
+                    <span>Bộ lọc tìm kiếm</span>
+                    <span class="stats-badge" id="total-db-count">0 items</span>
+                </div>
+                
+                <div class="input-group">
+                    <label for="search-input">Tìm kiếm theo ID hoặc Tên</label>
+                    <input type="text" id="search-input" class="input-control" placeholder="Nhập ID (ví dụ: 100200024) hoặc Tên..." oninput="handleSearch()">
+                </div>
+                
+                <div style="font-size: 0.8rem; color: var(--text-muted); line-height: 1.5; background: rgba(255,255,255,0.02); border-radius: 8px; padding: 0.75rem; border: 1px solid var(--panel-border);">
+                    <p style="margin-bottom: 0.25rem;">💡 <strong>Mẹo tìm nhanh:</strong></p>
+                    <p style="margin-bottom: 0.25rem;">- Nhập số để khớp chính xác ID.</p>
+                    <p>- Nhập từ khóa để tìm theo tên.</p>
+                </div>
+            </div>
+
+            <!-- TAB 2: ADVANCED FILTER -->
+            <div id="tab-filter" class="hidden">
+                <div class="panel-title">
+                    <span>Lọc theo cấu trúc thẻ</span>
+                </div>
+
+                <!-- CARD TYPE SELECT -->
+                <div class="input-group">
+                    <label for="filter-card-type">Loại cấu trúc thẻ</label>
+                    <select id="filter-card-type" class="input-control" onchange="handleCardTypeChange()">
+                        <option value="regular" selected>Thẻ thường</option>
+                        <option value="designated">Thẻ chỉ định</option>
+                        <option value="top-price">Thẻ top price</option>
+                    </select>
+                </div>
+
+                <!-- TICK CHECKBOX GRID FOR SEASONS -->
+                <div class="input-group">
+                    <label>Mùa thẻ (Chọn nhiều mùa)</label>
+                    <div id="selected-seasons-tags" class="selected-tags-container"></div>
+                    <div class="season-search-container">
+                        <input type="text" id="season-search" class="input-control" style="padding: 0.5rem 0.75rem; font-size: 0.85rem;" placeholder="Tìm nhanh tên mùa..." oninput="filterSeasonGrid()">
+                    </div>
+                    
+                    <div class="season-grid-wrapper">
+                        <div id="season-grid" class="season-grid">
+                            <!-- Populated dynamically -->
+                        </div>
+                    </div>
+                    
+                    <div class="season-actions">
+                        <span class="season-action-link" onclick="selectAllSeasons(true)">Chọn tất cả</span>
+                        <span class="season-action-link" onclick="selectAllSeasons(false)">Bỏ chọn hết</span>
+                    </div>
+                    
+                    <div style="margin-top: 0.75rem; display: flex; align-items: center; gap: 0.5rem;">
+                        <input type="checkbox" id="filter-exclude-limit" style="width: 16px; height: 16px; cursor: pointer;" onchange="onFilterChange()">
+                        <label for="filter-exclude-limit" style="margin-bottom: 0; cursor: pointer; text-transform: none; font-size: 0.85rem; color: var(--text-main); font-weight: 500;">Exclude các mùa thẻ limit (TY, TS, UCL, VB, IM, LM, EU24, NTG, VVIP, WC22)</label>
+                    </div>
+                </div>
+
+                <!-- OVR BOUNDS (Show for regular only) -->
+                <div class="input-group row-layout" id="group-ovr">
+                    <div>
+                        <label for="filter-ovr-min">OVR tối thiểu</label>
+                        <input type="number" id="filter-ovr-min" class="input-control" min="1" max="200" placeholder="Không giới hạn dưới" oninput="onFilterChange()">
+                    </div>
+                    <div>
+                        <label for="filter-ovr-max">OVR tối đa</label>
+                        <input type="number" id="filter-ovr-max" class="input-control" min="1" max="200" placeholder="Không giới hạn trên" oninput="onFilterChange()">
+                    </div>
+                </div>
+
+                <!-- USD VALUE RANGE (Show for all card types) -->
+                <div class="input-group row-layout" id="group-usd-range">
+                    <div>
+                        <label for="filter-usd-min">USD tối thiểu</label>
+                        <input type="number" id="filter-usd-min" class="input-control" step="0.01" min="0" placeholder="vd: 10" oninput="onFilterChange()">
+                    </div>
+                    <div>
+                        <label for="filter-usd-max">USD tối đa</label>
+                        <input type="number" id="filter-usd-max" class="input-control" step="0.01" min="0" placeholder="vd: 50" oninput="onFilterChange()">
+                    </div>
+                </div>
+
+                <!-- DESIGNATED POOL BOUNDS (Show for designated only) -->
+                <div class="input-group row-layout hidden" id="group-pool">
+                    <div>
+                        <label for="filter-pool-min">Pool chỉ định tối thiểu</label>
+                        <input type="number" id="filter-pool-min" class="input-control" min="1" placeholder="vd: 20" oninput="onFilterChange()">
+                    </div>
+                    <div>
+                        <label for="filter-pool-max">Pool chỉ định tối đa</label>
+                        <input type="number" id="filter-pool-max" class="input-control" min="1" placeholder="vd: 200" oninput="onFilterChange()">
+                    </div>
+                </div>
+
+                <!-- RANGE TOP BOUNDS (Show for top-price only) -->
+                <div class="input-group row-layout hidden" id="group-top">
+                    <div>
+                        <label for="filter-top-min">Top tối thiểu</label>
+                        <input type="number" id="filter-top-min" class="input-control" min="1" placeholder="vd: 100" oninput="onFilterChange()">
+                    </div>
+                    <div>
+                        <label for="filter-top-max">Top tối đa</label>
+                        <input type="number" id="filter-top-max" class="input-control" min="1" placeholder="vd: 450" oninput="onFilterChange()">
+                    </div>
+                </div>
+
+                <!-- UPGRADE LEVEL RANGE (Show for regular & top-price) -->
+                <div class="input-group row-layout" id="group-level-range">
+                    <div>
+                        <label for="filter-min-level">Cộng min</label>
+                        <select id="filter-min-level" class="input-control" onchange="onFilterChange()">
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                            <option value="7">7</option>
+                            <option value="8" selected>8</option>
+                            <option value="9">9</option>
+                            <option value="10">10</option>
+                            <option value="11">11</option>
+                            <option value="12">12</option>
+                            <option value="13">13</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="filter-max-level">Cộng max</label>
+                        <select id="filter-max-level" class="input-control" onchange="onFilterChange()">
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                            <option value="7">7</option>
+                            <option value="8" selected>8</option>
+                            <option value="9">9</option>
+                            <option value="10">10</option>
+                            <option value="11">11</option>
+                            <option value="12">12</option>
+                            <option value="13">13</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- FIXED UPGRADE LEVEL (Show for designated only) -->
+                <div class="input-group hidden" id="group-level-fixed">
+                    <label for="filter-fixed-level">Mức thẻ cộng (Fixed)</label>
+                    <select id="filter-fixed-level" class="input-control" onchange="onFilterChange()">
+                        <option value="all" selected>Tất cả</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                        <option value="7">7</option>
+                        <option value="8">8</option>
+                        <option value="9">9</option>
+                        <option value="10">10</option>
+                        <option value="11">11</option>
+                        <option value="12">12</option>
+                        <option value="13">13</option>
+                    </select>
+                </div>
+
+                <div style="font-size: 0.8rem; color: var(--text-muted); line-height: 1.5; background: rgba(255,255,255,0.02); border-radius: 8px; padding: 0.75rem; border: 1px solid var(--panel-border); margin-bottom: 1rem;">
+                    <p>⚙️ <strong>Quy luật lọc cộng:</strong></p>
+                    <p style="margin-bottom: 0.25rem;">- Khi <strong>Min = Max</strong> hoặc <strong>Fixed level</strong>: tìm khớp <strong>chính xác</strong> mức cộng đó (Ví dụ: [8-8] chỉ tìm gói +8, loại bỏ gói dải cộng 5~8 hoặc 7~8).</p>
+                    <p>- Khi <strong>Min &ne; Max</strong>: tìm khớp <strong>chính xác</strong> dải cộng chỉ định (Ví dụ: [6-8] chỉ tìm đúng gói 6~8, loại bỏ các gói +8 lẻ).</p>
+                </div>
+
+                <!-- SUBMIT SEARCH BUTTON (Hidden by default, shown when filters are selected) -->
+                <button id="filter-search-btn" class="btn hidden" onclick="applyFilters()">🔍 Lọc Vật Phẩm</button>
+                <button class="btn btn-secondary" style="margin-top: 0.5rem;" onclick="resetFilters()">Reset Bộ Lọc</button>
+            </div>
+
+            <!-- TAB 3: BULK SEARCH -->
+            <div id="tab-bulk" class="hidden">
+                <div class="panel-title">
+                    <span>Tìm hàng loạt</span>
+                </div>
+                
+                <div class="input-group">
+                    <label for="bulk-input">Danh sách ID (Mỗi ID một dòng hoặc cách nhau bởi dấu phẩy/khoảng trắng)</label>
+                    <textarea id="bulk-input" class="input-control" placeholder="500259649&#10;500259648&#10;500235328&#10;500235329"></textarea>
+                </div>
+                
+                <button class="btn" onclick="handleBulkSearch()">Tra Cứu Hàng Loạt</button>
+            </div>
+
+            <!-- TAB 4: MY LISTS MANAGER -->
+            <div id="tab-lists" class="hidden">
+                <div class="panel-title">
+                    <span>Quản lý danh sách</span>
+                </div>
+                <div class="input-group">
+                    <button class="btn" onclick="createNewListPrompt()" style="margin-top: 0; background: linear-gradient(135deg, var(--accent-secondary) 0%, #0891b2 100%); box-shadow: 0 4px 12px rgba(6, 182, 212, 0.25);">➕ Tạo List Mới</button>
+                </div>
+                <div class="input-group">
+                    <label>Danh sách đã lưu (Local)</label>
+                    <div id="saved-lists-container" style="display: flex; flex-direction: column; gap: 0.5rem; max-height: 350px; overflow-y: auto; padding-right: 4px;">
+                        <!-- Populated dynamically -->
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- RESULTS PANEL -->
+        <div class="panel">
+            <div class="results-container">
+                <div class="results-header-actions">
+                    <div class="panel-title" style="border-bottom: none; margin-bottom: 0; padding-bottom: 0;">
+                        <span id="results-title">Kết quả tìm kiếm</span>
+                        <span class="stats-badge" id="results-count" style="margin-left: 0.5rem;">0 tìm thấy</span>
+                    </div>
+                    
+                    <!-- Sorting control -->
+                    <div style="display: flex; align-items: center; gap: 0.5rem;">
+                        <label for="sort-select" style="font-size: 0.75rem; color: var(--text-muted); font-weight: 600; white-space: nowrap; text-transform: uppercase;">Sắp xếp:</label>
+                        <select id="sort-select" class="input-control" style="width: auto; padding: 0.35rem 2rem 0.35rem 0.75rem; font-size: 0.8rem; margin: 0; height: auto;" onchange="handleSortChange()">
+                            <option value="default">Mặc định (ID)</option>
+                            <option value="bp-desc">BP: Cao đến Thấp</option>
+                            <option value="bp-asc">BP: Thấp đến Cao</option>
+                            <option value="usd-desc">USD: Cao đến Thấp</option>
+                            <option value="usd-asc">USD: Thấp đến Cao</option>
+                        </select>
+                    </div>
+
+                    <!-- List Actions Control -->
+                    <div id="list-actions-control" class="hidden" style="display: flex; align-items: center; gap: 0.5rem;">
+                        <button class="copy-btn" style="padding: 0.35rem 0.75rem; background: rgba(6, 182, 212, 0.15); border-color: rgba(6, 182, 212, 0.3); color: #22d3ee;" onclick="copyAllIdsFromList()" title="Copy tất cả ID để paste vào Excel">📋 Copy All IDs</button>
+                        <button class="copy-btn" style="padding: 0.35rem 0.75rem;" onclick="sortListBy('bp')">💎 Sort BP</button>
+                        <button class="copy-btn" style="padding: 0.35rem 0.75rem;" onclick="sortListBy('usd')">💵 Sort USD</button>
+                        <button class="copy-btn" style="padding: 0.35rem 0.75rem; background: rgba(16, 185, 129, 0.15); border-color: rgba(16, 185, 129, 0.3); color: #10b981;" onclick="saveActiveList()" title="Lưu danh sách">💾 Save List</button>
+                    </div>
+                </div>
+
+                <!-- SUMMARY INFO CARDS -->
+                <div class="meta-summary">
+                    <div class="summary-card">
+                        <div class="label">Tổng BP Value</div>
+                        <div class="value" id="sum-bp">0</div>
+                    </div>
+                    <div class="summary-card accent">
+                        <div class="label">Tổng USD Value</div>
+                        <div class="value" id="sum-usd">0</div>
+                    </div>
+                    <div class="summary-card">
+                        <div class="label">Đầu ra quy đổi VND</div>
+                        <div class="value" id="sum-vnd">0 đ</div>
+                    </div>
+                </div>
+
+                <div id="info-msg" class="status-message info hidden">
+                    Vui lòng nhập từ khóa tìm kiếm hoặc dán danh sách ID cần tra cứu.
+                </div>
+
+                <div id="limit-msg" class="status-message hidden">
+                    Đang hiển thị 100 kết quả đầu tiên để giữ hiệu năng mượt mà. Vui lòng chọn bộ lọc chi tiết hơn để thu hẹp kết quả.
+                </div>
+
+                <!-- RESULTS TABLE -->
+                <div class="table-wrapper">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th style="width: 22%">ID</th>
+                                <th style="width: 48%">Tên vật phẩm</th>
+                                <th style="width: 15%; text-align: right;">BP Value</th>
+                                <th style="width: 15%; text-align: right;">USD Value</th>
+                            </tr>
+                        </thead>
+                        <tbody id="results-body">
+                            <!-- Rows injected dynamically -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Load Database File -->
+<script src="items_data.js"></script>
+
+<script>
+    // State variables
+    let parsedItems = [];
+    let idMap = new Map();
+    let currentTab = 'search';
+    let currentMatches = []; // Holds filtered items for sorting
+    const VND_RATE = 26319.5; // Tỷ giá từ Currency rate sheet
+
+    // List & playlist state variables
+    let playlistDb = {}; // Stores playlists: { listName: [item, item, ...] }
+    let activeListName = null; // Active playlist name
+    let highlightedSeasonIndex = -1; // Index of highlighted season in grid
+    let currentContextMenu = null; // Currently open floating menu
+    
+    // Auto scroll during drag variables
+    let scrollSpeed = 0;
+    let scrollAnimationFrame = null;
+    let dragOverListenerAttached = false;
+
+    const seasonList = [
+        'CU', '24EP', 'JVA', 'UT', 'MDL', 'LD', '24TOTY', '25TOTY', '26TOTY', 'ICONTM', 'ICON', 'ICONS', 
+        'GRU', 'BLD', 'BDO', '23UCL', '24UCL', '25UCL', '24TOTS', '25TOTS', '23TOTS', '22TOTS', '21TOTS', 
+        '20TOTS', 'JNM', 'DC', 'LE', '25HR', '24HR', '26HR', '25DP', '26LM', '25IM', 'EU24', 'BOE', 'BOE21', 
+        'BWC', 'WC22', 'No.7', 'WB', 'TC', 'SC', 'SVIP', 'VVIP', 'LH', 'COC', 'MOG', 'MC', 'UP', 'EBS', 
+        'CAP', 'BTB', 'LN', 'SPL', 'FA', 'HG', 'RTN', 'CC', 'HW', 'VTR', 'NTG', 'HOT', 'LOL', 'RMA', 
+        'FCA', '23TOTY', '22TOTY', '23HEROES', '23HR', '23HW', '23NG', '22NG', '21NG', '23VB', '24VB', 
+        '25VB', 'DCB', 'FAC', 'CH', 'WS', '22UCL', '21UCL', '20UCL', '19UCL', 'GR', 'OTW', 'PTG', 
+        'NHD', '21TOTY', '20NG', '22HR', 'TT',
+        '19TOTY', '20TOTY', '19NG', '23PL', '24PL', '25PL', 'VNL', '22VNB', '23VNB', '20PLA', '19PLCS', '22VB',
+        'WG', 'VLA', 'MG', 'TB', 'TOTM', '19PLA', '20PLCA', '18PLA', '18TOTY', 'CP',
+        'CA', 'KR', 'VN', 'VFG', 'TH', 'LIA', 'CFA', 'SEA', 'PRM', 'JA', 'EPL', 'HEROES', 'TOTY', 'TOTS', 'UCL'
+    ];
+
+    // Initialize application
+    window.addEventListener('DOMContentLoaded', () => {
+        if (!window.ITEMS_DB) {
+            document.getElementById('loading').innerHTML = `
+                <h3 style="color: #ef4444;">Lỗi: Không tìm thấy tệp dữ liệu items_data.js!</h3>
+                <p style="margin-top: 0.5rem;">Vui lòng đảm bảo bạn đã chạy file convert_db.ps1 trước.</p>
+            `;
+            return;
+        }
+
+        // Build exact ID lookup Map for O(1) searches and extract tags for advanced filter
+        console.time('Parse & Build Map');
+        const uniqueSeasons = new Set();
+        
+        for (let i = 0; i < window.ITEMS_DB.length; i++) {
+            const item = window.ITEMS_DB[i];
+            const id = item[0];
+            const name = item[1];
+            const bp = item[2];
+            const usd = item[3];
+
+            // 1. Build ID Map
+            idMap.set(id, item);
+
+            // 2. Parse OVR Base
+            let ovr = null;
+            const ovrMatch = name.match(/\b(1\d\d|\d\d)\+/);
+            if (ovrMatch) {
+                ovr = parseInt(ovrMatch[1]);
+            }
+
+            // 3. Parse Upgrade Level Range
+            let minLvl = null;
+            let maxLvl = null;
+            
+            // Check range pattern like (6~8) or (6-8)
+            const rangeMatch = name.match(/\((\d+)\s*[~-]\s*(\d+)\)/);
+            if (rangeMatch) {
+                minLvl = parseInt(rangeMatch[1]);
+                maxLvl = parseInt(rangeMatch[2]);
+            } else {
+                // Check exact level pattern like +8, (+8), +6, (+6)
+                const singleMatch = name.match(/\+(\d+)/) || name.match(/\((\d+)\)/);
+                if (singleMatch) {
+                    minLvl = parseInt(singleMatch[1]);
+                    maxLvl = parseInt(singleMatch[1]);
+                }
+            }
+
+            // 4. Parse Seasons
+            const matchedSeasons = [];
+            const nameUpper = name.toUpperCase();
+            for (const s of seasonList) {
+                // Escape special characters in season name (like '.' in 'No.7')
+                const escaped = s.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&').toUpperCase();
+                const regex = new RegExp('(?:^|[^A-Z0-9])' + escaped + '(?:$|[^A-Z0-9])', 'i');
+                if (regex.test(nameUpper)) {
+                    matchedSeasons.push(s);
+                    uniqueSeasons.add(s);
+                }
+            }
+
+            // 5. Parse Designated Pool
+            let pool = null;
+            const poolMatch = name.match(/chỉ định\s+(?:Top\s+|Best\s+)?(\d+)/i);
+            if (poolMatch) {
+                pool = parseInt(poolMatch[1]);
+            }
+
+            // 6. Parse Top Value
+            let topVal = null;
+            const topMatch = name.match(/\b(?:Top\s+Price|Top|Best)\s+(\d+)\b/i);
+            if (topMatch) {
+                topVal = parseInt(topMatch[1]);
+            }
+
+            // 7. Categorize
+            const isDesignated = name.toLowerCase().includes('chỉ định');
+            const isTop = (topVal !== null && !isDesignated);
+
+            parsedItems.push({
+                id,
+                name,
+                bp,
+                usd,
+                ovr,
+                minLvl,
+                maxLvl,
+                seasons: matchedSeasons,
+                pool,
+                topVal,
+                isDesignated,
+                isTop,
+                rawIndex: i
+            });
+        }
+        console.timeEnd('Parse & Build Map');
+
+        // Populate Season Grid checkbox list
+        const seasonGrid = document.getElementById('season-grid');
+        const sortedSeasons = [...uniqueSeasons].sort();
+        
+        for (const s of sortedSeasons) {
+            const label = document.createElement('label');
+            label.className = 'season-item';
+            label.id = `label-season-${s}`;
+            
+            const checkbox = document.createElement('input');
+            checkbox.type = 'checkbox';
+            checkbox.value = s;
+            checkbox.onchange = () => {
+                label.classList.toggle('checked', checkbox.checked);
+                onFilterChange();
+            };
+            
+            const span = document.createElement('span');
+            span.textContent = s;
+            
+            label.appendChild(checkbox);
+            label.appendChild(span);
+            seasonGrid.appendChild(label);
+        }
+
+        // Update counts
+        document.getElementById('total-db-count').textContent = window.ITEMS_DB.length.toLocaleString() + ' items';
+        
+        // Hide loading, show app
+        document.getElementById('loading').classList.add('hidden');
+        document.getElementById('app').classList.remove('hidden');
+
+        // Initial default message
+        showInfoMessage("Nhập ID hoặc tên để bắt đầu tìm kiếm.");
+
+        // Initialize lists database from localStorage
+        initLists();
+
+        // Setup keydown listener for Enter and Ctrl+Enter
+        setupSearchKeyListeners();
+
+        // Setup keyboard navigation for season search
+        setupSeasonSearchKeyboard();
+
+        // Setup auto scroll for dragging
+        setupDragAutoScroll();
+    });
+
+    function startAutoScrollLoop(container) {
+        function autoScroll() {
+            if (scrollSpeed !== 0 && container) {
+                container.scrollTop += scrollSpeed;
+            }
+            scrollAnimationFrame = requestAnimationFrame(autoScroll);
+        }
+        if (!scrollAnimationFrame) {
+            scrollAnimationFrame = requestAnimationFrame(autoScroll);
+        }
+    }
+
+    function stopAutoScrollLoop() {
+        scrollSpeed = 0;
+        if (scrollAnimationFrame) {
+            cancelAnimationFrame(scrollAnimationFrame);
+            scrollAnimationFrame = null;
+        }
+    }
+
+    function setupDragAutoScroll() {
+        const container = document.querySelector('.table-wrapper');
+        if (!container) return;
+        
+        if (dragOverListenerAttached) return;
+        dragOverListenerAttached = true;
+        
+        document.addEventListener('dragover', (e) => {
+            const draggingRow = document.querySelector('#results-body .dragging');
+            if (!draggingRow) {
+                scrollSpeed = 0;
+                return;
+            }
+            
+            const rect = container.getBoundingClientRect();
+            const mouseY = e.clientY;
+            const threshold = 60; // range in pixels from top/bottom to trigger scroll
+            const maxSpeed = 12; // speed limit
+            
+            if (mouseY < rect.top + threshold && mouseY > rect.top - 30) {
+                // Near top
+                const ratio = Math.min(1, (rect.top + threshold - mouseY) / threshold);
+                scrollSpeed = -ratio * maxSpeed;
+            } else if (mouseY > rect.bottom - threshold && mouseY < rect.bottom + 30) {
+                // Near bottom
+                const ratio = Math.min(1, (mouseY - (rect.bottom - threshold)) / threshold);
+                scrollSpeed = ratio * maxSpeed;
+            } else {
+                scrollSpeed = 0;
+            }
+        });
+    }
+
+    function switchTab(tab) {
+        currentTab = tab;
+        
+        // Update active tab button
+        const btns = document.querySelectorAll('.tab-btn');
+        btns.forEach(btn => btn.classList.remove('active'));
+        if (tab === 'search') btns[0].classList.add('active');
+        else if (tab === 'filter') btns[1].classList.add('active');
+        else if (tab === 'bulk') btns[2].classList.add('active');
+        else if (tab === 'lists') btns[3].classList.add('active');
+
+        // Hide all tab content panels
+        document.getElementById('tab-search').classList.add('hidden');
+        document.getElementById('tab-filter').classList.add('hidden');
+        document.getElementById('tab-bulk').classList.add('hidden');
+        document.getElementById('tab-lists').classList.add('hidden');
+
+        // Show/hide sorting and list controls
+        const sortControl = document.getElementById('sort-select').parentElement;
+        const listActions = document.getElementById('list-actions-control');
+        
+        if (sortControl) sortControl.classList.remove('hidden');
+        if (listActions) listActions.classList.add('hidden');
+
+        // Reset sort select
+        document.getElementById('sort-select').value = 'default';
+
+        if (tab === 'search') {
+            document.getElementById('tab-search').classList.remove('hidden');
+            document.getElementById('results-title').textContent = "Kết quả tìm kiếm";
+            setTableHeader(false);
+            handleSearch();
+        } else if (tab === 'filter') {
+            document.getElementById('tab-filter').classList.remove('hidden');
+            document.getElementById('results-title').textContent = "Kết quả lọc thẻ";
+            setTableHeader(false);
+            showInfoMessage("Chọn các bộ lọc bên trái và ấn nút 'Lọc Vật Phẩm' để tìm kiếm.");
+            onFilterChange();
+        } else if (tab === 'bulk') {
+            document.getElementById('tab-bulk').classList.remove('hidden');
+            document.getElementById('results-title').textContent = "Kết quả tra cứu hàng loạt";
+            setTableHeader(false);
+            handleBulkSearch();
+        } else if (tab === 'lists') {
+            document.getElementById('tab-lists').classList.remove('hidden');
+            if (sortControl) sortControl.classList.add('hidden');
+            if (listActions) listActions.classList.remove('hidden');
+            
+            if (activeListName) {
+                selectList(activeListName);
+            } else {
+                setTableHeader(true);
+                showInfoMessage("Chọn hoặc tạo một danh sách ở cột trái.");
+            }
+        }
+    }
+
+    function showInfoMessage(text) {
+        const info = document.getElementById('info-msg');
+        info.textContent = text;
+        info.classList.remove('hidden');
+        document.getElementById('limit-msg').classList.add('hidden');
+        document.getElementById('results-body').innerHTML = '';
+        updateSummary(0, 0);
+        document.getElementById('results-count').textContent = '0 tìm thấy';
+        currentMatches = [];
+    }
+
+    function updateSummary(totalBp, totalUsd) {
+        document.getElementById('sum-bp').textContent = formatBP(totalBp);
+        document.getElementById('sum-usd').textContent = '$' + totalUsd.toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2});
+        
+        const vnd = totalUsd * VND_RATE;
+        document.getElementById('sum-vnd').textContent = Math.round(vnd).toLocaleString() + ' đ';
+    }
+
+    function formatBP(value) {
+        if (!value) return "0";
+        if (value >= 1e12) {
+            return (value / 1e12).toLocaleString(undefined, {maximumFractionDigits: 2}) + " T (Trillion)";
+        }
+        if (value >= 1e9) {
+            return (value / 1e9).toLocaleString(undefined, {maximumFractionDigits: 2}) + " B (Billion)";
+        }
+        return value.toLocaleString();
+    }
+
+    // Season list filtering in the grid
+    function filterSeasonGrid() {
+        const query = document.getElementById('season-search').value.trim().toUpperCase();
+        const items = document.querySelectorAll('#season-grid .season-item');
+        
+        items.forEach(item => {
+            const seasonName = item.querySelector('span').textContent.toUpperCase();
+            if (seasonName.includes(query)) {
+                item.classList.remove('hidden');
+            } else {
+                item.classList.add('hidden');
+            }
+        });
+    }
+
+    function selectAllSeasons(select) {
+        const checkboxes = document.querySelectorAll('#season-grid .season-item input');
+        checkboxes.forEach(cb => {
+            // Only update visible seasons
+            const label = cb.parentElement;
+            if (!label.classList.contains('hidden')) {
+                cb.checked = select;
+                label.classList.toggle('checked', select);
+            }
+        });
+        onFilterChange();
+    }
+
+    function getSelectedSeasons() {
+        const checkboxes = document.querySelectorAll('#season-grid .season-item input:checked');
+        const seasons = [];
+        checkboxes.forEach(cb => {
+            seasons.push(cb.value);
+        });
+        return seasons;
+    }
+
+    // Toggle visibility of fields based on card type selector
+    function handleCardTypeChange() {
+        const cardType = document.getElementById('filter-card-type').value;
+        const groupOvr = document.getElementById('group-ovr');
+        const groupPool = document.getElementById('group-pool');
+        const groupTop = document.getElementById('group-top');
+        const groupLevelRange = document.getElementById('group-level-range');
+        const groupLevelFixed = document.getElementById('group-level-fixed');
+
+        // Hide all conditional groups first
+        groupOvr.classList.add('hidden');
+        groupPool.classList.add('hidden');
+        groupTop.classList.add('hidden');
+        groupLevelRange.classList.add('hidden');
+        groupLevelFixed.classList.add('hidden');
+
+        if (cardType === 'regular') {
+            groupOvr.classList.remove('hidden');
+            groupLevelRange.classList.remove('hidden');
+        } else if (cardType === 'designated') {
+            groupPool.classList.remove('hidden');
+            groupLevelFixed.classList.remove('hidden');
+        } else if (cardType === 'top-price') {
+            groupTop.classList.remove('hidden');
+            groupLevelRange.classList.remove('hidden');
+        }
+
+        onFilterChange();
+    }
+
+    // Monitor changes to show search button
+    function onFilterChange() {
+        const cardType = document.getElementById('filter-card-type').value;
+        const selectedSeasons = getSelectedSeasons();
+        
+        // Update visual tags for selected seasons
+        updateSelectedSeasonsTags(selectedSeasons);
+        
+        const usdMin = document.getElementById('filter-usd-min').value.trim();
+        const usdMax = document.getElementById('filter-usd-max').value.trim();
+        const excludeLimit = document.getElementById('filter-exclude-limit').checked;
+        
+        let hasFilters = selectedSeasons.length > 0 || usdMin !== '' || usdMax !== '' || excludeLimit;
+
+        if (cardType === 'regular') {
+            const ovrMin = document.getElementById('filter-ovr-min').value.trim();
+            const ovrMax = document.getElementById('filter-ovr-max').value.trim();
+            const minLvl = document.getElementById('filter-min-level').value;
+            const maxLvl = document.getElementById('filter-max-level').value;
+            hasFilters = hasFilters || ovrMin !== '' || ovrMax !== '' || minLvl !== '' || maxLvl !== '';
+        } else if (cardType === 'designated') {
+            const poolMin = document.getElementById('filter-pool-min').value.trim();
+            const poolMax = document.getElementById('filter-pool-max').value.trim();
+            const fixedLvl = document.getElementById('filter-fixed-level').value;
+            hasFilters = hasFilters || poolMin !== '' || poolMax !== '' || fixedLvl !== '';
+        } else if (cardType === 'top-price') {
+            const topMin = document.getElementById('filter-top-min').value.trim();
+            const topMax = document.getElementById('filter-top-max').value.trim();
+            const minLvl = document.getElementById('filter-min-level').value;
+            const maxLvl = document.getElementById('filter-max-level').value;
+            hasFilters = hasFilters || topMin !== '' || topMax !== '' || minLvl !== '' || maxLvl !== '';
+        }
+        
+        const searchBtn = document.getElementById('filter-search-btn');
+        if (hasFilters) {
+            searchBtn.classList.remove('hidden');
+        } else {
+            searchBtn.classList.add('hidden');
+        }
+    }
+
+    function updateSelectedSeasonsTags(selectedSeasons) {
+        const container = document.getElementById('selected-seasons-tags');
+        if (!container) return;
+        container.innerHTML = '';
+        
+        selectedSeasons.forEach(s => {
+            const tag = document.createElement('span');
+            tag.className = 'selected-tag';
+            tag.innerHTML = `${s} <span class="close-icon">&times;</span>`;
+            tag.title = 'Click để bỏ chọn';
+            tag.onclick = () => {
+                const label = document.getElementById(`label-season-${s}`);
+                if (label) {
+                    const cb = label.querySelector('input');
+                    if (cb) {
+                        cb.checked = false;
+                        label.classList.remove('checked');
+                        onFilterChange();
+                    }
+                }
+            };
+            container.appendChild(tag);
+        });
+    }
+
+    function handleSearch() {
+        const query = document.getElementById('search-input').value.trim().toLowerCase();
+        
+        if (!query) {
+            showInfoMessage("Nhập ID hoặc tên để bắt đầu tìm kiếm.");
+            return;
+        }
+
+        document.getElementById('info-msg').classList.add('hidden');
+        let matches = [];
+
+        // Check if query is numeric
+        const isNumeric = /^\d+$/.test(query);
+
+        if (isNumeric) {
+            const exact = idMap.get(query);
+            if (exact) {
+                matches.push(exact);
+            }
+            for (let i = 0; i < window.ITEMS_DB.length; i++) {
+                const item = window.ITEMS_DB[i];
+                if (item[0].startsWith(query) && item[0] !== query) {
+                    matches.push(item);
+                }
+                if (matches.length >= 200) break; // Increased capacity for search results
+            }
+        } else {
+            // Smart mapping for ICON TM / ICON The Moment / ICONTM search terms
+            let matchFn;
+            if (query.includes("icon tm") || query.includes("icontm") || query.includes("icon the moment")) {
+                const keyword = query.replace(/icon\s*tm|icon\s*the\s*moment/g, "").trim();
+                matchFn = (name) => {
+                    const nameLower = name.toLowerCase();
+                    const hasIconTM = nameLower.includes("icon tm") || nameLower.includes("icontm") || nameLower.includes("icon the moment");
+                    return hasIconTM && nameLower.includes(keyword);
+                };
+            } else {
+                matchFn = (name) => name.toLowerCase().includes(query);
+            }
+
+            for (let i = 0; i < window.ITEMS_DB.length; i++) {
+                const item = window.ITEMS_DB[i];
+                if (matchFn(item[1])) {
+                    matches.push(item);
+                }
+                if (matches.length >= 200) {
+                    break;
+                }
+            }
+        }
+
+        currentMatches = matches;
+        applySort();
+    }
+
+    function applyFilters() {
+        document.getElementById('info-msg').classList.add('hidden');
+        
+        const cardType = document.getElementById('filter-card-type').value;
+        const selectedSeasons = getSelectedSeasons();
+        
+        let minLvl, maxLvl;
+        let fixedLvl = null;
+
+        if (cardType === 'designated') {
+            const fixedLvlVal = document.getElementById('filter-fixed-level').value;
+            if (fixedLvlVal !== 'all') {
+                fixedLvl = parseInt(fixedLvlVal) || 8;
+                minLvl = fixedLvl;
+                maxLvl = fixedLvl;
+            } else {
+                minLvl = 1;
+                maxLvl = 13;
+            }
+        } else {
+            minLvl = parseInt(document.getElementById('filter-min-level').value) || 1;
+            maxLvl = parseInt(document.getElementById('filter-max-level').value) || 13;
+            if (minLvl > maxLvl) {
+                document.getElementById('filter-max-level').value = minLvl;
+                alert("Mức cộng min không thể lớn hơn cộng max. Hệ thống đã tự điều chỉnh cộng max bằng cộng min.");
+                return;
+            }
+        }
+
+        // Regular OVR Bounds
+        let ovrMin = null, ovrMax = null;
+        if (cardType === 'regular') {
+            const ovrMinVal = document.getElementById('filter-ovr-min').value.trim();
+            const ovrMaxVal = document.getElementById('filter-ovr-max').value.trim();
+            ovrMin = ovrMinVal ? parseInt(ovrMinVal) : null;
+            ovrMax = ovrMaxVal ? parseInt(ovrMaxVal) : null;
+            if (ovrMin !== null && ovrMax !== null && ovrMin > ovrMax) {
+                document.getElementById('filter-ovr-max').value = ovrMin;
+                alert("Chỉ số OVR tối thiểu không thể lớn hơn OVR tối đa.");
+                return;
+            }
+        }
+
+        // Designated Pool Bounds
+        let poolMin = null, poolMax = null;
+        if (cardType === 'designated') {
+            const poolMinVal = document.getElementById('filter-pool-min').value.trim();
+            const poolMaxVal = document.getElementById('filter-pool-max').value.trim();
+            poolMin = poolMinVal ? parseInt(poolMinVal) : null;
+            poolMax = poolMaxVal ? parseInt(poolMaxVal) : null;
+            if (poolMin !== null && poolMax !== null && poolMin > poolMax) {
+                document.getElementById('filter-pool-max').value = poolMin;
+                alert("Pool chỉ định tối thiểu không thể lớn hơn Pool chỉ định tối đa.");
+                return;
+            }
+        }
+
+        // Top Price Bounds
+        let topMin = null, topMax = null;
+        if (cardType === 'top-price') {
+            const topMinVal = document.getElementById('filter-top-min').value.trim();
+            const topMaxVal = document.getElementById('filter-top-max').value.trim();
+            topMin = topMinVal ? parseInt(topMinVal) : null;
+            topMax = topMaxVal ? parseInt(topMaxVal) : null;
+            if (topMin !== null && topMax !== null && topMin > topMax) {
+                document.getElementById('filter-top-max').value = topMin;
+                alert("Top tối thiểu không thể lớn hơn Top tối đa.");
+                return;
+            }
+        }
+
+        // USD Value Bounds
+        const usdMinVal = document.getElementById('filter-usd-min').value.trim();
+        const usdMaxVal = document.getElementById('filter-usd-max').value.trim();
+        const usdMin = usdMinVal ? parseFloat(usdMinVal) : null;
+        const usdMax = usdMaxVal ? parseFloat(usdMaxVal) : null;
+        if (usdMin !== null && usdMax !== null && usdMin > usdMax) {
+            document.getElementById('filter-usd-max').value = usdMin;
+            alert("USD tối thiểu không thể lớn hơn USD tối đa.");
+            return;
+        }
+
+        // Exclude Limited seasons
+        const excludeLimit = document.getElementById('filter-exclude-limit').checked;
+        const isLimitedSeason = (seasonName) => {
+            const upper = seasonName.toUpperCase();
+            const limitedKeywords = ['TY', 'TS', 'UCL', 'VB', 'IM', 'LM', 'EU24', 'NTG', 'VVIP', 'WC22'];
+            return limitedKeywords.some(keyword => upper.includes(keyword));
+        };
+
+        console.time('Advanced Filtering');
+        let matches = [];
+        for (let i = 0; i < parsedItems.length; i++) {
+            const item = parsedItems[i];
+
+            // 1. Filter by card type categorization
+            if (cardType === 'regular') {
+                if (item.isDesignated || item.isTop) {
+                    continue;
+                }
+            } else if (cardType === 'designated') {
+                if (!item.isDesignated) {
+                    continue;
+                }
+            } else if (cardType === 'top-price') {
+                if (!item.isTop) {
+                    continue;
+                }
+            }
+
+            // 2. Season Filter:
+            // - Regular & Top: must contain ALL of the selected seasons (AND logic)
+            // - Designated: must contain AT LEAST ONE of the selected seasons (OR logic)
+            if (selectedSeasons.length > 0) {
+                if (cardType === 'designated') {
+                    const seasonMatched = selectedSeasons.some(s => item.seasons.includes(s));
+                    if (!seasonMatched) continue;
+                } else {
+                    let seasonMatched = true;
+                    for (const s of selectedSeasons) {
+                        if (!item.seasons.includes(s)) {
+                            seasonMatched = false;
+                            break;
+                        }
+                    }
+                    if (!seasonMatched) continue;
+                }
+            }
+
+            // Exclude Limit Seasons check
+            if (excludeLimit) {
+                const hasLimitSeason = item.seasons.some(s => isLimitedSeason(s));
+                if (hasLimitSeason) {
+                    continue;
+                }
+            }
+
+            // 3. OVR base filter (only for regular)
+            if (cardType === 'regular' && (ovrMin !== null || ovrMax !== null)) {
+                if (item.ovr === null) {
+                    continue;
+                }
+                if (ovrMin !== null && item.ovr < ovrMin) {
+                    continue;
+                }
+                if (ovrMax !== null && item.ovr > ovrMax) {
+                    continue;
+                }
+            }
+
+            // 4. Designated Pool filter (only for designated)
+            if (cardType === 'designated' && (poolMin !== null || poolMax !== null)) {
+                if (item.pool === null) {
+                    continue;
+                }
+                if (poolMin !== null && item.pool < poolMin) {
+                    continue;
+                }
+                if (poolMax !== null && item.pool > poolMax) {
+                    continue;
+                }
+            }
+
+            // 5. Top Price filter (only for top-price)
+            if (cardType === 'top-price' && (topMin !== null || topMax !== null)) {
+                if (item.topVal === null) {
+                    continue;
+                }
+                if (topMin !== null && item.topVal < topMin) {
+                    continue;
+                }
+                if (topMax !== null && item.topVal > topMax) {
+                    continue;
+                }
+            }
+
+            // USD value filter
+            if (usdMin !== null || usdMax !== null) {
+                const itemUsd = parseFloat(item.usd) || 0;
+                if (usdMin !== null && itemUsd < usdMin) {
+                    continue;
+                }
+                if (usdMax !== null && itemUsd > usdMax) {
+                    continue;
+                }
+            }
+
+            // 6. Upgrade level filter: Strict level range/value match
+            if (cardType === 'designated' && fixedLvl === null) {
+                // Fixed level is set to 'all', so we skip the level checks
+            } else if (item.minLvl !== null) {
+                if (item.minLvl !== minLvl || item.maxLvl !== maxLvl) {
+                    continue;
+                }
+            } else {
+                // If item has no level info:
+                if (cardType === 'designated') {
+                    // Designated items MUST have a fixed level, exclude if it has no parsed levels
+                    continue;
+                }
+                // Regular/Top-price cards can bypass level check only if range is full default [1, 13]
+                if (minLvl > 1 || maxLvl < 13) {
+                    continue;
+                }
+            }
+
+            matches.push(window.ITEMS_DB[i]);
+            if (matches.length >= 500) { // Limit results displayed in DOM to 500 for safety
+                break;
+            }
+        }
+        console.timeEnd('Advanced Filtering');
+
+        if (matches.length >= 500) {
+            document.getElementById('limit-msg').classList.remove('hidden');
+        } else {
+            document.getElementById('limit-msg').classList.add('hidden');
+        }
+
+        currentMatches = matches;
+        applySort();
+
+        if (matches.length === 0) {
+            showInfoMessage("Không tìm thấy vật phẩm nào khớp với bộ lọc.");
+        }
+    }
+
+    function resetFilters() {
+        document.getElementById('filter-card-type').value = 'regular';
+        
+        document.getElementById('season-search').value = '';
+        filterSeasonGrid();
+        selectAllSeasons(false);
+        
+        document.getElementById('filter-ovr-min').value = '';
+        document.getElementById('filter-ovr-max').value = '';
+        
+        document.getElementById('filter-pool-min').value = '';
+        document.getElementById('filter-pool-max').value = '';
+        
+        document.getElementById('filter-top-min').value = '';
+        document.getElementById('filter-top-max').value = '';
+        
+        document.getElementById('filter-usd-min').value = '';
+        document.getElementById('filter-usd-max').value = '';
+        document.getElementById('filter-exclude-limit').checked = false;
+        
+        document.getElementById('filter-min-level').value = '8';
+        document.getElementById('filter-max-level').value = '8';
+        document.getElementById('filter-fixed-level').value = 'all';
+        
+        document.getElementById('sort-select').value = 'default';
+        
+        handleCardTypeChange(); // This will show/hide the correct groups and trigger onFilterChange
+        showInfoMessage("Bộ lọc đã reset. Vui lòng thiết lập lại và ấn 'Lọc Vật Phẩm'.");
+    }
+
+    function handleBulkSearch() {
+        const rawInput = document.getElementById('bulk-input').value;
+        if (!rawInput.trim()) {
+            showInfoMessage("Dán một hoặc nhiều ID vào ô bên trái và ấn nút Tra Cứu.");
+            return;
+        }
+
+        document.getElementById('info-msg').classList.add('hidden');
+        document.getElementById('limit-msg').classList.add('hidden');
+
+        const ids = rawInput.match(/\d+/g) || [];
+        const uniqueIds = [...new Set(ids)];
+        
+        let matches = [];
+        for (const id of uniqueIds) {
+            const item = idMap.get(id);
+            if (item) {
+                matches.push(item);
+            } else {
+                matches.push([id, "❌ Không tìm thấy ID này trong cơ sở dữ liệu", "0", "0"]);
+            }
+        }
+
+        currentMatches = matches;
+        applySort();
+    }
+
+    // Sorting Engine
+    function handleSortChange() {
+        applySort();
+    }
+
+    function applySort() {
+        const sortBy = document.getElementById('sort-select').value;
+        
+        if (sortBy === 'default') {
+            currentMatches.sort((a, b) => a[0].localeCompare(b[0]));
+        } else if (sortBy === 'bp-desc') {
+            currentMatches.sort((a, b) => (parseFloat(b[2]) || 0) - (parseFloat(a[2]) || 0));
+        } else if (sortBy === 'bp-asc') {
+            currentMatches.sort((a, b) => (parseFloat(a[2]) || 0) - (parseFloat(b[2]) || 0));
+        } else if (sortBy === 'usd-desc') {
+            currentMatches.sort((a, b) => (parseFloat(b[3]) || 0) - (parseFloat(a[3]) || 0));
+        } else if (sortBy === 'usd-asc') {
+            currentMatches.sort((a, b) => (parseFloat(a[3]) || 0) - (parseFloat(b[3]) || 0));
+        }
+        
+        renderResults(currentMatches);
+    }
+
+    // Highlight helper
+    function highlightSeasons(name, selectedSeasons) {
+        if (!selectedSeasons || selectedSeasons.length === 0) return name;
+        
+        let highlighted = name;
+        // Sort selectedSeasons by length descending
+        const sorted = [...selectedSeasons].sort((a, b) => b.length - a.length);
+        
+        for (const season of sorted) {
+            const escaped = season.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&');
+            const regex = new RegExp(`\\b(${escaped})\\b`, 'gi');
+            highlighted = highlighted.replace(regex, `<span class="highlight-season">$1</span>`);
+        }
+        return highlighted;
+    }
+
+    function copyToClipboard(text, btnElement) {
+        navigator.clipboard.writeText(text).then(() => {
+            const originalText = btnElement.textContent;
+            btnElement.textContent = "✓ Copied";
+            btnElement.style.background = "rgba(16, 185, 129, 0.2)";
+            btnElement.style.borderColor = "#10b981";
+            btnElement.style.color = "#10b981";
+            setTimeout(() => {
+                btnElement.textContent = originalText;
+                btnElement.style.background = "";
+                btnElement.style.borderColor = "";
+                btnElement.style.color = "";
+            }, 1200);
+        }).catch(err => {
+            console.error('Failed to copy: ', err);
+        });
+    }
+
+    function renderResults(items) {
+        const tbody = document.getElementById('results-body');
+        tbody.innerHTML = '';
+
+        let totalBp = 0;
+        let totalUsd = 0;
+        let count = 0;
+
+        const selectedSeasons = (currentTab === 'filter') ? getSelectedSeasons() : [];
+
+        for (const item of items) {
+            const id = item[0];
+            const name = item[1];
+            
+            const bpStr = item[2];
+            const usdStr = item[3];
+            
+            const bpVal = parseFloat(bpStr) || 0;
+            const usdVal = parseFloat(usdStr) || 0;
+
+            if (name !== "❌ Không tìm thấy ID này trong cơ sở dữ liệu") {
+                totalBp += bpVal;
+                totalUsd += usdVal;
+                count++;
+            }
+
+            // Apply season highlighting if in advanced filter tab
+            const displayName = highlightSeasons(name, selectedSeasons);
+
+            const tr = document.createElement('tr');
+            tr.innerHTML = `
+                <td class="item-id-cell">
+                    <span>${id}</span>
+                    <button class="copy-btn" onclick="copyToClipboard('${id}', this)">Copy</button>
+                    <button class="add-to-list-btn" onclick="showAddToListMenu('${id}', event)">Add to List</button>
+                </td>
+                <td class="item-name-cell">${displayName}</td>
+                <td class="number-cell">${bpVal ? bpVal.toLocaleString() : bpStr || '0'}</td>
+                <td class="number-cell">${usdVal ? '$' + usdVal.toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 4}) : usdStr || '0'}</td>
+            `;
+            tbody.appendChild(tr);
+        }
+
+        document.getElementById('results-count').textContent = count.toLocaleString() + ' items';
+        updateSummary(totalBp, totalUsd);
+    }
+
+    // --- NEW PLAYS/LISTS & KEY NAVIGATION INTERFACE FUNCTIONS ---
+
+    // Initialize lists database from local storage
+    function initLists() {
+        const stored = localStorage.getItem('fco_item_lists');
+        if (stored) {
+            try {
+                playlistDb = JSON.parse(stored);
+            } catch (e) {
+                console.error("Failed to parse local list database:", e);
+                playlistDb = {};
+            }
+        } else {
+            playlistDb = {};
+        }
+        renderSavedListsSidebar();
+    }
+
+    // Dynamic Toast Notification System
+    function showToast(message, type = 'success') {
+        let container = document.getElementById('toast-container');
+        if (!container) {
+            container = document.createElement('div');
+            container.id = 'toast-container';
+            container.className = 'toast-container';
+            document.body.appendChild(container);
+        }
+        const toast = document.createElement('div');
+        toast.className = `toast ${type}`;
+        toast.innerHTML = `<span>${message}</span>`;
+        container.appendChild(toast);
+        
+        // Trigger micro-animation
+        setTimeout(() => {
+            toast.classList.add('show');
+        }, 10);
+        
+        // Auto-remove Toast
+        setTimeout(() => {
+            toast.classList.remove('show');
+            setTimeout(() => {
+                toast.remove();
+            }, 300);
+        }, 3000);
+    }
+
+    // Context Dropdown Menu for result rows
+    function showAddToListMenu(itemId, event) {
+        event.stopPropagation();
+        
+        if (currentContextMenu) {
+            currentContextMenu.remove();
+            currentContextMenu = null;
+        }
+        
+        const item = idMap.get(itemId);
+        if (!item) {
+            showToast("Không tìm thấy thông tin vật phẩm!", "warning");
+            return;
+        }
+        
+        const menu = document.createElement('div');
+        menu.className = 'floating-menu';
+        
+        const rect = event.currentTarget.getBoundingClientRect();
+        menu.style.top = `${rect.bottom + window.scrollY}px`;
+        menu.style.left = `${rect.left + window.scrollX}px`;
+        
+        const listNames = Object.keys(playlistDb);
+        if (listNames.length > 0) {
+            listNames.forEach(name => {
+                const menuItem = document.createElement('div');
+                menuItem.className = 'floating-menu-item';
+                menuItem.textContent = name;
+                menuItem.onclick = () => {
+                    addItemToList(name, item);
+                    menu.remove();
+                    currentContextMenu = null;
+                };
+                menu.appendChild(menuItem);
+            });
+            
+            const divider = document.createElement('div');
+            divider.className = 'floating-menu-divider';
+            menu.appendChild(divider);
+        }
+        
+        const newListItem = document.createElement('div');
+        newListItem.className = 'floating-menu-item';
+        newListItem.style.fontWeight = 'bold';
+        newListItem.innerHTML = '<span>➕ Tạo list mới...</span>';
+        newListItem.onclick = () => {
+            menu.remove();
+            currentContextMenu = null;
+            createNewListPrompt(item);
+        };
+        menu.appendChild(newListItem);
+        
+        document.body.appendChild(menu);
+        currentContextMenu = menu;
+        
+        const closeMenu = (e) => {
+            if (!menu.contains(e.target) && e.target !== event.target) {
+                menu.remove();
+                currentContextMenu = null;
+                document.removeEventListener('click', closeMenu);
+            }
+        };
+        document.addEventListener('click', closeMenu);
+    }
+
+    // Add selected item to list and save
+    function addItemToList(listName, item) {
+        if (!playlistDb[listName]) {
+            playlistDb[listName] = [];
+        }
+        
+        const exists = playlistDb[listName].some(existing => existing[0] === item[0]);
+        if (exists) {
+            showToast(`Vật phẩm "${item[1]}" đã có sẵn trong "${listName}"!`, "warning");
+            return;
+        }
+        
+        playlistDb[listName].push(item);
+        localStorage.setItem('fco_item_lists', JSON.stringify(playlistDb));
+        showToast(`Đã thêm "${item[1]}" vào "${listName}"!`, "success");
+        
+        if (currentTab === 'lists') {
+            renderSavedListsSidebar();
+            if (activeListName === listName) {
+                renderListDetails(listName);
+            }
+        }
+    }
+
+    // Prompt user to create a new list and optionally add an item
+    function createNewListPrompt(optionalItem = null) {
+        const listName = prompt("Nhập tên danh sách mới:");
+        if (listName === null) return;
+        
+        const trimmed = listName.trim();
+        if (!trimmed) {
+            showToast("Tên danh sách không được để trống!", "warning");
+            return;
+        }
+        
+        if (playlistDb[trimmed]) {
+            showToast(`Danh sách "${trimmed}" đã tồn tại!`, "warning");
+            return;
+        }
+        
+        playlistDb[trimmed] = [];
+        localStorage.setItem('fco_item_lists', JSON.stringify(playlistDb));
+        showToast(`Đã tạo danh sách "${trimmed}"!`, "success");
+        
+        renderSavedListsSidebar();
+        
+        if (optionalItem) {
+            addItemToList(trimmed, optionalItem);
+        }
+        
+        selectList(trimmed);
+    }
+
+    // Render left sidebar for list tab
+    function renderSavedListsSidebar() {
+        const container = document.getElementById('saved-lists-container');
+        if (!container) return;
+        
+        container.innerHTML = '';
+        const listNames = Object.keys(playlistDb);
+        
+        if (listNames.length === 0) {
+            container.innerHTML = `<div style="font-size: 0.85rem; color: var(--text-muted); padding: 0.5rem; text-align: center;">Chưa có danh sách nào được tạo.</div>`;
+            return;
+        }
+        
+        listNames.forEach(name => {
+            const itemDiv = document.createElement('div');
+            itemDiv.style.display = 'flex';
+            itemDiv.style.alignItems = 'center';
+            itemDiv.style.justifyContent = 'space-between';
+            itemDiv.style.padding = '0.6rem 0.8rem';
+            itemDiv.style.borderRadius = '8px';
+            itemDiv.style.background = activeListName === name ? 'rgba(168, 85, 247, 0.15)' : 'rgba(255, 255, 255, 0.02)';
+            itemDiv.style.border = activeListName === name ? '1px solid var(--accent-primary)' : '1px solid var(--panel-border)';
+            itemDiv.style.cursor = 'pointer';
+            itemDiv.style.transition = 'all 0.2s';
+            
+            itemDiv.onclick = () => selectList(name);
+            
+            const nameSpan = document.createElement('span');
+            nameSpan.style.fontSize = '0.9rem';
+            nameSpan.style.fontWeight = activeListName === name ? '600' : '400';
+            nameSpan.style.color = activeListName === name ? '#d8b4fe' : 'var(--text-main)';
+            nameSpan.style.whiteSpace = 'nowrap';
+            nameSpan.style.overflow = 'hidden';
+            nameSpan.style.textOverflow = 'ellipsis';
+            nameSpan.style.maxWidth = '180px';
+            nameSpan.textContent = name;
+            
+            const countBadge = document.createElement('span');
+            countBadge.style.fontSize = '0.75rem';
+            countBadge.style.background = 'rgba(255,255,255,0.05)';
+            countBadge.style.padding = '2px 6px';
+            countBadge.style.borderRadius = '4px';
+            countBadge.style.color = 'var(--text-muted)';
+            countBadge.style.marginLeft = '4px';
+            countBadge.textContent = `${playlistDb[name].length}`;
+            
+            const nameGroup = document.createElement('div');
+            nameGroup.style.display = 'flex';
+            nameGroup.style.alignItems = 'center';
+            nameGroup.appendChild(nameSpan);
+            nameGroup.appendChild(countBadge);
+            itemDiv.appendChild(nameGroup);
+            
+            const deleteBtn = document.createElement('button');
+            deleteBtn.innerHTML = '🗑️';
+            deleteBtn.style.background = 'transparent';
+            deleteBtn.style.border = 'none';
+            deleteBtn.style.cursor = 'pointer';
+            deleteBtn.style.padding = '0.2rem';
+            deleteBtn.style.fontSize = '0.85rem';
+            deleteBtn.style.opacity = '0.5';
+            deleteBtn.style.transition = 'opacity 0.2s';
+            deleteBtn.title = "Xóa danh sách này";
+            deleteBtn.onmouseover = () => deleteBtn.style.opacity = '1';
+            deleteBtn.onmouseout = () => deleteBtn.style.opacity = '0.5';
+            deleteBtn.onclick = (e) => {
+                e.stopPropagation();
+                deleteList(name);
+            };
+            
+            itemDiv.appendChild(deleteBtn);
+            container.appendChild(itemDiv);
+        });
+    }
+
+    // Select and load active list
+    function selectList(name) {
+        activeListName = name;
+        renderSavedListsSidebar();
+        renderListDetails(name);
+    }
+
+    // Delete list from DB
+    function deleteList(name) {
+        if (!confirm(`Bạn có chắc chắn muốn xóa danh sách "${name}" không?`)) return;
+        
+        delete playlistDb[name];
+        localStorage.setItem('fco_item_lists', JSON.stringify(playlistDb));
+        showToast(`Đã xóa danh sách "${name}"`, "success");
+        
+        if (activeListName === name) {
+            activeListName = null;
+            showInfoMessage("Chọn hoặc tạo một danh sách ở cột trái.");
+        } else {
+            renderSavedListsSidebar();
+        }
+    }
+
+    // Dynamically adjust table headers based on active tab view
+    function setTableHeader(isListTab) {
+        const thead = document.querySelector('.table-wrapper table thead');
+        if (!thead) return;
+        if (isListTab) {
+            thead.innerHTML = `
+                <tr>
+                    <th style="width: 16%">Thao tác</th>
+                    <th style="width: 18%">ID</th>
+                    <th style="width: 36%">Tên vật phẩm</th>
+                    <th style="width: 15%; text-align: right;">BP Value</th>
+                    <th style="width: 15%; text-align: right;">USD Value</th>
+                </tr>
+            `;
+        } else {
+            thead.innerHTML = `
+                <tr>
+                    <th style="width: 22%">ID</th>
+                    <th style="width: 48%">Tên vật phẩm</th>
+                    <th style="width: 15%; text-align: right;">BP Value</th>
+                    <th style="width: 15%; text-align: right;">USD Value</th>
+                </tr>
+            `;
+        }
+    }
+
+    // Render detailed list contents
+    function renderListDetails(name) {
+        const items = playlistDb[name] || [];
+        const tbody = document.getElementById('results-body');
+        tbody.innerHTML = '';
+        
+        document.getElementById('results-title').textContent = `Danh sách: ${name}`;
+        document.getElementById('results-count').textContent = `${items.length} items`;
+        document.getElementById('info-msg').classList.add('hidden');
+        document.getElementById('limit-msg').classList.add('hidden');
+        
+        setTableHeader(true);
+        
+        let totalBp = 0;
+        let totalUsd = 0;
+        
+        items.forEach((item, index) => {
+            const id = item[0];
+            const itemName = item[1];
+            const bpStr = item[2];
+            const usdStr = item[3];
+            
+            const bpVal = parseFloat(bpStr) || 0;
+            const usdVal = parseFloat(usdStr) || 0;
+            
+            totalBp += bpVal;
+            totalUsd += usdVal;
+            
+            const tr = document.createElement('tr');
+            tr.setAttribute('data-id', id);
+            tr.setAttribute('data-index', index);
+            
+            tr.innerHTML = `
+                <td>
+                    <div style="display: flex; gap: 8px; align-items: center;">
+                        <span class="drag-handle" title="Kéo thả để sắp xếp">☰</span>
+                        <button class="copy-btn" style="padding: 2px 5px; font-size: 0.75rem; background: rgba(239, 68, 68, 0.15); border-color: rgba(239, 68, 68, 0.3); color: #ef4444;" onclick="removeItemFromList('${name}', ${index})" title="Xóa khỏi danh sách">❌</button>
+                    </div>
+                </td>
+                <td class="item-id-cell">
+                    <span>${id}</span>
+                    <button class="copy-btn" onclick="copyToClipboard('${id}', this)">Copy</button>
+                </td>
+                <td class="item-name-cell">${itemName}</td>
+                <td class="number-cell">${bpVal ? bpVal.toLocaleString() : bpStr || '0'}</td>
+                <td class="number-cell">${usdVal ? '$' + usdVal.toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 4}) : usdStr || '0'}</td>
+            `;
+            
+            // Enable dragging only when mousedown on drag handle
+            const handle = tr.querySelector('.drag-handle');
+            handle.addEventListener('mousedown', () => {
+                tr.setAttribute('draggable', 'true');
+            });
+            handle.addEventListener('mouseup', () => {
+                tr.setAttribute('draggable', 'false');
+            });
+            handle.addEventListener('mouseleave', () => {
+                tr.setAttribute('draggable', 'false');
+            });
+            
+            // Drag and drop event listeners
+            tr.addEventListener('dragstart', (e) => {
+                tr.classList.add('dragging');
+                e.dataTransfer.effectAllowed = 'move';
+                e.dataTransfer.setData('text/plain', index);
+                
+                // Start auto scroll
+                const container = document.querySelector('.table-wrapper');
+                if (container) startAutoScrollLoop(container);
+            });
+            
+            tr.addEventListener('dragend', () => {
+                tr.classList.remove('dragging');
+                tr.setAttribute('draggable', 'false');
+                
+                // Stop auto scroll
+                stopAutoScrollLoop();
+                
+                saveNewListOrder(name);
+            });
+            
+            tr.addEventListener('dragover', (e) => {
+                e.preventDefault();
+                const draggingRow = tbody.querySelector('.dragging');
+                if (!draggingRow || draggingRow === tr) return;
+                
+                const rect = tr.getBoundingClientRect();
+                const midpoint = rect.top + rect.height / 2;
+                if (e.clientY < midpoint) {
+                    tbody.insertBefore(draggingRow, tr);
+                } else {
+                    tbody.insertBefore(draggingRow, tr.nextSibling);
+                }
+            });
+            
+            tbody.appendChild(tr);
+        });
+        
+        updateSummary(totalBp, totalUsd);
+    }
+
+    function saveNewListOrder(listName) {
+        const tbody = document.getElementById('results-body');
+        const rows = tbody.querySelectorAll('tr');
+        const newList = [];
+        const originalList = playlistDb[listName];
+        if (!originalList) return;
+        
+        rows.forEach(row => {
+            const originalIndex = parseInt(row.getAttribute('data-index'));
+            if (!isNaN(originalIndex) && originalList[originalIndex]) {
+                newList.push(originalList[originalIndex]);
+            }
+        });
+        
+        playlistDb[listName] = newList;
+        localStorage.setItem('fco_item_lists', JSON.stringify(playlistDb));
+        
+        // Re-render to update original indices on DOM elements
+        renderListDetails(listName);
+        renderSavedListsSidebar();
+    }
+
+    // Spotify-like order shifter
+    function moveItemInList(listName, index, direction) {
+        const list = playlistDb[listName];
+        if (!list) return;
+        
+        const newIndex = index + direction;
+        if (newIndex < 0 || newIndex >= list.length) return;
+        
+        const temp = list[index];
+        list[index] = list[newIndex];
+        list[newIndex] = temp;
+        
+        localStorage.setItem('fco_item_lists', JSON.stringify(playlistDb));
+        
+        renderListDetails(listName);
+        renderSavedListsSidebar();
+    }
+
+    // Remove single item from list
+    function removeItemFromList(listName, index) {
+        const list = playlistDb[listName];
+        if (!list) return;
+        
+        const removedItem = list.splice(index, 1)[0];
+        localStorage.setItem('fco_item_lists', JSON.stringify(playlistDb));
+        showToast(`Đã xóa "${removedItem[1]}" khỏi danh sách`, "info");
+        
+        renderListDetails(listName);
+        renderSavedListsSidebar();
+    }
+
+    // Sort list items by field
+    function sortListBy(type) {
+        if (!activeListName || !playlistDb[activeListName]) return;
+        
+        const list = playlistDb[activeListName];
+        if (type === 'bp') {
+            list.sort((a, b) => (parseFloat(b[2]) || 0) - (parseFloat(a[2]) || 0));
+            showToast("Đã sắp xếp danh sách theo BP giảm dần", "info");
+        } else if (type === 'usd') {
+            list.sort((a, b) => (parseFloat(b[3]) || 0) - (parseFloat(a[3]) || 0));
+            showToast("Đã sắp xếp danh sách theo USD giảm dần", "info");
+        }
+        
+        localStorage.setItem('fco_item_lists', JSON.stringify(playlistDb));
+        renderListDetails(activeListName);
+    }
+
+    // Copy list item IDs
+    function copyAllIdsFromList() {
+        if (!activeListName || !playlistDb[activeListName]) return;
+        
+        const ids = playlistDb[activeListName].map(item => item[0]).join('\n');
+        navigator.clipboard.writeText(ids).then(() => {
+            showToast("Đã copy toàn bộ ID trong danh sách vào clipboard!", "success");
+        }).catch(err => {
+            console.error('Failed to copy list IDs: ', err);
+            showToast("Lỗi khi copy ID!", "warning");
+        });
+    }
+
+    // Save active list
+    function saveActiveList() {
+        if (!activeListName) return;
+        localStorage.setItem('fco_item_lists', JSON.stringify(playlistDb));
+        showToast(`Đã lưu danh sách "${activeListName}" thành công!`, "success");
+    }
+
+    // Set up Enter key listeners for all tabs inputs
+    function setupSearchKeyListeners() {
+        const searchInput = document.getElementById('search-input');
+        if (searchInput) {
+            searchInput.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter') {
+                    e.preventDefault();
+                    handleSearch();
+                }
+            });
+        }
+
+        const filterInputs = [
+            'filter-ovr-min', 'filter-ovr-max', 'filter-usd-min', 'filter-usd-max',
+            'filter-pool-min', 'filter-pool-max', 'filter-top-min', 'filter-top-max'
+        ];
+        filterInputs.forEach(id => {
+            const el = document.getElementById(id);
+            if (el) {
+                el.addEventListener('keydown', (e) => {
+                    if (e.key === 'Enter') {
+                        e.preventDefault();
+                        applyFilters();
+                    }
+                });
+            }
+        });
+
+        const filterSelects = [
+            'filter-card-type', 'filter-min-level', 'filter-max-level', 'filter-fixed-level'
+        ];
+        filterSelects.forEach(id => {
+            const el = document.getElementById(id);
+            if (el) {
+                el.addEventListener('keydown', (e) => {
+                    if (e.key === 'Enter') {
+                        e.preventDefault();
+                        applyFilters();
+                    }
+                });
+            }
+        });
+
+        const bulkInput = document.getElementById('bulk-input');
+        if (bulkInput) {
+            bulkInput.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter' && (e.ctrlKey || e.metaKey)) {
+                    e.preventDefault();
+                    handleBulkSearch();
+                }
+            });
+        }
+    }
+
+    // Set up keyboard navigation logic for season grid in Tab 2
+    function setupSeasonSearchKeyboard() {
+        const searchInput = document.getElementById('season-search');
+        if (!searchInput) return;
+        
+        searchInput.addEventListener('keydown', (e) => {
+            const visibleItems = Array.from(document.querySelectorAll('#season-grid .season-item:not(.hidden)'));
+            if (visibleItems.length === 0) return;
+            
+            const gridEl = document.getElementById('season-grid');
+            const gridWidth = gridEl.offsetWidth || 350;
+            const colWidth = 81; // 75px width + 6px gap
+            const cols = Math.max(1, Math.floor(gridWidth / colWidth));
+            
+            if (e.key === 'ArrowRight') {
+                e.preventDefault();
+                highlightedSeasonIndex = (highlightedSeasonIndex + 1) % visibleItems.length;
+                updateHighlightedSeason(visibleItems);
+            } else if (e.key === 'ArrowLeft') {
+                e.preventDefault();
+                highlightedSeasonIndex = (highlightedSeasonIndex - 1 + visibleItems.length) % visibleItems.length;
+                updateHighlightedSeason(visibleItems);
+            } else if (e.key === 'ArrowDown') {
+                e.preventDefault();
+                if (highlightedSeasonIndex === -1) {
+                    highlightedSeasonIndex = 0;
+                } else {
+                    highlightedSeasonIndex = (highlightedSeasonIndex + cols) % visibleItems.length;
+                    if (highlightedSeasonIndex >= visibleItems.length) {
+                        highlightedSeasonIndex = highlightedSeasonIndex % cols; // Wrap row-wise to top
+                    }
+                }
+                updateHighlightedSeason(visibleItems);
+            } else if (e.key === 'ArrowUp') {
+                e.preventDefault();
+                if (highlightedSeasonIndex === -1) {
+                    highlightedSeasonIndex = visibleItems.length - 1;
+                } else {
+                    highlightedSeasonIndex = highlightedSeasonIndex - cols;
+                    if (highlightedSeasonIndex < 0) {
+                        highlightedSeasonIndex = (visibleItems.length + highlightedSeasonIndex) % visibleItems.length;
+                    }
+                }
+                updateHighlightedSeason(visibleItems);
+            } else if (e.key === 'Enter') {
+                if (e.shiftKey) {
+                    e.preventDefault();
+                    if (highlightedSeasonIndex >= 0 && highlightedSeasonIndex < visibleItems.length) {
+                        const item = visibleItems[highlightedSeasonIndex];
+                        const cb = item.querySelector('input');
+                        if (cb) {
+                            cb.checked = !cb.checked;
+                            item.classList.toggle('checked', cb.checked);
+                            onFilterChange();
+                        }
+                    }
+                } else {
+                    e.preventDefault();
+                    applyFilters();
+                }
+            }
+        });
+        
+        searchInput.addEventListener('input', () => {
+            highlightedSeasonIndex = -1;
+            document.querySelectorAll('#season-grid .season-item').forEach(el => el.classList.remove('highlighted-season'));
+        });
+    }
+
+    // UpdateHighlightedSeason helper handles styling and scroll into view
+    function updateHighlightedSeason(visibleItems) {
+        document.querySelectorAll('#season-grid .season-item').forEach(el => el.classList.remove('highlighted-season'));
+        
+        if (highlightedSeasonIndex >= 0 && highlightedSeasonIndex < visibleItems.length) {
+            const item = visibleItems[highlightedSeasonIndex];
+            item.classList.add('highlighted-season');
+            item.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
+        }
+    }
+</script>
+</body>
+</html>

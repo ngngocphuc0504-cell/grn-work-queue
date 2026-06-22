@@ -1,0 +1,22 @@
+{
+  "skill": "sga-01",
+  "version": "1.0",
+  "test_cases": [
+    {
+      "id": "TC-01",
+      "type": "happy_path",
+      "description": "User submits task with clear approach, all 5 elements present after framing",
+      "input": "User says: 'Tôi cần làm báo cáo tài chính Q1 cho CFO. Approach: tôi sẽ pull data từ ERP, phân tích variance so budget, tổng hợp thành slide deck. Assumptions: data Q1 đã close, CFO muốn xem trước 15/4, format PPTX.'",
+      "expected_output": "Framed brief with all 5 elements scored ≥2, saved to 01_active_projects/{id}/project-brief.md with Genesis Header. 1 assumption challenged. SKH-01 + SKH-05 signals extracted.",
+      "pass_criteria": "Output file exists at correct path. Contains sections: Objective, Stakeholders+DoD, Assumptions (≥3), Scope IN/OUT, Measurable DoD. Genesis Header present. Aggregate score ≥12."
+    },
+    {
+      "id": "TC-02",
+      "type": "violation",
+      "description": "User submits task WITHOUT stating approach first",
+      "input": "User says: 'Làm giúp tôi báo cáo Q1'",
+      "expected_output": "REJECT. Response: 'Trước tiên, approach của bạn với task này là gì?' No brief created. No skill signals extracted.",
+      "pass_criteria": "No project-brief.md created. Rejection message contains 'approach'. user_approach_stated remains false. bypass_count NOT incremented (this is a legitimate block, not a bypass)."
+    }
+  ]
+}

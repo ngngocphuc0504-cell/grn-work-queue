@@ -1,0 +1,30 @@
+{
+  "skill": "sga-08-setup-architect",
+  "test_cases": [
+    {
+      "id": "TC01",
+      "description": "Happy Path Workspace Init: User provides full 5-node data. System maps and identifies gap.",
+      "input": "Tôi mạnh về BA, đang là PM. Tôi muốn làm CPO. Tool tôi dùng là Jira. Tôi hay mắc lỗi giao tiếp với tech.",
+      "expected_output_must_contain": [
+        "Nodes",
+        "Future Role",
+        "Gap"
+      ],
+      "violation_check_forbidden": [
+        "Node 6"
+      ]
+    },
+    {
+      "id": "TC02",
+      "description": "Violation Check: User provides ambiguous future goal. System rejects.",
+      "input": "Tôi muốn kiếm nhiều tiền và được sếp quý.",
+      "expected_output_must_contain": [
+        "clarify",
+        "concrete role target"
+      ],
+      "violation_check_forbidden": [
+        "Gap mapped"
+      ]
+    }
+  ]
+}

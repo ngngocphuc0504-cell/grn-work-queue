@@ -1,0 +1,938 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FCO Monthly Plan & Timeline</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
+    <style>
+        :root {
+            --bg: #f5f5f0;
+            --surface: #ffffff;
+            --surface2: #fafaf7;
+            --border: #e8e8e3;
+            --border-light: #f0f0eb;
+            --text: #1a1a1a;
+            --text-secondary: #6b6b6b;
+            --text-muted: #9a9a9a;
+            --accent-green: #2d9d78;
+            --accent-green-bg: #edf7f3;
+            --accent-blue: #3b82f6;
+            --accent-blue-bg: #eff6ff;
+            --accent-amber: #d97706;
+            --accent-amber-bg: #fef9ee;
+            --accent-red: #dc2626;
+            --accent-red-bg: #fef2f2;
+            --accent-purple: #7c3aed;
+            --accent-purple-bg: #f5f3ff;
+            --sidebar-width: 240px;
+            --font: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { background: var(--bg); color: var(--text); font-family: var(--font); font-size: 14px; line-height: 1.5; }
+
+        /* ===== LAYOUT ===== */
+        .app { display: flex; min-height: 100vh; }
+        .sidebar {
+            width: var(--sidebar-width); background: var(--surface); border-right: 1px solid var(--border);
+            padding: 24px 16px; display: flex; flex-direction: column; position: fixed; top: 0; left: 0;
+            bottom: 0; overflow-y: auto; z-index: 100;
+        }
+        .main { margin-left: var(--sidebar-width); flex: 1; padding: 28px 36px; min-height: 100vh; }
+
+        /* ===== SIDEBAR ===== */
+        .sidebar-logo { font-size: 16px; font-weight: 800; margin-bottom: 4px; letter-spacing: -0.3px; }
+        .sidebar-sub { font-size: 11px; color: var(--text-muted); margin-bottom: 24px; }
+
+        .sidebar-section { margin-bottom: 20px; }
+        .sidebar-section-title {
+            font-size: 10px; font-weight: 700; color: var(--text-muted); text-transform: uppercase;
+            letter-spacing: 1px; margin-bottom: 8px; padding-left: 12px;
+        }
+        .sidebar-link {
+            display: flex; align-items: center; gap: 10px; padding: 9px 12px; border-radius: 8px;
+            font-size: 13px; font-weight: 500; color: var(--text-secondary); text-decoration: none;
+            transition: all 0.15s; cursor: pointer; border: none; background: none; width: 100%; text-align: left;
+        }
+        .sidebar-link:hover { background: var(--surface2); color: var(--text); }
+        .sidebar-link.active { background: var(--text); color: #fff; font-weight: 600; }
+        .sidebar-link .icon { font-size: 16px; width: 20px; text-align: center; }
+        .sidebar-link .count {
+            margin-left: auto; font-size: 11px; font-weight: 600; background: var(--border);
+            color: var(--text-secondary); padding: 1px 7px; border-radius: 10px;
+        }
+        .sidebar-link.active .count { background: rgba(255,255,255,0.2); color: #fff; }
+
+        .sidebar-back {
+            display: flex; align-items: center; gap: 8px; font-size: 12px; color: var(--text-muted);
+            text-decoration: none; padding: 8px 12px; border-radius: 8px; transition: all 0.15s;
+            margin-top: auto; border-top: 1px solid var(--border); padding-top: 16px;
+        }
+        .sidebar-back:hover { color: var(--text); background: var(--surface2); }
+
+        /* Month selector */
+        .month-selector { margin-bottom: 24px; padding: 0 4px; }
+        .month-select {
+            width: 100%; padding: 10px 12px; border: 1px solid var(--border); border-radius: 8px;
+            font-family: var(--font); font-size: 13px; font-weight: 600; background: var(--surface2);
+            color: var(--text); cursor: pointer; appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%239a9a9a' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+            background-repeat: no-repeat; background-position: right 12px center;
+        }
+        .month-select:focus { outline: none; border-color: var(--text); }
+
+        /* ===== TOP BAR ===== */
+        .topbar {
+            display: flex; justify-content: space-between; align-items: center;
+            margin-bottom: 28px;
+        }
+        .topbar h1 { font-size: 22px; font-weight: 800; letter-spacing: -0.5px; }
+        .topbar-sub { font-size: 12px; color: var(--text-muted); margin-top: 2px; }
+        .topbar-badge {
+            font-size: 11px; font-weight: 600; padding: 5px 14px; border-radius: 20px;
+            border: 1px solid var(--border); color: var(--text-secondary);
+        }
+
+        /* ===== KPI STRIP ===== */
+        .kpi-strip { display: flex; gap: 16px; margin-bottom: 28px; overflow-x: auto; }
+        .kpi-card {
+            background: var(--surface); border: 1px solid var(--border); border-radius: 12px;
+            padding: 18px 20px; flex: 1; min-width: 150px;
+        }
+        .kpi-label { font-size: 11px; color: var(--text-muted); font-weight: 600; text-transform: uppercase; letter-spacing: 0.3px; margin-bottom: 6px; }
+        .kpi-value { font-size: 28px; font-weight: 800; letter-spacing: -1px; }
+        .kpi-sub { font-size: 11px; color: var(--text-muted); margin-top: 4px; }
+
+        /* ===== TAB CONTENT ===== */
+        .tab-panel { display: none; }
+        .tab-panel.active { display: block; }
+
+        /* ===== GANTT CHART ===== */
+        .card { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 24px; margin-bottom: 20px; }
+        .card-title { font-size: 15px; font-weight: 700; margin-bottom: 16px; display: flex; align-items: center; gap: 8px; }
+        .card-title .tag { font-size: 10px; font-weight: 600; padding: 2px 8px; border-radius: 4px; }
+
+        .gantt-container { overflow-x: auto; }
+        .gantt-wrapper { min-width: 800px; }
+        .gantt-header { display: grid; grid-template-columns: 180px 1fr; border-bottom: 1px solid var(--border); padding-bottom: 6px; margin-bottom: 4px; }
+        .gantt-header-label { font-size: 10px; color: var(--text-muted); font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; }
+        .gantt-days { display: grid; grid-template-columns: repeat(31, 1fr); gap: 1px; }
+        .gantt-day-label { font-size: 9px; color: var(--text-muted); text-align: center; font-weight: 500; }
+        .gantt-day-label.weekend { color: var(--accent-red); opacity: 0.4; }
+        .gantt-day-label.today { color: var(--accent-green); font-weight: 800; background: var(--accent-green-bg); border-radius: 4px; }
+
+        .gantt-cat-label { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; padding: 10px 0 4px; }
+        .gantt-cat-label.rev { color: var(--accent-green); }
+        .gantt-cat-label.dau { color: var(--accent-blue); }
+        .gantt-cat-label.promo { color: var(--accent-amber); }
+
+        .gantt-row { display: grid; grid-template-columns: 180px 1fr; align-items: center; min-height: 32px; border-bottom: 1px solid var(--border-light); }
+        .gantt-event-name { font-size: 12px; font-weight: 500; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; padding-right: 8px; display: flex; align-items: center; gap: 6px; }
+        .recurring-badge { font-size: 8px; background: var(--accent-purple-bg); color: var(--accent-purple); padding: 1px 5px; border-radius: 3px; font-weight: 700; }
+        .impact-dot { width: 6px; height: 6px; border-radius: 50%; flex-shrink: 0; }
+        .impact-high { background: var(--accent-red); }
+        .impact-medium { background: var(--accent-amber); }
+        .impact-low { background: var(--accent-blue); }
+
+        .gantt-bar-track { display: grid; gap: 1px; height: 24px; }
+        .gantt-cell { position: relative; }
+        .gantt-cell.weekend { background: rgba(220,38,38,0.02); }
+        .gantt-cell.today-col { background: var(--accent-green-bg); }
+        .gantt-bar { position: absolute; top: 4px; bottom: 4px; left: 0; right: 0; border-radius: 4px; cursor: pointer; transition: transform 0.15s; }
+        .gantt-bar:hover { transform: scaleY(1.4); z-index: 10; }
+        .gantt-bar.rev { background: var(--accent-green); }
+        .gantt-bar.dau { background: var(--accent-blue); }
+        .gantt-bar.promo { background: var(--accent-amber); }
+        .gantt-bar.start { border-radius: 4px 0 0 4px; }
+        .gantt-bar.end { border-radius: 0 4px 4px 0; }
+        .gantt-bar.single { border-radius: 4px; }
+
+        /* Tooltip */
+        .tooltip {
+            display: none; position: fixed; background: var(--text); color: #fff;
+            border-radius: 8px; padding: 12px 16px; z-index: 1000; font-size: 12px; max-width: 260px;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+        }
+        .tooltip.active { display: block; }
+        .tooltip-name { font-weight: 700; font-size: 13px; margin-bottom: 6px; }
+        .tooltip-row { color: rgba(255,255,255,0.7); margin-bottom: 2px; }
+        .tooltip-row span { color: #fff; font-weight: 600; }
+
+        /* ===== TABLE ===== */
+        .table-wrap { overflow-x: auto; }
+        table { width: 100%; border-collapse: collapse; font-size: 13px; }
+        th, td { padding: 11px 14px; border-bottom: 1px solid var(--border-light); text-align: left; }
+        th { color: var(--text-muted); font-weight: 600; text-transform: uppercase; font-size: 10px; letter-spacing: 0.5px; background: var(--surface2); }
+        th:first-child { border-radius: 8px 0 0 0; }
+        th:last-child { border-radius: 0 8px 0 0; }
+        tr:hover td { background: var(--surface2); }
+
+        .tag-pill { font-size: 10px; font-weight: 600; padding: 3px 10px; border-radius: 20px; display: inline-block; }
+        .tag-rev { background: var(--accent-green-bg); color: var(--accent-green); }
+        .tag-dau { background: var(--accent-blue-bg); color: var(--accent-blue); }
+        .tag-promo { background: var(--accent-amber-bg); color: var(--accent-amber); }
+        .tag-high { background: var(--accent-red-bg); color: var(--accent-red); }
+        .tag-medium { background: var(--accent-amber-bg); color: var(--accent-amber); }
+
+        /* ===== REWARD CARDS ===== */
+        .reward-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 16px; }
+        .reward-card { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 22px; }
+        .reward-card-header { display: flex; align-items: center; gap: 10px; margin-bottom: 16px; }
+        .reward-card-icon { width: 36px; height: 36px; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 16px; }
+        .reward-card-title { font-size: 14px; font-weight: 700; }
+        .reward-card-subtitle { font-size: 11px; color: var(--text-muted); }
+        .reward-stat { display: flex; justify-content: space-between; align-items: center; padding: 8px 0; border-bottom: 1px solid var(--border-light); }
+        .reward-stat:last-child { border-bottom: none; }
+        .reward-label { font-size: 12px; color: var(--text-secondary); }
+        .reward-value { font-size: 13px; font-weight: 700; }
+        .reward-bar-track { height: 4px; background: var(--border-light); border-radius: 2px; margin: 6px 0 12px; overflow: hidden; }
+        .reward-bar-fill { height: 100%; border-radius: 2px; transition: width 0.8s ease-out; }
+        .delta { font-size: 10px; font-weight: 700; padding: 2px 6px; border-radius: 4px; }
+        .delta.up { background: var(--accent-green-bg); color: var(--accent-green); }
+        .delta.down { background: var(--accent-red-bg); color: var(--accent-red); }
+
+        /* ===== PROMOTION TIERS ===== */
+        .promo-tier { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; margin-bottom: 12px; overflow: hidden; }
+        .promo-tier-header { display: flex; justify-content: space-between; align-items: center; padding: 16px 20px; cursor: pointer; transition: background 0.15s; }
+        .promo-tier-header:hover { background: var(--surface2); }
+        .promo-tier-title { font-size: 14px; font-weight: 700; display: flex; align-items: center; gap: 10px; }
+        .promo-tier-eff { font-size: 11px; font-weight: 700; padding: 3px 10px; border-radius: 20px; }
+        .promo-tier-eff.good { background: var(--accent-green-bg); color: var(--accent-green); }
+        .promo-tier-body { padding: 0 20px 16px; display: none; }
+        .promo-tier.open .promo-tier-body { display: block; }
+        .promo-tier-chevron { transition: transform 0.2s; color: var(--text-muted); font-size: 12px; }
+        .promo-tier.open .promo-tier-chevron { transform: rotate(180deg); }
+        .promo-item { display: grid; grid-template-columns: 1fr 130px 70px; padding: 8px 0; border-bottom: 1px solid var(--border-light); font-size: 12px; align-items: center; }
+        .promo-item:last-child { border-bottom: none; }
+        .promo-item-name { font-weight: 500; }
+        .promo-item-value { color: var(--accent-green); text-align: right; font-weight: 700; }
+        .promo-item-count { color: var(--text-muted); text-align: right; }
+
+        /* Empty state */
+        .empty-state { text-align: center; padding: 48px 24px; color: var(--text-muted); }
+        .empty-state .icon { font-size: 36px; margin-bottom: 12px; }
+
+        /* ===== EVENT DETAIL DRAWER ===== */
+        .drawer-overlay {
+            display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(0,0,0,0.2); z-index: 500; opacity: 0; transition: opacity 0.25s;
+        }
+        .drawer-overlay.active { display: block; opacity: 1; }
+        .drawer {
+            position: fixed; top: 0; right: -520px; width: 500px; max-width: 90vw;
+            height: 100vh; background: var(--surface); border-left: 1px solid var(--border);
+            z-index: 600; overflow-y: auto; transition: right 0.3s ease;
+            box-shadow: -8px 0 32px rgba(0,0,0,0.08);
+        }
+        .drawer.active { right: 0; }
+        .drawer-header {
+            padding: 24px; border-bottom: 1px solid var(--border);
+            display: flex; justify-content: space-between; align-items: flex-start;
+            position: sticky; top: 0; background: var(--surface); z-index: 10;
+        }
+        .drawer-close {
+            width: 28px; height: 28px; border: 1px solid var(--border); border-radius: 6px;
+            background: var(--surface2); cursor: pointer; font-size: 14px;
+            display: flex; align-items: center; justify-content: center;
+            transition: all 0.15s; color: var(--text-muted);
+        }
+        .drawer-close:hover { background: var(--text); color: #fff; }
+        .drawer-title { font-size: 16px; font-weight: 800; margin-bottom: 6px; }
+        .drawer-subtitle { font-size: 11px; color: var(--text-muted); }
+        .drawer-body { padding: 24px; }
+        .drawer-section { margin-bottom: 24px; }
+        .drawer-section-title {
+            font-size: 11px; font-weight: 700; color: var(--text-muted);
+            text-transform: uppercase; letter-spacing: 1px; margin-bottom: 12px;
+        }
+        .history-timeline {
+            display: flex; flex-direction: column; gap: 8px;
+        }
+        .history-item {
+            display: flex; align-items: center; gap: 12px; padding: 10px 14px;
+            background: var(--surface2); border-radius: 8px; font-size: 12px;
+            border-left: 3px solid var(--accent-green);
+        }
+        .history-item.current { border-left-color: var(--accent-blue); background: var(--accent-blue-bg); }
+        .history-month { font-weight: 700; min-width: 48px; }
+        .history-dates { color: var(--text-secondary); flex: 1; }
+        .history-dur { color: var(--text-muted); font-weight: 600; }
+
+        .metrics-table {
+            width: 100%; border-collapse: collapse; font-size: 11px;
+        }
+        .metrics-table th, .metrics-table td {
+            padding: 8px 10px; border-bottom: 1px solid var(--border-light); text-align: right;
+        }
+        .metrics-table th { text-align: left; font-weight: 700; color: var(--text-muted); font-size: 9px; text-transform: uppercase; }
+        .metrics-table td:first-child { text-align: left; font-weight: 600; }
+        .metrics-table tr:hover td { background: var(--surface2); }
+        .metrics-table .trend-up { color: var(--accent-green); }
+        .metrics-table .trend-down { color: var(--accent-red, #dc2626); }
+
+        .insight-pill {
+            display: inline-flex; align-items: center; gap: 6px;
+            padding: 10px 14px; background: var(--accent-green-bg); border-radius: 8px;
+            font-size: 12px; color: var(--accent-green); font-weight: 600;
+            margin-bottom: 6px; width: 100%;
+        }
+        .insight-pill.warn { background: var(--accent-amber-bg); color: var(--accent-amber); }
+
+        .drawer-chart-container { height: 200px; position: relative; }
+
+        @media (max-width: 900px) {
+            .sidebar { display: none; }
+            .main { margin-left: 0; padding: 16px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="app">
+        <!-- SIDEBAR -->
+        <nav class="sidebar">
+            <div class="sidebar-logo">FCO Operations</div>
+            <div class="sidebar-sub">FC Online · Monthly Plan</div>
+
+            <div class="month-selector">
+                <select class="month-select" id="month-select"></select>
+            </div>
+
+            <div class="sidebar-section">
+                <div class="sidebar-section-title">Views</div>
+                <button class="sidebar-link active" data-tab="timeline">
+                    <span class="icon">📊</span> Timeline
+                </button>
+                <button class="sidebar-link" data-tab="events">
+                    <span class="icon">📋</span> Events
+                    <span class="count" id="count-events">0</span>
+                </button>
+                <button class="sidebar-link" data-tab="rewards">
+                    <span class="icon">💰</span> Rewards
+                </button>
+                <button class="sidebar-link" data-tab="promotions">
+                    <span class="icon">🎁</span> Promotions
+                    <span class="count" id="count-promos">0</span>
+                </button>
+            </div>
+
+            <div class="sidebar-section">
+                <div class="sidebar-section-title">Analytics</div>
+                <a id="nav-analytics" href="/analytics" class="sidebar-link">
+                    <span class="icon">📈</span> Event Analytics
+                </a>
+                <a id="nav-compare" href="/analytics/compare" class="sidebar-link">
+                    <span class="icon">🔄</span> Event Comparison
+                </a>
+            </div>
+
+            <a id="back-link" href="/" class="sidebar-back">← Back to Portal</a>
+        </nav>
+
+        <!-- MAIN CONTENT -->
+        <div class="main">
+            <div class="topbar">
+                <div>
+                    <h1 id="page-title">Monthly Plan & Timeline</h1>
+                    <div class="topbar-sub" id="page-subtitle">Loading...</div>
+                </div>
+                <span class="topbar-badge" id="topbar-badge">Monthly Plan</span>
+            </div>
+
+            <!-- KPI STRIP -->
+            <div class="kpi-strip" id="kpi-strip"></div>
+
+            <!-- TAB: TIMELINE -->
+            <div class="tab-panel active" id="tab-timeline">
+                <div class="card">
+                    <div class="card-title">Event Timeline — Gantt View <span class="tag" id="gantt-month-tag" style="background:var(--accent-green-bg);color:var(--accent-green)"></span></div>
+                    <div class="gantt-container"><div class="gantt-wrapper" id="gantt-chart"></div></div>
+                </div>
+            </div>
+
+            <!-- TAB: EVENTS -->
+            <div class="tab-panel" id="tab-events">
+                <div class="card">
+                    <div class="card-title">Event Summary</div>
+                    <div style="display:flex;gap:6px;margin-bottom:16px" id="filter-tabs"></div>
+                    <div class="table-wrap">
+                        <table><thead><tr>
+                            <th>Event Name</th><th>Start</th><th>End</th><th>Duration</th><th>Impact</th><th>Category</th>
+                        </tr></thead><tbody id="event-tbody"></tbody></table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TAB: REWARDS -->
+            <div class="tab-panel" id="tab-rewards">
+                <div class="card">
+                    <div class="card-title">Reward Summary — Monthly Total</div>
+                    <div class="reward-grid" id="reward-grid"></div>
+                </div>
+            </div>
+
+            <!-- TAB: PROMOTIONS -->
+            <div class="tab-panel" id="tab-promotions">
+                <div class="card">
+                    <div class="card-title">Promotion Packages — Top-up Tiers</div>
+                    <div id="promo-tiers"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="tooltip" id="tooltip"></div>
+
+    <!-- EVENT DETAIL DRAWER -->
+    <div class="drawer-overlay" id="drawer-overlay"></div>
+    <div class="drawer" id="event-drawer">
+        <div class="drawer-header">
+            <div>
+                <div class="drawer-title" id="drawer-title">Event Name</div>
+                <div class="drawer-subtitle" id="drawer-subtitle">Category · Recurring</div>
+            </div>
+            <button class="drawer-close" id="drawer-close">✕</button>
+        </div>
+        <div class="drawer-body">
+            <div class="drawer-section">
+                <div class="drawer-section-title">📅 Appearance History</div>
+                <div class="history-timeline" id="drawer-history"></div>
+            </div>
+            <div class="drawer-section" id="drawer-insights-section">
+                <div class="drawer-section-title">💡 Auto Insights</div>
+                <div id="drawer-insights"></div>
+            </div>
+            <div class="drawer-section" id="drawer-metrics-section" style="display:none">
+                <div class="drawer-section-title">📊 BP Metrics Across Periods</div>
+                <div class="drawer-chart-container"><canvas id="drawer-chart"></canvas></div>
+                <div style="margin-top:16px;overflow-x:auto">
+                    <table class="metrics-table" id="drawer-metrics-table"></table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+    // ===== INJECTED DATA =====
+    const ALL_DATA = {{DATA_JSON}};
+    const MONTH_OPTIONS = {{MONTH_OPTIONS_JSON}};
+    const RECURRING_INDEX = {{RECURRING_JSON}};
+    let currentMonthKey = '{{DEFAULT_MONTH}}';
+    let DATA = ALL_DATA[currentMonthKey];
+
+    // ===== HELPERS =====
+    function formatBP(n) {
+        if (n >= 1e12) return (n/1e12).toFixed(1) + 'T';
+        if (n >= 1e9) return (n/1e9).toFixed(1) + 'B';
+        if (n >= 1e6) return (n/1e6).toFixed(1) + 'M';
+        return n.toLocaleString();
+    }
+    function parseDate(s) { return new Date(s + 'T00:00:00'); }
+    function fmtDate(s) { return parseDate(s).toLocaleDateString('vi-VN', { day:'2-digit', month:'2-digit' }); }
+    function shortMonthLabel(key) {
+        const months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+        const [y,m] = key.split('-');
+        return months[parseInt(m)-1] + ' ' + y;
+    }
+
+    // ===== MONTH SELECTOR INIT =====
+    const monthSelect = document.getElementById('month-select');
+    MONTH_OPTIONS.forEach(opt => {
+        const o = document.createElement('option');
+        o.value = opt.key;
+        o.textContent = '📅 ' + opt.label;
+        if (opt.key === currentMonthKey) o.selected = true;
+        monthSelect.appendChild(o);
+    });
+    monthSelect.addEventListener('change', () => {
+        currentMonthKey = monthSelect.value;
+        DATA = ALL_DATA[currentMonthKey];
+        renderAll();
+    });
+
+    // ===== SIDEBAR TAB SWITCHING =====
+    document.querySelectorAll('.sidebar-link[data-tab]').forEach(btn => {
+        btn.addEventListener('click', () => {
+            document.querySelectorAll('.sidebar-link[data-tab]').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+            document.getElementById('tab-' + btn.dataset.tab).classList.add('active');
+        });
+    });
+
+    // ===== RENDER ALL =====
+    function renderAll() {
+        if (!DATA) {
+            document.getElementById('page-title').textContent = 'No data';
+            return;
+        }
+        renderMeta();
+        renderKPI();
+        renderGantt();
+        renderTable('all');
+        renderFilterTabs();
+        renderRewards();
+        renderPromos();
+    }
+
+    function renderMeta() {
+        const allEvents = [...(DATA.events.rev||[]), ...(DATA.events.dau||[]), ...(DATA.events.promotion||[])];
+        document.getElementById('page-title').textContent = DATA.month_label + ' — Monthly Plan';
+        document.getElementById('page-subtitle').textContent = `${allEvents.length} events · Extracted ${DATA.extracted_at}`;
+        document.getElementById('gantt-month-tag').textContent = shortMonthLabel(DATA.month);
+        document.getElementById('count-events').textContent = allEvents.length;
+        document.getElementById('count-promos').textContent = (DATA.promotion_tiers||[]).length;
+    }
+
+    function renderKPI() {
+        const allEvents = [...(DATA.events.rev||[]), ...(DATA.events.dau||[]), ...(DATA.events.promotion||[])];
+        const kpis = [
+            { label: 'Total Events', value: allEvents.length, sub: DATA.month_label },
+            { label: 'REV Events', value: (DATA.events.rev||[]).length, sub: 'Web monetization' },
+            { label: 'DAU Events', value: (DATA.events.dau||[]).length, sub: 'Web engagement' },
+            { label: 'Promotions', value: (DATA.events.promotion||[]).length, sub: 'Top-up waves' },
+        ];
+        document.getElementById('kpi-strip').innerHTML = kpis.map(k =>
+            `<div class="kpi-card"><div class="kpi-label">${k.label}</div><div class="kpi-value">${k.value}</div><div class="kpi-sub">${k.sub}</div></div>`
+        ).join('');
+    }
+
+    function renderGantt() {
+        const monthStart = new Date(DATA.month + '-01');
+        const year = monthStart.getFullYear();
+        const month = monthStart.getMonth();
+        const daysInMonth = new Date(year, month + 1, 0).getDate();
+        const today = new Date();
+        const todayDay = (today.getFullYear() === year && today.getMonth() === month) ? today.getDate() : -1;
+
+        function dayOfMonth(dateStr) {
+            const d = parseDate(dateStr);
+            if (d.getFullYear() === year && d.getMonth() === month) return d.getDate();
+            if (d < monthStart) return 1;
+            return daysInMonth;
+        }
+        function isWeekend(day) { const d = new Date(year, month, day); return d.getDay() === 0 || d.getDay() === 6; }
+
+        const gantt = document.getElementById('gantt-chart');
+        let headerDays = '';
+        for (let d = 1; d <= daysInMonth; d++) {
+            let cls = isWeekend(d) ? 'weekend' : '';
+            if (d === todayDay) cls = 'today';
+            headerDays += `<div class="gantt-day-label ${cls}">${d}</div>`;
+        }
+        let html = `<div class="gantt-header"><div class="gantt-header-label">Event</div><div class="gantt-days" style="grid-template-columns:repeat(${daysInMonth},1fr)">${headerDays}</div></div>`;
+
+        const cats = [
+            { key:'rev', label:'REV — Web Monetization', events: DATA.events.rev||[], cls:'rev' },
+            { key:'dau', label:'DAU — Web Engagement', events: DATA.events.dau||[], cls:'dau' },
+            { key:'promotion', label:'PROMOTION — Top-up', events: DATA.events.promotion||[], cls:'promo' },
+        ];
+        cats.forEach(cat => {
+            if (cat.events.length === 0) return;
+            html += `<div class="gantt-cat-label ${cat.cls}">${cat.label}</div>`;
+            cat.events.forEach(ev => {
+                const s = dayOfMonth(ev.start), e = dayOfMonth(ev.end || ev.start);
+                let nameHtml = ev.name;
+                if (ev.recurring) nameHtml += ' <span class="recurring-badge">RECURRING</span>';
+                if (ev.impact) { const ic = ev.impact==='High'?'impact-high':ev.impact==='Medium'?'impact-medium':'impact-low'; nameHtml = `<span class="impact-dot ${ic}"></span>` + nameHtml; }
+                let cells = '';
+                for (let d = 1; d <= daysInMonth; d++) {
+                    let cc = isWeekend(d)?'weekend':''; if(d===todayDay)cc+=' today-col';
+                    let bar = '';
+                    if (d >= s && d <= e) {
+                        let bc = cat.cls;
+                        if (d===s&&d===e) bc+=' single'; else if(d===s) bc+=' start'; else if(d===e) bc+=' end';
+                        bar = `<div class="gantt-bar ${bc}" data-ev='${JSON.stringify(ev).replace(/'/g,"&#39;")}'></div>`;
+                    }
+                    cells += `<div class="gantt-cell ${cc}">${bar}</div>`;
+                }
+                html += `<div class="gantt-row"><div class="gantt-event-name">${nameHtml}</div><div class="gantt-bar-track" style="grid-template-columns:repeat(${daysInMonth},1fr)">${cells}</div></div>`;
+            });
+        });
+        gantt.innerHTML = html;
+
+        // Tooltips
+        const tooltip = document.getElementById('tooltip');
+        document.querySelectorAll('.gantt-bar').forEach(bar => {
+            bar.addEventListener('mouseenter', e => {
+                const ev = JSON.parse(bar.dataset.ev);
+                tooltip.innerHTML = `<div class="tooltip-name">${ev.name}</div>
+                    <div class="tooltip-row">Start: <span>${fmtDate(ev.start)}</span></div>
+                    <div class="tooltip-row">End: <span>${ev.end?fmtDate(ev.end):'—'}</span></div>
+                    <div class="tooltip-row">Duration: <span>${ev.duration||'—'} days</span></div>
+                    ${ev.impact?`<div class="tooltip-row">Impact: <span>${ev.impact}</span></div>`:''}
+                    ${ev.recurring?'<div class="tooltip-row" style="color:#a78bfa">🔄 Recurring</div>':''}`;
+                tooltip.classList.add('active');
+            });
+            bar.addEventListener('mousemove', e => { tooltip.style.left=(e.clientX+12)+'px'; tooltip.style.top=(e.clientY+12)+'px'; });
+            bar.addEventListener('mouseleave', () => tooltip.classList.remove('active'));
+        });
+    }
+
+    function renderFilterTabs() {
+        const filterTabs = [
+            { key:'all', label:'All Events' }, { key:'rev', label:'REV' }, { key:'dau', label:'DAU' }, { key:'promotion', label:'Promotion' }
+        ];
+        document.getElementById('filter-tabs').innerHTML = filterTabs.map((t,i) =>
+            `<button class="tag-pill ${i===0?'tag-rev':''}" style="cursor:pointer;border:1px solid var(--border);${i===0?'':'background:var(--surface2);color:var(--text-secondary)'}" data-filter="${t.key}">${t.label}</button>`
+        ).join('');
+        document.querySelectorAll('[data-filter]').forEach(btn => {
+            btn.addEventListener('click', () => {
+                document.querySelectorAll('[data-filter]').forEach(b => { b.style.background='var(--surface2)'; b.style.color='var(--text-secondary)'; b.className='tag-pill'; });
+                const f = btn.dataset.filter;
+                const tagCls = {all:'tag-rev',rev:'tag-rev',dau:'tag-dau',promotion:'tag-promo'}[f];
+                btn.className = 'tag-pill ' + tagCls;
+                btn.style.background = ''; btn.style.color = '';
+                renderTable(f);
+            });
+        });
+    }
+
+    function renderTable(filter) {
+        const tbody = document.getElementById('event-tbody');
+        tbody.innerHTML = '';
+        const catMap = {rev:'REV',dau:'DAU',promotion:'Promotion'};
+        const tagMap = {rev:'tag-rev',dau:'tag-dau',promotion:'tag-promo'};
+        ['rev','dau','promotion'].forEach(cat => {
+            if (filter!=='all'&&filter!==cat) return;
+            (DATA.events[cat]||[]).forEach(ev => {
+                const impHtml = ev.impact ? `<span class="tag-pill ${ev.impact==='High'?'tag-high':'tag-medium'}">${ev.impact}</span>` : '<span style="color:var(--text-muted)">—</span>';
+                tbody.innerHTML += `<tr>
+                    <td><strong>${ev.name}</strong>${ev.recurring?' <span class="recurring-badge">RECURRING</span>':''}</td>
+                    <td>${fmtDate(ev.start)}</td><td>${ev.end?fmtDate(ev.end):'—'}</td>
+                    <td>${ev.duration||'—'} ngày</td><td>${impHtml}</td>
+                    <td><span class="tag-pill ${tagMap[cat]}">${catMap[cat]}</span></td></tr>`;
+            });
+        });
+    }
+
+    function renderRewards() {
+        const grid = document.getElementById('reward-grid');
+        grid.innerHTML = '';
+        const r = DATA.rewards;
+        if (!r) { grid.innerHTML = '<div class="empty-state"><div class="icon">💰</div>No reward data available for this month</div>'; return; }
+        const cards = [
+            { title:'PC & Mobile Regular', icon:'🎮', bg:'var(--accent-green-bg)', color:'var(--accent-green)', data:r.pc_m_regular },
+            { title:'Web Events', icon:'🌐', bg:'var(--accent-blue-bg)', color:'var(--accent-blue)', data:r.web },
+            { title:'SVIP', icon:'👑', bg:'var(--accent-purple-bg)', color:'var(--accent-purple)', data:r.svip },
+        ];
+        cards.forEach(c => {
+            if (!c.data||c.data.total===0) return;
+            const ppPct = c.data.total>0?((c.data.pp/c.data.total)*100).toFixed(1):0;
+            const bpPct = c.data.total>0?((c.data.bp/c.data.total)*100).toFixed(1):0;
+            grid.innerHTML += `<div class="reward-card">
+                <div class="reward-card-header">
+                    <div class="reward-card-icon" style="background:${c.bg}">${c.icon}</div>
+                    <div><div class="reward-card-title">${c.title}</div><div class="reward-card-subtitle">Monthly total</div></div>
+                </div>
+                <div class="reward-stat"><span class="reward-label">Total</span><span class="reward-value">${formatBP(c.data.total)} BP</span></div>
+                <div class="reward-stat"><span class="reward-label">Player Pack (PP)</span><span class="reward-value" style="color:${c.color}">${formatBP(c.data.pp)} BP</span></div>
+                <div class="reward-bar-track"><div class="reward-bar-fill" style="width:${ppPct}%;background:${c.color}"></div></div>
+                <div class="reward-stat"><span class="reward-label">BP Direct</span><span class="reward-value" style="color:var(--accent-amber)">${formatBP(c.data.bp)} BP</span></div>
+                <div class="reward-bar-track"><div class="reward-bar-fill" style="width:${bpPct}%;background:var(--accent-amber)"></div></div>
+                ${c.data.bp_ratio?`<div class="reward-stat"><span class="reward-label">BP Ratio</span><span class="reward-value">${(c.data.bp_ratio*100).toFixed(1)}%</span></div>`:''}
+            </div>`;
+        });
+    }
+
+    function renderPromos() {
+        const container = document.getElementById('promo-tiers');
+        container.innerHTML = '';
+        const tiers = DATA.promotion_tiers || [];
+        if (tiers.length === 0) { container.innerHTML = '<div class="empty-state"><div class="icon">🎁</div>No promotion tier data for this month</div>'; return; }
+        tiers.forEach((tier, idx) => {
+            const effLabel = tier.efficiency>1?'good':'';
+            let items = (tier.items||[]).map(item =>
+                `<div class="promo-item"><div class="promo-item-name">${item.name}</div><div class="promo-item-value">${item.value_bp>0?formatBP(item.value_bp):'—'}</div><div class="promo-item-count">x${item.count}</div></div>`
+            ).join('');
+            container.innerHTML += `<div class="promo-tier ${idx===0?'open':''}" id="promo-${idx}">
+                <div class="promo-tier-header" onclick="document.getElementById('promo-${idx}').classList.toggle('open')">
+                    <div class="promo-tier-title">Nạp ${tier.tier} ${tier.efficiency?`<span class="promo-tier-eff ${effLabel}">${tier.efficiency.toFixed(2)}x efficiency</span>`:''}</div>
+                    <span class="promo-tier-chevron">▼</span>
+                </div>
+                <div class="promo-tier-body">
+                    <div class="promo-item" style="font-weight:700;font-size:10px;color:var(--text-muted);text-transform:uppercase;border-bottom:2px solid var(--border)"><div>Item</div><div style="text-align:right">Value (BP)</div><div style="text-align:right">Qty</div></div>
+                    ${items}
+                </div>
+            </div>`;
+        });
+    }
+
+    // Initial render
+    renderAll();
+
+    // ===== EVENT DETAIL DRAWER =====
+    let drawerChart = null;
+    const drawer = document.getElementById('event-drawer');
+    const overlay = document.getElementById('drawer-overlay');
+
+    function closeDrawer() {
+        drawer.classList.remove('active');
+        overlay.classList.remove('active');
+        if (drawerChart) { drawerChart.destroy(); drawerChart = null; }
+    }
+    document.getElementById('drawer-close').addEventListener('click', closeDrawer);
+    overlay.addEventListener('click', closeDrawer);
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') closeDrawer(); });
+
+    function openEventDrawer(eventName, category) {
+        // Find in recurring index
+        const canonical = findCanonical(eventName);
+        const recData = canonical ? RECURRING_INDEX[canonical] : null;
+
+        document.getElementById('drawer-title').textContent = eventName;
+        const catLabels = {rev:'REV — Web Monetization',dau:'DAU — Web Engagement',promotion:'Promotion — Top-up'};
+        const isRec = recData && recData.occurrences && recData.occurrences.length > 1;
+        document.getElementById('drawer-subtitle').textContent =
+            (catLabels[category]||category) + (isRec ? ' · 🔄 Recurring' : ' · One-time');
+
+        // History timeline
+        const historyEl = document.getElementById('drawer-history');
+        if (recData && recData.occurrences) {
+            historyEl.innerHTML = recData.occurrences.map(occ => {
+                const isCurrent = occ.month === currentMonthKey;
+                const dates = occ.start ? (fmtDate(occ.start) + ' → ' + (occ.end ? fmtDate(occ.end) : '...')) : '';
+                const dur = occ.duration ? occ.duration + 'd' : '';
+                const mon = shortMonthLabel(occ.month);
+                return `<div class="history-item ${isCurrent?'current':''}">
+                    <span class="history-month">${mon}</span>
+                    <span class="history-dates">${occ.name_used || eventName} — ${dates}</span>
+                    <span class="history-dur">${dur}</span>
+                </div>`;
+            }).join('');
+        } else {
+            // Single event — show just current month
+            const allEvts = [...(DATA.events.rev||[]),...(DATA.events.dau||[]),...(DATA.events.promotion||[])];
+            const ev = allEvts.find(e => e.name === eventName);
+            if (ev) {
+                historyEl.innerHTML = `<div class="history-item current">
+                    <span class="history-month">${shortMonthLabel(currentMonthKey)}</span>
+                    <span class="history-dates">${fmtDate(ev.start)} → ${ev.end?fmtDate(ev.end):'...'}</span>
+                    <span class="history-dur">${ev.duration||'—'}d</span>
+                </div>
+                <div style="color:var(--text-muted);font-size:11px;margin-top:4px">This event only appears in ${DATA.month_label}</div>`;
+            }
+        }
+
+        // BP Metrics
+        const metricsSection = document.getElementById('drawer-metrics-section');
+        const metricsTable = document.getElementById('drawer-metrics-table');
+        const insightsEl = document.getElementById('drawer-insights');
+
+        // Collect BP data across all months for this event
+        let allBPMetrics = [];
+        if (recData && recData.occurrences) {
+            recData.occurrences.forEach(occ => {
+                if (occ.bp_metrics && occ.bp_metrics.length > 0) {
+                    occ.bp_metrics.forEach(bp => {
+                        allBPMetrics.push({...bp, month: occ.month, month_label: occ.month_label});
+                    });
+                }
+            });
+        }
+
+        if (allBPMetrics.length > 0) {
+            metricsSection.style.display = 'block';
+
+            // Sort by period
+            allBPMetrics.sort((a,b) => (a.period||'').localeCompare(b.period||''));
+
+            // Build metrics table
+            let thead = '<tr><th>Period</th><th>Cost to Play</th><th>BP/Spin</th><th>$/Spin</th><th>BP Total</th></tr>';
+            let tbody = allBPMetrics.map((m,i) => {
+                const prev = i > 0 ? allBPMetrics[i-1] : null;
+                const bpChange = prev && prev.bp_per_spin > 0 ? ((m.bp_per_spin - prev.bp_per_spin) / prev.bp_per_spin * 100) : null;
+                const trendCls = bpChange !== null ? (bpChange >= 0 ? 'trend-up' : 'trend-down') : '';
+                const trendIcon = bpChange !== null ? (bpChange >= 0 ? '↑' : '↓') : '';
+                const period = m.period ? fmtDate(m.period) : m.month_label;
+                return `<tr>
+                    <td>${period}</td>
+                    <td>$${m.cost_to_play.toFixed(0)}</td>
+                    <td>${formatBP(m.bp_per_spin)} ${bpChange!==null?`<span class="${trendCls}">${trendIcon}${Math.abs(bpChange).toFixed(0)}%</span>`:''}</td>
+                    <td>$${m.dollar_per_spin.toFixed(4)}</td>
+                    <td>${formatBP(m.bp_all_total)}</td>
+                </tr>`;
+            }).join('');
+            metricsTable.innerHTML = thead + tbody;
+
+            // Build chart
+            if (drawerChart) { drawerChart.destroy(); }
+            const ctx = document.getElementById('drawer-chart').getContext('2d');
+            drawerChart = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: allBPMetrics.map(m => m.period ? fmtDate(m.period) : m.month_label),
+                    datasets: [
+                        {
+                            label: 'BP per Spin',
+                            data: allBPMetrics.map(m => m.bp_per_spin),
+                            borderColor: '#2d9d78',
+                            backgroundColor: 'rgba(45,157,120,0.1)',
+                            fill: true, tension: 0.3, pointRadius: 4,
+                            yAxisID: 'y'
+                        },
+                        {
+                            label: '$ per Spin',
+                            data: allBPMetrics.map(m => m.dollar_per_spin),
+                            borderColor: '#3b82f6',
+                            borderDash: [4,4],
+                            fill: false, tension: 0.3, pointRadius: 4,
+                            yAxisID: 'y1'
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true, maintainAspectRatio: false,
+                    plugins: {
+                        legend: { position: 'top', labels: { font: { family: "'Plus Jakarta Sans'", size: 10 } } }
+                    },
+                    scales: {
+                        y: {
+                            position: 'left',
+                            title: { display: true, text: 'BP per Spin', font: { size: 10 } },
+                            ticks: { callback: v => formatBP(v) }
+                        },
+                        y1: {
+                            position: 'right',
+                            title: { display: true, text: '$ per Spin', font: { size: 10 } },
+                            grid: { drawOnChartArea: false }
+                        }
+                    }
+                }
+            });
+
+            // Insights
+            let insights = [];
+            if (allBPMetrics.length >= 2) {
+                const first = allBPMetrics[0], last = allBPMetrics[allBPMetrics.length-1];
+                const bpDelta = ((last.bp_per_spin - first.bp_per_spin) / first.bp_per_spin * 100);
+                if (Math.abs(bpDelta) > 5) {
+                    insights.push({
+                        text: `BP per Spin ${bpDelta>0?'increased':'decreased'} ${Math.abs(bpDelta).toFixed(0)}% from ${fmtDate(first.period||'')} to ${fmtDate(last.period||'')}`,
+                        warn: bpDelta > 20
+                    });
+                }
+                const costDelta = last.cost_to_play - first.cost_to_play;
+                if (Math.abs(costDelta) > 10) {
+                    insights.push({
+                        text: `Cost to play ${costDelta>0?'rose':'dropped'} from $${first.cost_to_play.toFixed(0)} to $${last.cost_to_play.toFixed(0)}`,
+                        warn: costDelta > 50
+                    });
+                }
+                // Check volatility
+                const bpValues = allBPMetrics.map(m => m.bp_per_spin);
+                const avg = bpValues.reduce((a,b)=>a+b,0)/bpValues.length;
+                const maxDev = Math.max(...bpValues.map(v => Math.abs(v-avg)/avg*100));
+                if (maxDev > 30) {
+                    insights.push({ text: `High volatility detected — BP per Spin varies up to ${maxDev.toFixed(0)}% from average`, warn: true });
+                }
+            }
+            if (recData && recData.occurrences) {
+                insights.push({ text: `Ran ${recData.occurrences.length} times across ${new Set(recData.occurrences.map(o=>o.month)).size} months with ${allBPMetrics.length} data points`, warn: false });
+            }
+            insightsEl.innerHTML = insights.map(i =>
+                `<div class="insight-pill ${i.warn?'warn':''}">${i.warn?'⚠️':'✅'} ${i.text}</div>`
+            ).join('');
+
+        } else {
+            metricsSection.style.display = 'none';
+            insightsEl.innerHTML = '<div class="insight-pill">ℹ️ No BP per Event metrics available for this event</div>';
+            if (recData && recData.occurrences && recData.occurrences.length > 1) {
+                insightsEl.innerHTML += `<div class="insight-pill">🔄 Appeared ${recData.occurrences.length} times across ${new Set(recData.occurrences.map(o=>o.month)).size} months</div>`;
+            }
+        }
+
+        // Open drawer
+        drawer.classList.add('active');
+        overlay.classList.add('active');
+    }
+
+    function findCanonical(eventName) {
+        // Direct match
+        if (RECURRING_INDEX[eventName]) return eventName;
+        // Search all entries
+        for (const [key, val] of Object.entries(RECURRING_INDEX)) {
+            if (val.display_names && val.display_names.includes(eventName)) return key;
+            if (val.canonical_name === eventName) return key;
+        }
+        // Fuzzy: check if event name contains or is contained by a canonical name
+        for (const [key, val] of Object.entries(RECURRING_INDEX)) {
+            if (eventName.toLowerCase().includes(key.toLowerCase()) || key.toLowerCase().includes(eventName.toLowerCase())) return key;
+            for (const dn of (val.display_names||[])) {
+                if (eventName.toLowerCase().includes(dn.toLowerCase()) || dn.toLowerCase().includes(eventName.toLowerCase())) return key;
+            }
+        }
+        return null;
+    }
+
+    // Make event rows clickable (delegate)
+    document.getElementById('event-tbody').addEventListener('click', (e) => {
+        const row = e.target.closest('tr');
+        if (!row) return;
+        const nameCell = row.querySelector('td:first-child strong');
+        if (!nameCell) return;
+        const catCell = row.querySelector('.tag-pill');
+        const cat = catCell ? (catCell.classList.contains('tag-rev')?'rev':catCell.classList.contains('tag-dau')?'dau':'promotion') : 'rev';
+        openEventDrawer(nameCell.textContent, cat);
+    });
+
+    // Make gantt bars clickable
+    document.getElementById('gantt-chart').addEventListener('click', (e) => {
+        const bar = e.target.closest('.gantt-bar');
+        if (!bar || !bar.dataset.ev) return;
+        const ev = JSON.parse(bar.dataset.ev);
+        const cat = bar.classList.contains('rev')?'rev':bar.classList.contains('dau')?'dau':'promotion';
+        openEventDrawer(ev.name, cat);
+    });
+
+    // Style clickable rows
+    document.addEventListener('DOMContentLoaded', () => {
+        const style = document.createElement('style');
+        style.textContent = '#event-tbody tr { cursor: pointer; } .gantt-event-name { cursor: pointer; }';
+        document.head.appendChild(style);
+    });
+    // Also add cursor style immediately
+    const cursorStyle = document.createElement('style');
+    cursorStyle.textContent = '#event-tbody tr { cursor: pointer; } .gantt-event-name { cursor: pointer; }';
+    document.head.appendChild(cursorStyle);
+
+    // Make gantt event names clickable
+    document.getElementById('gantt-chart').addEventListener('click', (e) => {
+        const nameEl = e.target.closest('.gantt-event-name');
+        if (!nameEl || e.target.closest('.gantt-bar')) return; // Don't double-fire from bars
+        const text = nameEl.textContent.replace(/RECURRING/g, '').trim();
+        // Find category from parent
+        let cat = 'rev';
+        let el = nameEl.closest('.gantt-row');
+        while (el && el.previousElementSibling) {
+            el = el.previousElementSibling;
+            if (el.classList.contains('gantt-cat-label')) {
+                if (el.classList.contains('dau')) cat = 'dau';
+                else if (el.classList.contains('promo')) cat = 'promotion';
+                else cat = 'rev';
+                break;
+            }
+        }
+        openEventDrawer(text, cat);
+    });
+
+    // Adjust links dynamically when running offline via file:// protocol
+    if (window.location.protocol === 'file:') {
+        const isOutputs = window.location.pathname.includes('/outputs/');
+        const navAnalytics = document.getElementById('nav-analytics');
+        const navCompare = document.getElementById('nav-compare');
+        const backLink = document.getElementById('back-link');
+        if (isOutputs) {
+            if (navAnalytics) navAnalytics.href = '../fco-event-analytics/index.html';
+            if (navCompare) navCompare.href = '../fco-event-analytics/index.html';
+            if (backLink) backLink.href = 'index.html';
+        } else {
+            // Garena/fco-portal/monthly.html structure
+            if (navAnalytics) navAnalytics.href = 'analytics/index.html';
+            if (navCompare) navCompare.href = 'analytics/index.html';
+            if (backLink) backLink.href = 'index.html';
+        }
+    }
+    </script>
+</body>
+</html>

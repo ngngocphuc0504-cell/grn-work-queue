@@ -1,0 +1,14 @@
+interface:
+  display_name: "Organize Project KB"
+  short_description: "Organize or scaffold project knowledge bases on Outline"
+  default_prompt: "Use $organize-project-kb to inventory this Outline project subtree through the gateway-exposed Outline tools, classify live and stale pages, preview a restructure bundle, and only apply changes after explicit confirmation."
+dependencies:
+  tools:
+    - type: "mcp"
+      value: "garena_vn_mcp_gw"
+      description: "Garena gateway exposing Outline tools for wiki.odp.garena.vn"
+      transport: "streamable_http"
+      url: "https://mcp.odp.garena.vn/mcp"
+policy:
+  allow_implicit_invocation: true
+

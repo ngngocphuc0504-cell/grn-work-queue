@@ -1,0 +1,51 @@
+{
+  "schema_version": "priv-reg-v1.0",
+  "user_id": "{user_id}",
+  "last_updated": "ISO-8601",
+  "active_privileges": [
+    {
+      "privilege_id": "PRIV-L1-01",
+      "label": "View own SKILL-MATRIX.md",
+      "unlocked_at": "ISO-8601",
+      "level_requirement": 1,
+      "status": "ACTIVE"
+    },
+    {
+      "privilege_id": "PRIV-L1-02",
+      "label": "Submit tasks for twin framing (WF-01)",
+      "unlocked_at": "ISO-8601",
+      "level_requirement": 1,
+      "status": "ACTIVE"
+    },
+    {
+      "privilege_id": "PRIV-L1-03",
+      "label": "Receive twin reviews (WF-03, WF-04)",
+      "unlocked_at": "ISO-8601",
+      "level_requirement": 1,
+      "status": "ACTIVE"
+    },
+    {
+      "privilege_id": "PRIV-L1-04",
+      "label": "Twin demonstrates tasks (OBSERVE mode)",
+      "unlocked_at": "ISO-8601",
+      "level_requirement": 1,
+      "status": "ACTIVE"
+    },
+    {
+      "privilege_id": "PRIV-L1-05",
+      "label": "Knowledge captures accepted",
+      "unlocked_at": "ISO-8601",
+      "level_requirement": 1,
+      "status": "ACTIVE"
+    },
+    {
+      "privilege_id": "PRIV-L1-06",
+      "label": "Access Labs 1-2",
+      "unlocked_at": "ISO-8601",
+      "level_requirement": 1,
+      "status": "ACTIVE"
+    }
+  ],
+  "locked_privileges": [],
+  "suspended_privileges": []
+}

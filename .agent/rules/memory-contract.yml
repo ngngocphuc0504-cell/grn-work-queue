@@ -1,0 +1,83 @@
+workspace_id: ws-career-twin-v1
+version: "1.0"
+
+state_keys:
+  user_id:
+    type: string
+    required: true
+    mutable: false
+  session_id:
+    type: string
+    required: true
+    generated: per_session
+  onboarding_complete:
+    type: boolean
+    default: false
+  active_project_folder:
+    type: string
+    required: false
+  co_work_mode:
+    type: enum
+    values: [OBSERVE, COWORK, DELEGATED, SWARM]
+    default: OBSERVE
+  skill_maturity_index:
+    type: object
+    fields:
+      work_framing: { type: int, range: "1-5", default: 1 }
+      evidence_reasoning: { type: int, range: "1-5", default: 1 }
+      execution_control: { type: int, range: "1-5", default: 1 }
+      communication: { type: int, range: "1-5", default: 1 }
+      ai_cowork: { type: int, range: "1-5", default: 1 }
+  current_task_dod:
+    type: string
+    required: false
+  reflection_pending:
+    type: boolean
+    default: false
+  ki_distillation_queue:
+    type: list
+    items: string
+  twin_layer_active:
+    type: enum
+    values: [CPT, CST, FRT, COMPOSITE]
+    default: CPT
+  circuit_breaker:
+    bypass_count: { type: int, default: 0 }
+    mode_locked: { type: boolean, default: false }
+
+write_rules:
+  CPT: READ_ONLY
+  CST: READ_WRITE
+  FRT: REQUIRE_USER_CONFIRMATION
+  governance_files: READ_ONLY
+  KB_files: READ_ONLY
+  rules_files: READ_ONLY
+
+mode_unlock_thresholds:
+  COWORK: { smi_avg: 2.0, min_tasks: 5 }
+  DELEGATED: { smi_avg: 3.0, min_tasks: 15 }
+  SWARM: { smi_avg: 4.0, min_tasks: 30 }
+
+circuit_breaker:
+  bypass_threshold: 3
+  action_on_trigger: MODE_LOCK + ESCALATE_TO_HUMAN
+
+conflict_rules:
+  twin_data:
+    primary_writer: "TC-TWIN"
+    concurrent_writes: "NOT_ALLOWED"
+    resolution: "TC-TWIN batches and commits at end of session"
+  skill_signals:
+    primary_writer: "SC-SKILL"
+    concurrent_writes: "ALLOWED_WITH_NAMESPACE"
+    resolution: "Each agent uses own signal namespace"
+  project_artifacts:
+    primary_writer: "QUALITY-GATE"
+    requires_human_approval: true
+    concurrent_writes: "NOT_ALLOWED"
+
+security_gate:
+  write_lock: true
+  lock_provider: ".agent/memory_bus/coordinator/status/state.json"
+  lock_field: "lock_status"
+  expected_value: "OPEN"

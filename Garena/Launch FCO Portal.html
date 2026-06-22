@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Launching FCO Portal...</title>
+    <!-- Import Outfit Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background-color: #0b0c10;
+            color: #f3f4f6;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            overflow: hidden;
+            background-image: radial-gradient(circle at center, rgba(168, 85, 247, 0.1) 0%, transparent 70%);
+        }
+        .loader {
+            text-align: center;
+        }
+        .logo-container {
+            width: 120px;
+            height: 120px;
+            margin: 0 auto 20px auto;
+            animation: pulse 2s infinite ease-in-out;
+            filter: invert(1) drop-shadow(0 0 12px rgba(168, 85, 247, 0.6));
+        }
+        h2 {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            letter-spacing: -0.02em;
+        }
+        p {
+            color: #9ca3af;
+            font-size: 0.9rem;
+        }
+        @keyframes pulse {
+            0% { transform: scale(1); filter: invert(1) drop-shadow(0 0 10px rgba(168, 85, 247, 0.4)); }
+            50% { transform: scale(1.05); filter: invert(1) drop-shadow(0 0 20px rgba(168, 85, 247, 0.7)); }
+            100% { transform: scale(1); filter: invert(1) drop-shadow(0 0 10px rgba(168, 85, 247, 0.4)); }
+        }
+    </style>
+    <script>
+        window.onload = function() {
+            setTimeout(function() {
+                window.location.href = "fco-portal/index.html";
+            }, 1000); // Increased slightly to show the beautiful pulsing animation
+        };
+    </script>
+</head>
+<body>
+    <div class="loader">
+        <img class="logo-container" src="EA_Sports_monochrome_logo.svg" alt="EA Sports Logo">
+        <h2>FCO Operations Portal</h2>
+        <p>Đang tải giao diện vận hành dữ liệu...</p>
+    </div>
+</body>
+</html>

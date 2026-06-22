@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FCO Operations Portal</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #f5f5f0;
+            --surface: #ffffff;
+            --surface2: #fafaf7;
+            --border: #e8e8e3;
+            --text: #1a1a1a;
+            --text-secondary: #6b6b6b;
+            --text-muted: #9a9a9a;
+            --accent-green: #2d9d78;
+            --accent-green-bg: #edf7f3;
+            --accent-amber: #d97706;
+            --accent-amber-bg: #fef9ee;
+            --font: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            background: var(--bg); color: var(--text); font-family: var(--font);
+            min-height: 100vh; display: flex; flex-direction: column;
+            align-items: center; justify-content: center; padding: 40px 20px;
+        }
+        .container { max-width: 800px; width: 100%; }
+        .header { text-align: center; margin-bottom: 48px; }
+        .logo-badge {
+            display: inline-flex; align-items: center; gap: 8px;
+            background: var(--surface); border: 1px solid var(--border);
+            padding: 6px 16px; border-radius: 20px;
+            font-size: 11px; font-weight: 600; color: var(--text-secondary);
+            text-transform: uppercase; letter-spacing: 1px; margin-bottom: 20px;
+        }
+        .status-dot {
+            width: 7px; height: 7px; background: var(--accent-green); border-radius: 50%;
+            animation: pulse 2s infinite;
+        }
+        @keyframes pulse {
+            0%,100% { opacity:1; box-shadow:0 0 0 0 rgba(45,157,120,0.4); }
+            50% { opacity:0.8; box-shadow:0 0 0 5px rgba(45,157,120,0); }
+        }
+        h1 { font-size: 32px; font-weight: 800; letter-spacing: -0.8px; margin-bottom: 10px; }
+        .subtitle { color: var(--text-secondary); font-size: 14px; line-height: 1.6; }
+
+        .cards-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+        @media (max-width: 600px) { .cards-grid { grid-template-columns: 1fr; } }
+
+        .portal-card {
+            background: var(--surface); border: 1px solid var(--border); border-radius: 14px;
+            padding: 28px 24px; text-decoration: none; color: var(--text);
+            transition: all 0.2s; position: relative; overflow: hidden;
+        }
+        .portal-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 32px rgba(0,0,0,0.06);
+            border-color: var(--text-muted);
+        }
+        .card-icon {
+            width: 44px; height: 44px; border-radius: 10px;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 20px; margin-bottom: 18px;
+        }
+        .card-icon.green { background: var(--accent-green-bg); }
+        .card-icon.amber { background: var(--accent-amber-bg); }
+        .card-title { font-size: 16px; font-weight: 700; margin-bottom: 8px; }
+        .card-desc { font-size: 12px; color: var(--text-secondary); line-height: 1.6; margin-bottom: 18px; }
+        .card-tags { display: flex; flex-wrap: wrap; gap: 5px; }
+        .tag {
+            font-size: 10px; font-weight: 600; text-transform: uppercase;
+            padding: 3px 10px; border-radius: 20px; letter-spacing: 0.3px;
+        }
+        .tag.green { background: var(--accent-green-bg); color: var(--accent-green); }
+        .tag.amber { background: var(--accent-amber-bg); color: var(--accent-amber); }
+        .tag.blue { background: #eff6ff; color: #3b82f6; }
+        .tag.purple { background: #f5f3ff; color: #7c3aed; }
+
+        .card-arrow {
+            position: absolute; bottom: 24px; right: 24px;
+            width: 28px; height: 28px; border-radius: 6px;
+            background: var(--surface2); display: flex;
+            align-items: center; justify-content: center;
+            font-size: 13px; color: var(--text-muted); transition: all 0.2s;
+        }
+        .portal-card:hover .card-arrow { background: var(--text); color: #fff; }
+
+        .footer { text-align: center; margin-top: 40px; color: var(--text-muted); font-size: 11px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="logo-badge"><span class="status-dot"></span> FC Online · Internal Ops Portal</div>
+            <h1>FCO Operations Portal</h1>
+            <p class="subtitle">Trung tâm vận hành dữ liệu FC Online — Dashboard phân tích sự kiện và kế hoạch tháng.</p>
+        </div>
+        <div class="cards-grid">
+            <a href="/analytics" class="portal-card" id="card-analytics">
+                <div class="card-icon green">📊</div>
+                <div class="card-title">Event Analytics</div>
+                <div class="card-desc">Phân tích doanh thu, ARPPU, MC Share và funnel decay cho từng web event. So sánh hiệu suất giữa 2 sự kiện.</div>
+                <div class="card-tags">
+                    <span class="tag green">Revenue</span>
+                    <span class="tag blue">ARPPU</span>
+                    <span class="tag purple">MC Share</span>
+                </div>
+                <div class="card-arrow">→</div>
+            </a>
+            <a href="/monthly" class="portal-card" id="card-monthly">
+                <div class="card-icon amber">📅</div>
+                <div class="card-title">Monthly Plan & Timeline</div>
+                <div class="card-desc">Timeline sự kiện tháng, tổng hợp rewards, chi tiết promotion packages. Visualize Monthly Plan Excel.</div>
+                <div class="card-tags">
+                    <span class="tag amber">Timeline</span>
+                    <span class="tag green">Rewards</span>
+                    <span class="tag blue">Promotions</span>
+                </div>
+                <div class="card-arrow">→</div>
+            </a>
+        </div>
+        <div class="footer">Powered by Career Twin · Garena Strategy & Operations</div>
+    </div>
+    <script>
+        // Adjust links dynamically when running offline via file:// protocol
+        if (window.location.protocol === 'file:') {
+            const cardAnalytics = document.getElementById('card-analytics');
+            const cardMonthly = document.getElementById('card-monthly');
+            if (cardAnalytics) cardAnalytics.href = '../fco-event-analytics/index.html';
+            if (cardMonthly) cardMonthly.href = 'monthly.html';
+        }
+    </script>
+</body>
+</html>

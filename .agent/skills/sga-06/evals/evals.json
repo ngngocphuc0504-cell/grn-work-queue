@@ -1,0 +1,22 @@
+{
+  "skill": "sga-06",
+  "version": "1.0",
+  "test_cases": [
+    {
+      "id": "TC-01",
+      "type": "happy_path",
+      "description": "Reflection passes all 4 KI gates",
+      "input": "Reflection: 'Khi phân tích multi-source data, cần cross-validate trước khi kết luận.' CST does not contain this insight.",
+      "expected_output": "Gate A (Novel): PASS. Gate B (Generalizable): PASS (applies beyond Q1 report). Gate C (Actionable): PASS (verb 'cross-validate'). Gate D (Evidenced): PASS (CFO feedback cited). Result: KI QUALIFIED.",
+      "pass_criteria": "All 4 gates evaluated with reasoning. ≥3 PASS → queued for WF-07. CST cross-referenced for Gate A."
+    },
+    {
+      "id": "TC-02",
+      "type": "violation",
+      "description": "Reflection is a duplicate of existing CST entry",
+      "input": "Reflection: 'Chuẩn bị kỹ quan trọng.' CST already contains: 'Preparation is key to quality output.'",
+      "expected_output": "Gate A (Novel): FAIL — semantic overlap with existing CST entry. Result: REJECTED as KI. Saved as session note only.",
+      "pass_criteria": "Gate A correctly identifies duplication. KI NOT queued. All 4 gates still evaluated for completeness."
+    }
+  ]
+}

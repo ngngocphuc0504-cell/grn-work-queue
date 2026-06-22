@@ -1,0 +1,70 @@
+{
+    "session_id": "S20260622-0933",
+    "lock_status": "OPEN",
+    "session_status": "ACTIVE",
+    "active_task": null,
+    "timestamps": {
+        "session_start": "2026-06-22T09:33:01+07:00",
+        "session_end": "2026-06-18T18:38:42+07:00"
+    },
+    "crash_recovery": {
+        "recovered_from": "S20260618-1838",
+        "recovered_at": "2026-06-22T09:33:01+07:00",
+        "interrupted_tasks": [
+            "TS-020"
+        ]
+    },
+    "milestones": {
+        "TS-001": "COMPLETED",
+        "TS-002": "COMPLETED",
+        "TS-003": "COMPLETED — OAC Strategic Frameworks annotated",
+        "TS-004": "COMPLETED — OAC-ws-beginner onboarding flow",
+        "TS-005": "COMPLETED — 9Router MITM Setup",
+        "TS-006": "ARCHIVED — OAC Value-Add: Free Ref Check & Handbook",
+        "TS-007": "ARCHIVED — OAC Stars Scale: International Tech Startups",
+        "TS-008": "ARCHIVED — OAC Market Intelligence Strategy",
+        "TS-009": "ARCHIVED — OAC Recruiter training with AG",
+        "TS-010": "ARCHIVED — OAC Contractor Model study",
+        "TS-011": "COMPLETED — CST, FRT, SKILL-MATRIX built 2026-04-17",
+        "TS-012": "ARCHIVED — OAC Channel Strategy",
+        "TS-013": "PENDING — DB-Time-Chamber migration & local DB development",
+        "TS-014": "ARCHIVED — Config Firebase rules & user guide deployment",
+        "TS-015": "ARCHIVED — OAC Content Factory",
+        "TS-016": "COMPLETED — Nano Banana MCP & sga-17-image-generator Integration",
+        "TS-017": "COMPLETED — T4-COBY-ADVISOR & Mindset Blueprint 2026-05-21",
+        "TS-018": "COMPLETED — Strategy & AI Product Lead JD delivered",
+        "TS-019": "COMPLETED — OAC Handover Checklist finalized 2026-05-26",
+        "TS-020": "IN_PROGRESS — Garena onboarding & first FC Online event execution",
+        "TS-021": "COMPLETED — Thiết kế Wireframe v2.2 & Đề xuất VIP Revamp",
+        "TS-022": "COMPLETED — Rà soát chênh lệch & đồng bộ hóa Spec v1.0 (Member Web System)",
+        "TS-023": "COMPLETED — Tích hợp nâng cấp Advanced Search & Filters cho FCO Item Search Portal"
+    },
+    "strategic_decisions": {
+        "revenue_target": "FC Online event-level monetization targets",
+        "corp_strategy": "Garena game publisher operations (Vietnam market)",
+        "monetization_model": "Free-to-play, pay-for-upgrades (player card packs, cosmetics)",
+        "ai_capability": "Leverage Antigravity IDE for project scoping, coordination, and upward reporting",
+        "top_priority": "FC Online live service events, tournaments & community engagement",
+        "execution_strategy": {
+            "lifecycle": "End-to-end ownership (brief -> Nexon alignment -> marketing promo -> live monitoring -> post-event analysis)",
+            "operations": "Cross-functional stakeholder coordination & prompt problem solving",
+            "communication": "Upward reporting (Country Head & Game Leaders) - clear, data-driven storytelling"
+        }
+    },
+    "onboarding": {
+        "onboarding_date": "2026-06-08",
+        "milestones": {
+            "T+25_mid_probation": "2026-07-13",
+            "T+40_slide_submission": "2026-08-03",
+            "T+50_end_probation": "2026-08-17"
+        }
+    },
+    "user_preferences": {
+        "report_format": "Onboarding Status + Ongoing Tasks Table",
+        "doc_style": "Consolidated frameworks in 1 file for cross-reference",
+        "annotation_method": "User comments directly in file, not in chat",
+        "interaction_tone": "coach_deep",
+        "challenge_level": "HIGH",
+        "language": "Vietnamese (mix EN for technical terms)"
+    }
+}

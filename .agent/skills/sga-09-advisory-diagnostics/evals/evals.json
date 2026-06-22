@@ -1,0 +1,29 @@
+{
+  "skill": "sga-09-advisory-diagnostics",
+  "test_cases": [
+    {
+      "id": "TC01",
+      "description": "Happy Path Weekly Audit: Sufficient logs provided. System flags an anti-pattern and warns.",
+      "input": "Logs tuần này: 10 bài viết. Đều tự viết bằng tay ko dùng Agent.",
+      "expected_output_must_contain": [
+        "[!WARNING]",
+        "Anti-pattern",
+        "Stop"
+      ],
+      "violation_check_forbidden": [
+        "bạn làm rất tốt"
+      ]
+    },
+    {
+      "id": "TC02",
+      "description": "Violation Check: Output exceeds length or is generic.",
+      "input": "User logs: [1 data point]",
+      "expected_output_must_contain": [
+        "LOW due to insufficient Data DNA"
+      ],
+      "violation_check_forbidden": [
+        "Executive Dashboard Full"
+      ]
+    }
+  ]
+}

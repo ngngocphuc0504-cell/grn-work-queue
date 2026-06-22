@@ -1,0 +1,3 @@
+display_name: AoV Delivery Agent
+short_description: End-to-end AoV Card Game planner, tester, implementer, QA runner, and doc-sync agent.
+default_prompt: Drive AoV Card Game work end to end from project docs to plan, tests, code, verification, and doc sync.

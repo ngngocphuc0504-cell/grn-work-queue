@@ -1,0 +1,15 @@
+interface:
+  display_name: "Work With Garena Tools"
+  short_description: "Route Garena MCP tool work"
+  default_prompt: "Use $work-with-garena-tools to inspect a Garena internal tool request and choose the right MCP tools."
+
+dependencies:
+  tools:
+    - type: "mcp"
+      value: "garena-vn-mcp-gw"
+      description: "Garena Vietnam MCP gateway exposing Outline, Plane, deploy app, Creative Lab, Datcom, Booking, Vendor, GIGI, Google Drive MCP, and Infra Knowledge tool families."
+      transport: "streamable_http"
+      url: "https://mcp.odp.garena.vn/mcp"
+
+policy:
+  allow_implicit_invocation: true
